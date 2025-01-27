@@ -7,7 +7,7 @@ import (
 	"github.com/recovery-flow/roles"
 )
 
-type Participants struct {
+type Participant struct {
 	UserID      uuid.UUID     `bson:"user_id" json:"user_id"`
 	FirstName   string        `bson:"first_name" json:"first_name"`
 	SecondName  string        `bson:"second_name" json:"second_name"`

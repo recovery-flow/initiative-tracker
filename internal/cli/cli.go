@@ -23,7 +23,7 @@ func Run(args []string) bool {
 	logger.Info("Starting server...")
 
 	var (
-		app        = kingpin.New("organization-storgae", "")
+		app        = kingpin.New("initiative-tracker", "")
 		runCmd     = app.Command("run", "run command")
 		serviceCmd = runCmd.Command("service", "run service")
 	)

@@ -6,9 +6,8 @@ import (
 )
 
 type Repo struct {
-	Initiative   repositories.Iniative
-	Participants repositories.Participant
-	Tags         repositories.Tag
+	Initiative repositories.Initiatives
+	Points     repositories.Points
 }
 
 func NewRepositoryNoSql(uri, dbName string) (*Repo, error) {
@@ -16,17 +15,12 @@ func NewRepositoryNoSql(uri, dbName string) (*Repo, error) {
 	if err != nil {
 		return nil, err
 	}
-	participantRepo, err := repositories.NewParticipant(uri, dbName, models.ParticipantCollection)
-	if err != nil {
-		return nil, err
-	}
-	tagRepo, err := repositories.NewTag(uri, dbName, models.TagCollection)
+	pointsRepo, err := repositories.NewPoint(uri, dbName, models.PointCollection)
 	if err != nil {
 		return nil, err
 	}
 	return &Repo{
-		Initiative:   initiativeRepo,
-		Participants: participantRepo,
-		Tags:         tagRepo,
+		Initiative: initiativeRepo,
+		Points:     pointsRepo,
 	}, nil
 }
