@@ -27,43 +27,43 @@ func Initiative(ini models.Initiative) resources.Initiative {
 				CreatedAt: ini.CreatedAt.Time().UTC(),
 			},
 			Links: resources.LinkSelf{
-				Self: resources.LinkInitiativeBase + resources.LinkPrivateInitiative + ini.ID.Hex(),
+				Self: resources.BaseInitiative + resources.InitiativeEndpoints.Base.Private + ini.ID.Hex(),
 			},
 			Relationships: resources.InitiativeDataRelationships{
 				Chat: resources.LinksDirect{
 					Links: resources.LinksDirectLinks{
-						Self:    resources.LinkChatStorageBase + resources.LinkPrivateChat + ini.ChatID.Hex(),
-						Related: resources.LinkChatStorageBase + resources.LinkGetChat + ini.ChatID.Hex(),
+						Self:    resources.BaseChatStorage + resources.ChatEndpoints.Private + ini.ChatID.Hex(),
+						Related: resources.BaseChatStorage + resources.ChatEndpoints.Public + ini.ChatID.Hex(),
 					},
 				},
 				Likes: resources.LinksDirect{
 					Links: resources.LinksDirectLinks{
-						Self:    resources.LinkReactionsStorageBase + resources.LinkPrivateReactions + resources.Likes + ini.ID.Hex(),
-						Related: resources.LinkReactionsStorageBase + resources.LinkGetReactions + resources.Likes + ini.ID.Hex() + resources.Pagination10EndLink,
+						Self:    resources.BaseReactionsStorage + resources.ReactionsEndpoints.Likes.Private + ini.ID.Hex(),
+						Related: resources.BaseReactionsStorage + resources.ReactionsEndpoints.Likes.Public + ini.ID.Hex() + resources.Pagination10EndLink,
 					},
 				},
 				Reposts: resources.LinksDirect{
 					Links: resources.LinksDirectLinks{
-						Self:    resources.LinkReactionsStorageBase + resources.LinkPrivateReactions + resources.Reposts + ini.ID.Hex(),
-						Related: resources.LinkReactionsStorageBase + resources.LinkGetReactions + resources.Reposts + ini.ID.Hex() + resources.Pagination10EndLink,
+						Self:    resources.BaseReactionsStorage + resources.ReactionsEndpoints.Reposts.Private + ini.ID.Hex(),
+						Related: resources.BaseReactionsStorage + resources.ReactionsEndpoints.Reposts.Public + ini.ID.Hex() + resources.Pagination10EndLink,
 					},
 				},
 				Reports: resources.LinksDirect{
 					Links: resources.LinksDirectLinks{
-						Self:    resources.LinkReactionsStorageBase + resources.LinkPrivateReactions + resources.Reports + ini.ID.Hex(),
-						Related: resources.LinkReactionsStorageBase + resources.LinkGetReactions + resources.Reports + ini.ID.Hex() + resources.Pagination10EndLink,
+						Self:    resources.BaseReactionsStorage + resources.ReactionsEndpoints.Reports.Private + ini.ID.Hex(),
+						Related: resources.BaseReactionsStorage + resources.ReactionsEndpoints.Reports.Public + ini.ID.Hex() + resources.Pagination10EndLink,
 					},
 				},
 				Participants: resources.LinksDirect{
 					Links: resources.LinksDirectLinks{
-						Self:    resources.LinkInitiativeBase + resources.LinkPrivateInitiative + ini.ID.Hex() + resources.LinkParticipants,
-						Related: resources.LinkInitiativeBase + resources.LinkGetInitiative + ini.ID.Hex() + resources.LinkParticipants + resources.Pagination10EndLink,
+						Self:    resources.BaseInitiative + resources.InitiativeEndpoints.Base.Private + ini.ID.Hex() + resources.InitiativeEndpoints.Participants.Private,
+						Related: resources.BaseInitiative + resources.InitiativeEndpoints.Base.Public + ini.ID.Hex() + resources.InitiativeEndpoints.Participants.Public + resources.Pagination10EndLink,
 					},
 				},
 				Points: resources.LinksDirect{
 					Links: resources.LinksDirectLinks{
-						Self:    resources.LinkInitiativeBase + resources.LinkPrivateInitiative + ini.ID.Hex() + resources.LinkPoints,
-						Related: resources.LinkInitiativeBase + resources.LinkGetInitiative + ini.ID.Hex() + resources.LinkPoints + resources.Pagination10EndLink,
+						Self:    resources.BaseInitiative + resources.InitiativeEndpoints.Base.Private + ini.ID.Hex() + resources.InitiativeEndpoints.Points.Private,
+						Related: resources.BaseInitiative + resources.InitiativeEndpoints.Base.Public + ini.ID.Hex() + resources.InitiativeEndpoints.Points.Public + resources.Pagination10EndLink,
 					},
 				},
 			},

@@ -1,31 +1,59 @@
 package resources
 
 const (
-	LinkUserStorageBase      = "http://localhost:8002/users-storage/v1"
-	LinkOrganizationBase     = "http://localhost:8003/org-storage/v1"
-	LinkInitiativeBase       = "http://localhost:8004/initiative-storage/v1"
-	LinkChatStorageBase      = "http://localhost:8008/chat-storage/v1"
-	LinkReactionsStorageBase = "http://localhost:8009/reactions-storage/v1"
-
-	LinkGetUser       = "/public/users/"
-	LinkGetOrg        = "/public/organization/"
-	LinkGetChat       = "/public/chat/"
-	LinkGetReactions  = "/public/reactions/"
-	LinkGetInitiative = "/public/initiatives/"
-	LinkPoints        = "/points"
-
-	LinkPrivateUser       = "/private/users/"
-	LinkPrivatePlan       = "/private/points/"
-	LinkPrivateOrg        = "/private/organization/"
-	LinkPrivateChat       = "/private/chat/"
-	LinkPrivateInitiative = "/private/initiatives/"
-	LinkPrivateReactions  = "/private/reactions/"
-
-	LinkParticipants = "/participants"
-
-	Likes   = "likes/"
-	Reposts = "reposts/"
-	Reports = "reports/"
-
-	Pagination10EndLink = "?page[size]=10&page[number]=10"
+	BaseUserStorage      = "http://localhost:8002/users-storage/v1"
+	BaseOrganization     = "http://localhost:8003/org-storage/v1"
+	BaseInitiative       = "http://localhost:8004/initiative-storage/v1"
+	BaseChatStorage      = "http://localhost:8008/chat-storage/v1"
+	BaseReactionsStorage = "http://localhost:8009/reactions-storage/v1"
 )
+
+type Endpoint struct {
+	Public  string
+	Private string
+}
+
+var ReactionsEndpoints = struct {
+	Likes   Endpoint
+	Reposts Endpoint
+	Reports Endpoint
+}{
+	Likes: Endpoint{
+		Public:  "/public/reactions/likes/",
+		Private: "/private/reactions/likes/",
+	},
+	Reposts: Endpoint{
+		Public:  "/public/reactions/reposts/",
+		Private: "/private/reactions/reposts/",
+	},
+	Reports: Endpoint{
+		Public:  "/public/reactions/reports/",
+		Private: "/private/reactions/reports/",
+	},
+}
+
+var InitiativeEndpoints = struct {
+	Base         Endpoint
+	Participants Endpoint
+	Points       Endpoint
+}{
+	Base: Endpoint{
+		Public:  "/public/initiatives/",
+		Private: "/private/initiatives/",
+	},
+	Participants: Endpoint{
+		Public:  "/participants",
+		Private: "/participants",
+	},
+	Points: Endpoint{
+		Public:  "/points",
+		Private: "/points",
+	},
+}
+
+var ChatEndpoints = Endpoint{
+	Public:  "/public/chat/",
+	Private: "/private/chat/",
+}
+
+const Pagination10EndLink = "?page[size]=10&page[number]=10"
