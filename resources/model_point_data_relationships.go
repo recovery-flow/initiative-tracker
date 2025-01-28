@@ -21,10 +21,10 @@ var _ MappedNullable = &PointDataRelationships{}
 
 // PointDataRelationships struct for PointDataRelationships
 type PointDataRelationships struct {
-	Parent *LinkDirect `json:"parent,omitempty"`
-	PublishedBy LinkDirect `json:"published_by"`
-	Initiative LinkDirect `json:"initiative"`
-	Plan LinkDirect `json:"plan"`
+	Parent *LinksDirect `json:"parent,omitempty"`
+	PublishedBy LinksDirect `json:"published_by"`
+	Initiative LinksDirect `json:"initiative"`
+	Plan LinksDirect `json:"plan"`
 }
 
 type _PointDataRelationships PointDataRelationships
@@ -33,7 +33,7 @@ type _PointDataRelationships PointDataRelationships
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewPointDataRelationships(publishedBy LinkDirect, initiative LinkDirect, plan LinkDirect) *PointDataRelationships {
+func NewPointDataRelationships(publishedBy LinksDirect, initiative LinksDirect, plan LinksDirect) *PointDataRelationships {
 	this := PointDataRelationships{}
 	this.PublishedBy = publishedBy
 	this.Initiative = initiative
@@ -50,9 +50,9 @@ func NewPointDataRelationshipsWithDefaults() *PointDataRelationships {
 }
 
 // GetParent returns the Parent field value if set, zero value otherwise.
-func (o *PointDataRelationships) GetParent() LinkDirect {
+func (o *PointDataRelationships) GetParent() LinksDirect {
 	if o == nil || IsNil(o.Parent) {
-		var ret LinkDirect
+		var ret LinksDirect
 		return ret
 	}
 	return *o.Parent
@@ -60,7 +60,7 @@ func (o *PointDataRelationships) GetParent() LinkDirect {
 
 // GetParentOk returns a tuple with the Parent field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PointDataRelationships) GetParentOk() (*LinkDirect, bool) {
+func (o *PointDataRelationships) GetParentOk() (*LinksDirect, bool) {
 	if o == nil || IsNil(o.Parent) {
 		return nil, false
 	}
@@ -76,15 +76,15 @@ func (o *PointDataRelationships) HasParent() bool {
 	return false
 }
 
-// SetParent gets a reference to the given LinkDirect and assigns it to the Parent field.
-func (o *PointDataRelationships) SetParent(v LinkDirect) {
+// SetParent gets a reference to the given LinksDirect and assigns it to the Parent field.
+func (o *PointDataRelationships) SetParent(v LinksDirect) {
 	o.Parent = &v
 }
 
 // GetPublishedBy returns the PublishedBy field value
-func (o *PointDataRelationships) GetPublishedBy() LinkDirect {
+func (o *PointDataRelationships) GetPublishedBy() LinksDirect {
 	if o == nil {
-		var ret LinkDirect
+		var ret LinksDirect
 		return ret
 	}
 
@@ -93,7 +93,7 @@ func (o *PointDataRelationships) GetPublishedBy() LinkDirect {
 
 // GetPublishedByOk returns a tuple with the PublishedBy field value
 // and a boolean to check if the value has been set.
-func (o *PointDataRelationships) GetPublishedByOk() (*LinkDirect, bool) {
+func (o *PointDataRelationships) GetPublishedByOk() (*LinksDirect, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -101,14 +101,14 @@ func (o *PointDataRelationships) GetPublishedByOk() (*LinkDirect, bool) {
 }
 
 // SetPublishedBy sets field value
-func (o *PointDataRelationships) SetPublishedBy(v LinkDirect) {
+func (o *PointDataRelationships) SetPublishedBy(v LinksDirect) {
 	o.PublishedBy = v
 }
 
 // GetInitiative returns the Initiative field value
-func (o *PointDataRelationships) GetInitiative() LinkDirect {
+func (o *PointDataRelationships) GetInitiative() LinksDirect {
 	if o == nil {
-		var ret LinkDirect
+		var ret LinksDirect
 		return ret
 	}
 
@@ -117,7 +117,7 @@ func (o *PointDataRelationships) GetInitiative() LinkDirect {
 
 // GetInitiativeOk returns a tuple with the Initiative field value
 // and a boolean to check if the value has been set.
-func (o *PointDataRelationships) GetInitiativeOk() (*LinkDirect, bool) {
+func (o *PointDataRelationships) GetInitiativeOk() (*LinksDirect, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -125,14 +125,14 @@ func (o *PointDataRelationships) GetInitiativeOk() (*LinkDirect, bool) {
 }
 
 // SetInitiative sets field value
-func (o *PointDataRelationships) SetInitiative(v LinkDirect) {
+func (o *PointDataRelationships) SetInitiative(v LinksDirect) {
 	o.Initiative = v
 }
 
 // GetPlan returns the Plan field value
-func (o *PointDataRelationships) GetPlan() LinkDirect {
+func (o *PointDataRelationships) GetPlan() LinksDirect {
 	if o == nil {
-		var ret LinkDirect
+		var ret LinksDirect
 		return ret
 	}
 
@@ -141,7 +141,7 @@ func (o *PointDataRelationships) GetPlan() LinkDirect {
 
 // GetPlanOk returns a tuple with the Plan field value
 // and a boolean to check if the value has been set.
-func (o *PointDataRelationships) GetPlanOk() (*LinkDirect, bool) {
+func (o *PointDataRelationships) GetPlanOk() (*LinksDirect, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -149,7 +149,7 @@ func (o *PointDataRelationships) GetPlanOk() (*LinkDirect, bool) {
 }
 
 // SetPlan sets field value
-func (o *PointDataRelationships) SetPlan(v LinkDirect) {
+func (o *PointDataRelationships) SetPlan(v LinksDirect) {
 	o.Plan = v
 }
 

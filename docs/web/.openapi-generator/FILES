@@ -1,5 +1,4 @@
 .gitignore
-.openapi-generator-ignore
 .travis.yml
 README.md
 api/openapi.yaml
@@ -13,6 +12,7 @@ docs/InitiativeCreateData.md
 docs/InitiativeCreateDataAttributes.md
 docs/InitiativeData.md
 docs/InitiativeDataAttributes.md
+docs/InitiativeDataRelationships.md
 docs/InitiativeIncluded.md
 docs/InitiativeTagAdd.md
 docs/InitiativeTagAddData.md
@@ -26,9 +26,9 @@ docs/JarData.md
 docs/JarDataRelationships.md
 docs/JarUpdate.md
 docs/JarUpdateData.md
-docs/LinkDirect.md
-docs/LinksDirectPagination.md
-docs/LinksDirectPaginationLinks.md
+docs/LinkSelf.md
+docs/LinksDirect.md
+docs/LinksDirectLinks.md
 docs/LinksPagination.md
 docs/Owner.md
 docs/Participant.md
@@ -63,6 +63,7 @@ model_initiative_create_data.go
 model_initiative_create_data_attributes.go
 model_initiative_data.go
 model_initiative_data_attributes.go
+model_initiative_data_relationships.go
 model_initiative_included.go
 model_initiative_tag_add.go
 model_initiative_tag_add_data.go
@@ -76,9 +77,9 @@ model_jar_data.go
 model_jar_data_relationships.go
 model_jar_update.go
 model_jar_update_data.go
-model_link_direct.go
-model_links_direct_pagination.go
-model_links_direct_pagination_links.go
+model_link_self.go
+model_links_direct.go
+model_links_direct_links.go
 model_links_pagination.go
 model_owner.go
 model_participant.go

@@ -24,6 +24,6 @@ properties:
           - point
         properties:
           initiative:
-            $ref: "./LinkDirect.yaml"
+            $ref: "./LinksDirect.yaml"
           point:
-            $ref: "./LinkDirect.yaml"
+            $ref: "./LinksDirect.yaml"

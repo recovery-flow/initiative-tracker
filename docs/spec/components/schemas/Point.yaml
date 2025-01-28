@@ -27,12 +27,12 @@ properties:
           - jar
         properties:
           parent:
-            $ref: "./LinkDirect.yaml"
+            $ref: "./LinksDirect.yaml"
           published_by:
-            $ref: "./LinkDirect.yaml"
+            $ref: "./LinksDirect.yaml"
           initiative:
-            $ref: "./LinkDirect.yaml"
+            $ref: "./LinksDirect.yaml"
           plan:
-            $ref: "./LinkDirect.yaml"
+            $ref: "./LinksDirect.yaml"
   included:
     $ref: "./JarAttributes.yaml"

@@ -25,6 +25,8 @@ type InitiativeData struct {
 	Id string `json:"id"`
 	Type string `json:"type"`
 	Attributes InitiativeDataAttributes `json:"attributes"`
+	Links LinkSelf `json:"links"`
+	Relationships InitiativeDataRelationships `json:"relationships"`
 }
 
 type _InitiativeData InitiativeData
@@ -33,11 +35,13 @@ type _InitiativeData InitiativeData
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewInitiativeData(id string, type_ string, attributes InitiativeDataAttributes) *InitiativeData {
+func NewInitiativeData(id string, type_ string, attributes InitiativeDataAttributes, links LinkSelf, relationships InitiativeDataRelationships) *InitiativeData {
 	this := InitiativeData{}
 	this.Id = id
 	this.Type = type_
 	this.Attributes = attributes
+	this.Links = links
+	this.Relationships = relationships
 	return &this
 }
 
@@ -121,6 +125,54 @@ func (o *InitiativeData) SetAttributes(v InitiativeDataAttributes) {
 	o.Attributes = v
 }
 
+// GetLinks returns the Links field value
+func (o *InitiativeData) GetLinks() LinkSelf {
+	if o == nil {
+		var ret LinkSelf
+		return ret
+	}
+
+	return o.Links
+}
+
+// GetLinksOk returns a tuple with the Links field value
+// and a boolean to check if the value has been set.
+func (o *InitiativeData) GetLinksOk() (*LinkSelf, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Links, true
+}
+
+// SetLinks sets field value
+func (o *InitiativeData) SetLinks(v LinkSelf) {
+	o.Links = v
+}
+
+// GetRelationships returns the Relationships field value
+func (o *InitiativeData) GetRelationships() InitiativeDataRelationships {
+	if o == nil {
+		var ret InitiativeDataRelationships
+		return ret
+	}
+
+	return o.Relationships
+}
+
+// GetRelationshipsOk returns a tuple with the Relationships field value
+// and a boolean to check if the value has been set.
+func (o *InitiativeData) GetRelationshipsOk() (*InitiativeDataRelationships, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Relationships, true
+}
+
+// SetRelationships sets field value
+func (o *InitiativeData) SetRelationships(v InitiativeDataRelationships) {
+	o.Relationships = v
+}
+
 func (o InitiativeData) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -134,6 +186,8 @@ func (o InitiativeData) ToMap() (map[string]interface{}, error) {
 	toSerialize["id"] = o.Id
 	toSerialize["type"] = o.Type
 	toSerialize["attributes"] = o.Attributes
+	toSerialize["links"] = o.Links
+	toSerialize["relationships"] = o.Relationships
 	return toSerialize, nil
 }
 
@@ -145,6 +199,8 @@ func (o *InitiativeData) UnmarshalJSON(data []byte) (err error) {
 		"id",
 		"type",
 		"attributes",
+		"links",
+		"relationships",
 	}
 
 	allProperties := make(map[string]interface{})

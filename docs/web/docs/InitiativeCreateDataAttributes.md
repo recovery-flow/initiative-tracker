@@ -7,14 +7,14 @@ Name | Type | Description | Notes
 **Name** | **string** | name of initiative | 
 **Desc** | **string** | description of initiative | 
 **Goal** | **string** | goal of initiative | 
-**Location** | **string** | location of initiative | 
+**Location** | Pointer to **string** | location of initiative | [optional] 
 **Owner** | [**Owner**](Owner.md) |  | 
 
 ## Methods
 
 ### NewInitiativeCreateDataAttributes
 
-`func NewInitiativeCreateDataAttributes(name string, desc string, goal string, location string, owner Owner, ) *InitiativeCreateDataAttributes`
+`func NewInitiativeCreateDataAttributes(name string, desc string, goal string, owner Owner, ) *InitiativeCreateDataAttributes`
 
 NewInitiativeCreateDataAttributes instantiates a new InitiativeCreateDataAttributes object
 This constructor will assign default values to properties that have it defined,
@@ -108,6 +108,11 @@ and a boolean to check if the value has been set.
 
 SetLocation sets Location field to given value.
 
+### HasLocation
+
+`func (o *InitiativeCreateDataAttributes) HasLocation() bool`
+
+HasLocation returns a boolean if a field has been set.
 
 ### GetOwner
 

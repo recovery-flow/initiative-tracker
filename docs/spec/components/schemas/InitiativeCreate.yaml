@@ -16,7 +16,6 @@ properties:
           - name
           - desc
           - goal
-          - location
           - owner
         properties:
           name:

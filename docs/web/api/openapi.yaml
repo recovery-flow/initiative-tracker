@@ -19,11 +19,10 @@ paths:
       summary: Test
 components:
   schemas:
-    LinkDirect:
+    LinksDirect:
       properties:
         links:
-          description: Link to chat
-          type: string
+          $ref: '#/components/schemas/LinksDirect_links'
       required:
       - links
       type: object
@@ -38,13 +37,6 @@ components:
         next:
           description: Link to the next page
           type: string
-      type: object
-    LinksDirectPagination:
-      properties:
-        links:
-          $ref: '#/components/schemas/LinksDirectPagination_links'
-      required:
-      - links
       type: object
     Owner:
       properties:
@@ -81,7 +73,6 @@ components:
           $ref: '#/components/schemas/Initiative_included'
       required:
       - data
-      - included
       type: object
     InitiativeCreate:
       properties:
@@ -307,7 +298,15 @@ components:
       - bank
       - url
       type: object
-    LinksDirectPagination_links:
+    LinkSelf:
+      properties:
+        self:
+          description: Link to participants
+          type: string
+      required:
+      - self
+      type: object
+    LinksDirect_links:
       properties:
         self:
           description: Link to participants
@@ -332,7 +331,7 @@ components:
           type: string
         verified:
           description: verified status
-          type: string
+          type: boolean
         location:
           description: location of initiative
           type: string
@@ -341,12 +340,15 @@ components:
           type: string
         likes:
           description: likes of initiative
+          format: int64
           type: integer
         reposts:
           description: reposts of initiative
+          format: int64
           type: integer
         reports:
           description: reports of initiative
+          format: int64
           type: integer
         created_at:
           description: Initiative created at
@@ -374,6 +376,28 @@ components:
       - status
       - verified
       type: object
+    Initiative_data_relationships:
+      properties:
+        chat:
+          $ref: '#/components/schemas/LinksDirect'
+        likes:
+          $ref: '#/components/schemas/LinksDirect'
+        reposts:
+          $ref: '#/components/schemas/LinksDirect'
+        reports:
+          $ref: '#/components/schemas/LinksDirect'
+        participants:
+          $ref: '#/components/schemas/LinksDirect'
+        points:
+          $ref: '#/components/schemas/LinksDirect'
+      required:
+      - chat
+      - likes
+      - participants
+      - points
+      - reports
+      - reposts
+      type: object
     Initiative_data:
       properties:
         id:
@@ -385,9 +409,14 @@ components:
           type: string
         attributes:
           $ref: '#/components/schemas/Initiative_data_attributes'
+        links:
+          $ref: '#/components/schemas/LinkSelf'
+        relationships:
+          $ref: '#/components/schemas/Initiative_data_relationships'
       required:
       - attributes
       - id
+      - links
       - relationships
       - type
       type: object
@@ -419,7 +448,6 @@ components:
       required:
       - desc
       - goal
-      - location
       - name
       - owner
       type: object
@@ -493,13 +521,13 @@ components:
     Point_data_relationships:
       properties:
         parent:
-          $ref: '#/components/schemas/LinkDirect'
+          $ref: '#/components/schemas/LinksDirect'
         published_by:
-          $ref: '#/components/schemas/LinkDirect'
+          $ref: '#/components/schemas/LinksDirect'
         initiative:
-          $ref: '#/components/schemas/LinkDirect'
+          $ref: '#/components/schemas/LinksDirect'
         plan:
-          $ref: '#/components/schemas/LinkDirect'
+          $ref: '#/components/schemas/LinksDirect'
       required:
       - initiative
       - jar
@@ -553,6 +581,9 @@ components:
       type: object
     PointCreate_data:
       properties:
+        id:
+          description: point id
+          type: string
         type:
           enum:
           - point_create
@@ -586,6 +617,9 @@ components:
       type: object
     PointUpdate_data:
       properties:
+        id:
+          description: point id
+          type: string
         type:
           enum:
           - point_update
@@ -600,9 +634,9 @@ components:
     Jar_data_relationships:
       properties:
         initiative:
-          $ref: '#/components/schemas/LinkDirect'
+          $ref: '#/components/schemas/LinksDirect'
         point:
-          $ref: '#/components/schemas/LinkDirect'
+          $ref: '#/components/schemas/LinksDirect'
       required:
       - initiative
       - point

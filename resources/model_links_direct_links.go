@@ -16,40 +16,40 @@ import (
 	"fmt"
 )
 
-// checks if the LinksDirectPaginationLinks type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &LinksDirectPaginationLinks{}
+// checks if the LinksDirectLinks type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &LinksDirectLinks{}
 
-// LinksDirectPaginationLinks struct for LinksDirectPaginationLinks
-type LinksDirectPaginationLinks struct {
+// LinksDirectLinks struct for LinksDirectLinks
+type LinksDirectLinks struct {
 	// Link to participants
 	Self string `json:"self"`
 	// Link to participants
 	Related string `json:"related"`
 }
 
-type _LinksDirectPaginationLinks LinksDirectPaginationLinks
+type _LinksDirectLinks LinksDirectLinks
 
-// NewLinksDirectPaginationLinks instantiates a new LinksDirectPaginationLinks object
+// NewLinksDirectLinks instantiates a new LinksDirectLinks object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewLinksDirectPaginationLinks(self string, related string) *LinksDirectPaginationLinks {
-	this := LinksDirectPaginationLinks{}
+func NewLinksDirectLinks(self string, related string) *LinksDirectLinks {
+	this := LinksDirectLinks{}
 	this.Self = self
 	this.Related = related
 	return &this
 }
 
-// NewLinksDirectPaginationLinksWithDefaults instantiates a new LinksDirectPaginationLinks object
+// NewLinksDirectLinksWithDefaults instantiates a new LinksDirectLinks object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewLinksDirectPaginationLinksWithDefaults() *LinksDirectPaginationLinks {
-	this := LinksDirectPaginationLinks{}
+func NewLinksDirectLinksWithDefaults() *LinksDirectLinks {
+	this := LinksDirectLinks{}
 	return &this
 }
 
 // GetSelf returns the Self field value
-func (o *LinksDirectPaginationLinks) GetSelf() string {
+func (o *LinksDirectLinks) GetSelf() string {
 	if o == nil {
 		var ret string
 		return ret
@@ -60,7 +60,7 @@ func (o *LinksDirectPaginationLinks) GetSelf() string {
 
 // GetSelfOk returns a tuple with the Self field value
 // and a boolean to check if the value has been set.
-func (o *LinksDirectPaginationLinks) GetSelfOk() (*string, bool) {
+func (o *LinksDirectLinks) GetSelfOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -68,12 +68,12 @@ func (o *LinksDirectPaginationLinks) GetSelfOk() (*string, bool) {
 }
 
 // SetSelf sets field value
-func (o *LinksDirectPaginationLinks) SetSelf(v string) {
+func (o *LinksDirectLinks) SetSelf(v string) {
 	o.Self = v
 }
 
 // GetRelated returns the Related field value
-func (o *LinksDirectPaginationLinks) GetRelated() string {
+func (o *LinksDirectLinks) GetRelated() string {
 	if o == nil {
 		var ret string
 		return ret
@@ -84,7 +84,7 @@ func (o *LinksDirectPaginationLinks) GetRelated() string {
 
 // GetRelatedOk returns a tuple with the Related field value
 // and a boolean to check if the value has been set.
-func (o *LinksDirectPaginationLinks) GetRelatedOk() (*string, bool) {
+func (o *LinksDirectLinks) GetRelatedOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -92,11 +92,11 @@ func (o *LinksDirectPaginationLinks) GetRelatedOk() (*string, bool) {
 }
 
 // SetRelated sets field value
-func (o *LinksDirectPaginationLinks) SetRelated(v string) {
+func (o *LinksDirectLinks) SetRelated(v string) {
 	o.Related = v
 }
 
-func (o LinksDirectPaginationLinks) MarshalJSON() ([]byte, error) {
+func (o LinksDirectLinks) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
@@ -104,14 +104,14 @@ func (o LinksDirectPaginationLinks) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-func (o LinksDirectPaginationLinks) ToMap() (map[string]interface{}, error) {
+func (o LinksDirectLinks) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["self"] = o.Self
 	toSerialize["related"] = o.Related
 	return toSerialize, nil
 }
 
-func (o *LinksDirectPaginationLinks) UnmarshalJSON(data []byte) (err error) {
+func (o *LinksDirectLinks) UnmarshalJSON(data []byte) (err error) {
 	// This validates that all required properties are included in the JSON object
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
@@ -134,53 +134,53 @@ func (o *LinksDirectPaginationLinks) UnmarshalJSON(data []byte) (err error) {
 		}
 	}
 
-	varLinksDirectPaginationLinks := _LinksDirectPaginationLinks{}
+	varLinksDirectLinks := _LinksDirectLinks{}
 
 	decoder := json.NewDecoder(bytes.NewReader(data))
 	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varLinksDirectPaginationLinks)
+	err = decoder.Decode(&varLinksDirectLinks)
 
 	if err != nil {
 		return err
 	}
 
-	*o = LinksDirectPaginationLinks(varLinksDirectPaginationLinks)
+	*o = LinksDirectLinks(varLinksDirectLinks)
 
 	return err
 }
 
-type NullableLinksDirectPaginationLinks struct {
-	value *LinksDirectPaginationLinks
+type NullableLinksDirectLinks struct {
+	value *LinksDirectLinks
 	isSet bool
 }
 
-func (v NullableLinksDirectPaginationLinks) Get() *LinksDirectPaginationLinks {
+func (v NullableLinksDirectLinks) Get() *LinksDirectLinks {
 	return v.value
 }
 
-func (v *NullableLinksDirectPaginationLinks) Set(val *LinksDirectPaginationLinks) {
+func (v *NullableLinksDirectLinks) Set(val *LinksDirectLinks) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableLinksDirectPaginationLinks) IsSet() bool {
+func (v NullableLinksDirectLinks) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableLinksDirectPaginationLinks) Unset() {
+func (v *NullableLinksDirectLinks) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableLinksDirectPaginationLinks(val *LinksDirectPaginationLinks) *NullableLinksDirectPaginationLinks {
-	return &NullableLinksDirectPaginationLinks{value: val, isSet: true}
+func NewNullableLinksDirectLinks(val *LinksDirectLinks) *NullableLinksDirectLinks {
+	return &NullableLinksDirectLinks{value: val, isSet: true}
 }
 
-func (v NullableLinksDirectPaginationLinks) MarshalJSON() ([]byte, error) {
+func (v NullableLinksDirectLinks) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableLinksDirectPaginationLinks) UnmarshalJSON(src []byte) error {
+func (v *NullableLinksDirectLinks) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

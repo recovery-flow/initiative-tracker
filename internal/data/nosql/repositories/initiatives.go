@@ -93,9 +93,6 @@ func (i *initiatives) Insert(ctx context.Context, initiative models.Initiative) 
 	if initiative.Goal == "" {
 		return nil, fmt.Errorf("initiatives goal cannot be empty")
 	}
-	if len(initiative.Tags) < 2 || len(initiative.Tags) > 10 {
-		return nil, fmt.Errorf("incoret number of tags")
-	}
 	if len(initiative.Participants) == 0 {
 		return nil, fmt.Errorf("initiatives must have at least one participant")
 	}

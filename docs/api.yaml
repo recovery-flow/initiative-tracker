@@ -19,12 +19,10 @@ paths:
 
 components:
   schemas:
-    LinkDirect:
-      $ref: './spec/components/schemas/LinkDirect.yaml'
+    LinksDirect:
+      $ref: './spec/components/schemas/LinksDirect.yaml'
     LinksPagination:
       $ref: './spec/components/schemas/LinksPagination.yaml'
-    LinksDirectPagination:
-      $ref: './spec/components/schemas/LinksDirectPagination.yaml'
     Owner:
       $ref: './spec/components/schemas/Owner.yaml'
     Initiative:

@@ -12,7 +12,7 @@ type Initiative struct {
 	Verified     bool               `bson:"verified" json:"verified"`
 	Location     *string            `bson:"location,omitempty" json:"location,omitempty"`
 	Status       Status             `bson:"status" json:"status"`
-	Tags         []Tag              `bson:"tags" json:"tags"`
+	Tags         []Tag              `bson:"tags,omitempty" json:"tags,omitempty"`
 	Participants []Participant      `bson:"participants" json:"participants"`
 	ChatID       primitive.ObjectID `bson:"chat_id" json:"chat_id"`
 
@@ -28,21 +28,21 @@ type Initiative struct {
 type Status string
 
 const (
-	Active   Status = "active"
-	Inactive Status = "inactive"
-	Closed   Status = "closed"
+	StatusActive   Status = "active"
+	StatusInactive Status = "inactive"
+	StatusClosed   Status = "closed"
 )
 
 func StatusFromString(s string) *Status {
 	switch s {
 	case "active":
-		status := Active
+		status := StatusActive
 		return &status
 	case "inactive":
-		status := Inactive
+		status := StatusInactive
 		return &status
 	case "closed":
-		status := Closed
+		status := StatusClosed
 		return &status
 	default:
 		return nil

@@ -1,7 +1,6 @@
 type: object
 required:
   - data
-  - included
 properties:
   data:
     required:
@@ -9,6 +8,7 @@ properties:
       - type
       - attributes
       - relationships
+      - links
     properties:
       id:
         type: string
@@ -39,7 +39,7 @@ properties:
             type: string
             description: "goal of initiative"
           verified:
-            type: string
+            type: boolean
             description: "verified status"
           location:
             type: string
@@ -49,12 +49,15 @@ properties:
             description: "status of initiative"
           likes:
             type: integer
+            format: int64
             description: "likes of initiative"
           reposts:
             type: integer
+            format: int64
             description: "reposts of initiative"
           reports:
             type: integer
+            format: int64
             description: "reports of initiative"
           created_at:
             type: string
@@ -71,28 +74,30 @@ properties:
             format: date-time
             description: "Initiative closed at"
             example: "2021-01-01T00:00:00Z"
-        relationships:
-          type: object
-          required:
-            - chat
-            - likes
-            - reposts
-            - reports
-            - participants
-            - plan
-          properties:
-            chat:
-              $ref: "./LinkDirect.yaml"
-            likes:
-              $ref: "./LinksDirectPagination.yaml"
-            reposts:
-              $ref: "./LinksDirectPagination.yaml"
-            reports:
-              $ref: "./LinksDirectPagination.yaml"
-            participants:
-              $ref: "./LinksDirectPagination.yaml"
-            plan:
-              $ref: "./LinkDirect.yaml"
+      links:
+        $ref: "./LinkSelf.yaml"
+      relationships:
+        type: object
+        required:
+          - chat
+          - likes
+          - reposts
+          - reports
+          - participants
+          - points
+        properties:
+          chat:
+            $ref: "./LinksDirect.yaml"
+          likes:
+            $ref: "./LinksDirect.yaml"
+          reposts:
+            $ref: "./LinksDirect.yaml"
+          reports:
+            $ref: "./LinksDirect.yaml"
+          participants:
+            $ref: "./LinksDirect.yaml"
+          points:
+            $ref: "./LinksDirect.yaml"
   included:
     required:
       - tags

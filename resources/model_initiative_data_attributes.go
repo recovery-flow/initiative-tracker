@@ -29,17 +29,17 @@ type InitiativeDataAttributes struct {
 	// goal of initiative
 	Goal string `json:"goal"`
 	// verified status
-	Verified string `json:"verified"`
+	Verified bool `json:"verified"`
 	// location of initiative
 	Location *string `json:"location,omitempty"`
 	// status of initiative
 	Status string `json:"status"`
 	// likes of initiative
-	Likes int32 `json:"likes"`
+	Likes int64 `json:"likes"`
 	// reposts of initiative
-	Reposts int32 `json:"reposts"`
+	Reposts int64 `json:"reposts"`
 	// reports of initiative
-	Reports int32 `json:"reports"`
+	Reports int64 `json:"reports"`
 	// Initiative created at
 	CreatedAt time.Time `json:"created_at"`
 	// Initiative updated at
@@ -54,7 +54,7 @@ type _InitiativeDataAttributes InitiativeDataAttributes
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewInitiativeDataAttributes(name string, desc string, goal string, verified string, status string, likes int32, reposts int32, reports int32, createdAt time.Time) *InitiativeDataAttributes {
+func NewInitiativeDataAttributes(name string, desc string, goal string, verified bool, status string, likes int64, reposts int64, reports int64, createdAt time.Time) *InitiativeDataAttributes {
 	this := InitiativeDataAttributes{}
 	this.Name = name
 	this.Desc = desc
@@ -149,9 +149,9 @@ func (o *InitiativeDataAttributes) SetGoal(v string) {
 }
 
 // GetVerified returns the Verified field value
-func (o *InitiativeDataAttributes) GetVerified() string {
+func (o *InitiativeDataAttributes) GetVerified() bool {
 	if o == nil {
-		var ret string
+		var ret bool
 		return ret
 	}
 
@@ -160,7 +160,7 @@ func (o *InitiativeDataAttributes) GetVerified() string {
 
 // GetVerifiedOk returns a tuple with the Verified field value
 // and a boolean to check if the value has been set.
-func (o *InitiativeDataAttributes) GetVerifiedOk() (*string, bool) {
+func (o *InitiativeDataAttributes) GetVerifiedOk() (*bool, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -168,7 +168,7 @@ func (o *InitiativeDataAttributes) GetVerifiedOk() (*string, bool) {
 }
 
 // SetVerified sets field value
-func (o *InitiativeDataAttributes) SetVerified(v string) {
+func (o *InitiativeDataAttributes) SetVerified(v bool) {
 	o.Verified = v
 }
 
@@ -229,9 +229,9 @@ func (o *InitiativeDataAttributes) SetStatus(v string) {
 }
 
 // GetLikes returns the Likes field value
-func (o *InitiativeDataAttributes) GetLikes() int32 {
+func (o *InitiativeDataAttributes) GetLikes() int64 {
 	if o == nil {
-		var ret int32
+		var ret int64
 		return ret
 	}
 
@@ -240,7 +240,7 @@ func (o *InitiativeDataAttributes) GetLikes() int32 {
 
 // GetLikesOk returns a tuple with the Likes field value
 // and a boolean to check if the value has been set.
-func (o *InitiativeDataAttributes) GetLikesOk() (*int32, bool) {
+func (o *InitiativeDataAttributes) GetLikesOk() (*int64, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -248,14 +248,14 @@ func (o *InitiativeDataAttributes) GetLikesOk() (*int32, bool) {
 }
 
 // SetLikes sets field value
-func (o *InitiativeDataAttributes) SetLikes(v int32) {
+func (o *InitiativeDataAttributes) SetLikes(v int64) {
 	o.Likes = v
 }
 
 // GetReposts returns the Reposts field value
-func (o *InitiativeDataAttributes) GetReposts() int32 {
+func (o *InitiativeDataAttributes) GetReposts() int64 {
 	if o == nil {
-		var ret int32
+		var ret int64
 		return ret
 	}
 
@@ -264,7 +264,7 @@ func (o *InitiativeDataAttributes) GetReposts() int32 {
 
 // GetRepostsOk returns a tuple with the Reposts field value
 // and a boolean to check if the value has been set.
-func (o *InitiativeDataAttributes) GetRepostsOk() (*int32, bool) {
+func (o *InitiativeDataAttributes) GetRepostsOk() (*int64, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -272,14 +272,14 @@ func (o *InitiativeDataAttributes) GetRepostsOk() (*int32, bool) {
 }
 
 // SetReposts sets field value
-func (o *InitiativeDataAttributes) SetReposts(v int32) {
+func (o *InitiativeDataAttributes) SetReposts(v int64) {
 	o.Reposts = v
 }
 
 // GetReports returns the Reports field value
-func (o *InitiativeDataAttributes) GetReports() int32 {
+func (o *InitiativeDataAttributes) GetReports() int64 {
 	if o == nil {
-		var ret int32
+		var ret int64
 		return ret
 	}
 
@@ -288,7 +288,7 @@ func (o *InitiativeDataAttributes) GetReports() int32 {
 
 // GetReportsOk returns a tuple with the Reports field value
 // and a boolean to check if the value has been set.
-func (o *InitiativeDataAttributes) GetReportsOk() (*int32, bool) {
+func (o *InitiativeDataAttributes) GetReportsOk() (*int64, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -296,7 +296,7 @@ func (o *InitiativeDataAttributes) GetReportsOk() (*int32, bool) {
 }
 
 // SetReports sets field value
-func (o *InitiativeDataAttributes) SetReports(v int32) {
+func (o *InitiativeDataAttributes) SetReports(v int64) {
 	o.Reports = v
 }
 

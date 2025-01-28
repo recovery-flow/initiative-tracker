@@ -8,6 +8,9 @@ properties:
       - type
       - attributes
     properties:
+      id:
+        type: string
+        description: "point id"
       type:
         type: string
         enum: [ point_update ]

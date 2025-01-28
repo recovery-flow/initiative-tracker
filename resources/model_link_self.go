@@ -16,60 +16,60 @@ import (
 	"fmt"
 )
 
-// checks if the LinkDirect type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &LinkDirect{}
+// checks if the LinkSelf type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &LinkSelf{}
 
-// LinkDirect struct for LinkDirect
-type LinkDirect struct {
-	// Link to chat
-	Links string `json:"links"`
+// LinkSelf struct for LinkSelf
+type LinkSelf struct {
+	// Link to participants
+	Self string `json:"self"`
 }
 
-type _LinkDirect LinkDirect
+type _LinkSelf LinkSelf
 
-// NewLinkDirect instantiates a new LinkDirect object
+// NewLinkSelf instantiates a new LinkSelf object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewLinkDirect(links string) *LinkDirect {
-	this := LinkDirect{}
-	this.Links = links
+func NewLinkSelf(self string) *LinkSelf {
+	this := LinkSelf{}
+	this.Self = self
 	return &this
 }
 
-// NewLinkDirectWithDefaults instantiates a new LinkDirect object
+// NewLinkSelfWithDefaults instantiates a new LinkSelf object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewLinkDirectWithDefaults() *LinkDirect {
-	this := LinkDirect{}
+func NewLinkSelfWithDefaults() *LinkSelf {
+	this := LinkSelf{}
 	return &this
 }
 
-// GetLinks returns the Links field value
-func (o *LinkDirect) GetLinks() string {
+// GetSelf returns the Self field value
+func (o *LinkSelf) GetSelf() string {
 	if o == nil {
 		var ret string
 		return ret
 	}
 
-	return o.Links
+	return o.Self
 }
 
-// GetLinksOk returns a tuple with the Links field value
+// GetSelfOk returns a tuple with the Self field value
 // and a boolean to check if the value has been set.
-func (o *LinkDirect) GetLinksOk() (*string, bool) {
+func (o *LinkSelf) GetSelfOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.Links, true
+	return &o.Self, true
 }
 
-// SetLinks sets field value
-func (o *LinkDirect) SetLinks(v string) {
-	o.Links = v
+// SetSelf sets field value
+func (o *LinkSelf) SetSelf(v string) {
+	o.Self = v
 }
 
-func (o LinkDirect) MarshalJSON() ([]byte, error) {
+func (o LinkSelf) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
@@ -77,18 +77,18 @@ func (o LinkDirect) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-func (o LinkDirect) ToMap() (map[string]interface{}, error) {
+func (o LinkSelf) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["links"] = o.Links
+	toSerialize["self"] = o.Self
 	return toSerialize, nil
 }
 
-func (o *LinkDirect) UnmarshalJSON(data []byte) (err error) {
+func (o *LinkSelf) UnmarshalJSON(data []byte) (err error) {
 	// This validates that all required properties are included in the JSON object
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
-		"links",
+		"self",
 	}
 
 	allProperties := make(map[string]interface{})
@@ -105,53 +105,53 @@ func (o *LinkDirect) UnmarshalJSON(data []byte) (err error) {
 		}
 	}
 
-	varLinkDirect := _LinkDirect{}
+	varLinkSelf := _LinkSelf{}
 
 	decoder := json.NewDecoder(bytes.NewReader(data))
 	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varLinkDirect)
+	err = decoder.Decode(&varLinkSelf)
 
 	if err != nil {
 		return err
 	}
 
-	*o = LinkDirect(varLinkDirect)
+	*o = LinkSelf(varLinkSelf)
 
 	return err
 }
 
-type NullableLinkDirect struct {
-	value *LinkDirect
+type NullableLinkSelf struct {
+	value *LinkSelf
 	isSet bool
 }
 
-func (v NullableLinkDirect) Get() *LinkDirect {
+func (v NullableLinkSelf) Get() *LinkSelf {
 	return v.value
 }
 
-func (v *NullableLinkDirect) Set(val *LinkDirect) {
+func (v *NullableLinkSelf) Set(val *LinkSelf) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableLinkDirect) IsSet() bool {
+func (v NullableLinkSelf) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableLinkDirect) Unset() {
+func (v *NullableLinkSelf) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableLinkDirect(val *LinkDirect) *NullableLinkDirect {
-	return &NullableLinkDirect{value: val, isSet: true}
+func NewNullableLinkSelf(val *LinkSelf) *NullableLinkSelf {
+	return &NullableLinkSelf{value: val, isSet: true}
 }
 
-func (v NullableLinkDirect) MarshalJSON() ([]byte, error) {
+func (v NullableLinkSelf) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableLinkDirect) UnmarshalJSON(src []byte) error {
+func (v *NullableLinkSelf) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

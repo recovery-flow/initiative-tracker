@@ -21,8 +21,8 @@ var _ MappedNullable = &JarDataRelationships{}
 
 // JarDataRelationships struct for JarDataRelationships
 type JarDataRelationships struct {
-	Initiative LinkDirect `json:"initiative"`
-	Point LinkDirect `json:"point"`
+	Initiative LinksDirect `json:"initiative"`
+	Point LinksDirect `json:"point"`
 }
 
 type _JarDataRelationships JarDataRelationships
@@ -31,7 +31,7 @@ type _JarDataRelationships JarDataRelationships
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewJarDataRelationships(initiative LinkDirect, point LinkDirect) *JarDataRelationships {
+func NewJarDataRelationships(initiative LinksDirect, point LinksDirect) *JarDataRelationships {
 	this := JarDataRelationships{}
 	this.Initiative = initiative
 	this.Point = point
@@ -47,9 +47,9 @@ func NewJarDataRelationshipsWithDefaults() *JarDataRelationships {
 }
 
 // GetInitiative returns the Initiative field value
-func (o *JarDataRelationships) GetInitiative() LinkDirect {
+func (o *JarDataRelationships) GetInitiative() LinksDirect {
 	if o == nil {
-		var ret LinkDirect
+		var ret LinksDirect
 		return ret
 	}
 
@@ -58,7 +58,7 @@ func (o *JarDataRelationships) GetInitiative() LinkDirect {
 
 // GetInitiativeOk returns a tuple with the Initiative field value
 // and a boolean to check if the value has been set.
-func (o *JarDataRelationships) GetInitiativeOk() (*LinkDirect, bool) {
+func (o *JarDataRelationships) GetInitiativeOk() (*LinksDirect, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -66,14 +66,14 @@ func (o *JarDataRelationships) GetInitiativeOk() (*LinkDirect, bool) {
 }
 
 // SetInitiative sets field value
-func (o *JarDataRelationships) SetInitiative(v LinkDirect) {
+func (o *JarDataRelationships) SetInitiative(v LinksDirect) {
 	o.Initiative = v
 }
 
 // GetPoint returns the Point field value
-func (o *JarDataRelationships) GetPoint() LinkDirect {
+func (o *JarDataRelationships) GetPoint() LinksDirect {
 	if o == nil {
-		var ret LinkDirect
+		var ret LinksDirect
 		return ret
 	}
 
@@ -82,7 +82,7 @@ func (o *JarDataRelationships) GetPoint() LinkDirect {
 
 // GetPointOk returns a tuple with the Point field value
 // and a boolean to check if the value has been set.
-func (o *JarDataRelationships) GetPointOk() (*LinkDirect, bool) {
+func (o *JarDataRelationships) GetPointOk() (*LinksDirect, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -90,7 +90,7 @@ func (o *JarDataRelationships) GetPointOk() (*LinkDirect, bool) {
 }
 
 // SetPoint sets field value
-func (o *JarDataRelationships) SetPoint(v LinkDirect) {
+func (o *JarDataRelationships) SetPoint(v LinksDirect) {
 	o.Point = v
 }
 

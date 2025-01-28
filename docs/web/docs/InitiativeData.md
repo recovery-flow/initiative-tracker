@@ -7,12 +7,14 @@ Name | Type | Description | Notes
 **Id** | **string** | initiative id | 
 **Type** | **string** |  | 
 **Attributes** | [**InitiativeDataAttributes**](InitiativeDataAttributes.md) |  | 
+**Links** | [**LinkSelf**](LinkSelf.md) |  | 
+**Relationships** | [**InitiativeDataRelationships**](InitiativeDataRelationships.md) |  | 
 
 ## Methods
 
 ### NewInitiativeData
 
-`func NewInitiativeData(id string, type_ string, attributes InitiativeDataAttributes, ) *InitiativeData`
+`func NewInitiativeData(id string, type_ string, attributes InitiativeDataAttributes, links LinkSelf, relationships InitiativeDataRelationships, ) *InitiativeData`
 
 NewInitiativeData instantiates a new InitiativeData object
 This constructor will assign default values to properties that have it defined,
@@ -85,6 +87,46 @@ and a boolean to check if the value has been set.
 `func (o *InitiativeData) SetAttributes(v InitiativeDataAttributes)`
 
 SetAttributes sets Attributes field to given value.
+
+
+### GetLinks
+
+`func (o *InitiativeData) GetLinks() LinkSelf`
+
+GetLinks returns the Links field if non-nil, zero value otherwise.
+
+### GetLinksOk
+
+`func (o *InitiativeData) GetLinksOk() (*LinkSelf, bool)`
+
+GetLinksOk returns a tuple with the Links field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLinks
+
+`func (o *InitiativeData) SetLinks(v LinkSelf)`
+
+SetLinks sets Links field to given value.
+
+
+### GetRelationships
+
+`func (o *InitiativeData) GetRelationships() InitiativeDataRelationships`
+
+GetRelationships returns the Relationships field if non-nil, zero value otherwise.
+
+### GetRelationshipsOk
+
+`func (o *InitiativeData) GetRelationshipsOk() (*InitiativeDataRelationships, bool)`
+
+GetRelationshipsOk returns a tuple with the Relationships field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRelationships
+
+`func (o *InitiativeData) SetRelationships(v InitiativeDataRelationships)`
+
+SetRelationships sets Relationships field to given value.
 
 
 

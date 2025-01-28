@@ -28,7 +28,7 @@ type InitiativeCreateDataAttributes struct {
 	// goal of initiative
 	Goal string `json:"goal"`
 	// location of initiative
-	Location string `json:"location"`
+	Location *string `json:"location,omitempty"`
 	Owner Owner `json:"owner"`
 }
 
@@ -38,12 +38,11 @@ type _InitiativeCreateDataAttributes InitiativeCreateDataAttributes
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewInitiativeCreateDataAttributes(name string, desc string, goal string, location string, owner Owner) *InitiativeCreateDataAttributes {
+func NewInitiativeCreateDataAttributes(name string, desc string, goal string, owner Owner) *InitiativeCreateDataAttributes {
 	this := InitiativeCreateDataAttributes{}
 	this.Name = name
 	this.Desc = desc
 	this.Goal = goal
-	this.Location = location
 	this.Owner = owner
 	return &this
 }
@@ -128,28 +127,36 @@ func (o *InitiativeCreateDataAttributes) SetGoal(v string) {
 	o.Goal = v
 }
 
-// GetLocation returns the Location field value
+// GetLocation returns the Location field value if set, zero value otherwise.
 func (o *InitiativeCreateDataAttributes) GetLocation() string {
-	if o == nil {
+	if o == nil || IsNil(o.Location) {
 		var ret string
 		return ret
 	}
-
-	return o.Location
+	return *o.Location
 }
 
-// GetLocationOk returns a tuple with the Location field value
+// GetLocationOk returns a tuple with the Location field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *InitiativeCreateDataAttributes) GetLocationOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Location) {
 		return nil, false
 	}
-	return &o.Location, true
+	return o.Location, true
 }
 
-// SetLocation sets field value
+// HasLocation returns a boolean if a field has been set.
+func (o *InitiativeCreateDataAttributes) HasLocation() bool {
+	if o != nil && !IsNil(o.Location) {
+		return true
+	}
+
+	return false
+}
+
+// SetLocation gets a reference to the given string and assigns it to the Location field.
 func (o *InitiativeCreateDataAttributes) SetLocation(v string) {
-	o.Location = v
+	o.Location = &v
 }
 
 // GetOwner returns the Owner field value
@@ -189,7 +196,9 @@ func (o InitiativeCreateDataAttributes) ToMap() (map[string]interface{}, error) 
 	toSerialize["name"] = o.Name
 	toSerialize["desc"] = o.Desc
 	toSerialize["goal"] = o.Goal
-	toSerialize["location"] = o.Location
+	if !IsNil(o.Location) {
+		toSerialize["location"] = o.Location
+	}
 	toSerialize["owner"] = o.Owner
 	return toSerialize, nil
 }
@@ -202,7 +211,6 @@ func (o *InitiativeCreateDataAttributes) UnmarshalJSON(data []byte) (err error) 
 		"name",
 		"desc",
 		"goal",
-		"location",
 		"owner",
 	}
 

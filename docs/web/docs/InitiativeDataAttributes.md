@@ -7,12 +7,12 @@ Name | Type | Description | Notes
 **Name** | **string** | name of initiative | 
 **Desc** | **string** | description of initiative | 
 **Goal** | **string** | goal of initiative | 
-**Verified** | **string** | verified status | 
+**Verified** | **bool** | verified status | 
 **Location** | Pointer to **string** | location of initiative | [optional] 
 **Status** | **string** | status of initiative | 
-**Likes** | **int32** | likes of initiative | 
-**Reposts** | **int32** | reposts of initiative | 
-**Reports** | **int32** | reports of initiative | 
+**Likes** | **int64** | likes of initiative | 
+**Reposts** | **int64** | reposts of initiative | 
+**Reports** | **int64** | reports of initiative | 
 **CreatedAt** | **time.Time** | Initiative created at | 
 **UpdatedAt** | Pointer to **time.Time** | Initiative updated at | [optional] 
 **ClosedAt** | Pointer to **time.Time** | Initiative closed at | [optional] 
@@ -21,7 +21,7 @@ Name | Type | Description | Notes
 
 ### NewInitiativeDataAttributes
 
-`func NewInitiativeDataAttributes(name string, desc string, goal string, verified string, status string, likes int32, reposts int32, reports int32, createdAt time.Time, ) *InitiativeDataAttributes`
+`func NewInitiativeDataAttributes(name string, desc string, goal string, verified bool, status string, likes int64, reposts int64, reports int64, createdAt time.Time, ) *InitiativeDataAttributes`
 
 NewInitiativeDataAttributes instantiates a new InitiativeDataAttributes object
 This constructor will assign default values to properties that have it defined,
@@ -98,20 +98,20 @@ SetGoal sets Goal field to given value.
 
 ### GetVerified
 
-`func (o *InitiativeDataAttributes) GetVerified() string`
+`func (o *InitiativeDataAttributes) GetVerified() bool`
 
 GetVerified returns the Verified field if non-nil, zero value otherwise.
 
 ### GetVerifiedOk
 
-`func (o *InitiativeDataAttributes) GetVerifiedOk() (*string, bool)`
+`func (o *InitiativeDataAttributes) GetVerifiedOk() (*bool, bool)`
 
 GetVerifiedOk returns a tuple with the Verified field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetVerified
 
-`func (o *InitiativeDataAttributes) SetVerified(v string)`
+`func (o *InitiativeDataAttributes) SetVerified(v bool)`
 
 SetVerified sets Verified field to given value.
 
@@ -163,60 +163,60 @@ SetStatus sets Status field to given value.
 
 ### GetLikes
 
-`func (o *InitiativeDataAttributes) GetLikes() int32`
+`func (o *InitiativeDataAttributes) GetLikes() int64`
 
 GetLikes returns the Likes field if non-nil, zero value otherwise.
 
 ### GetLikesOk
 
-`func (o *InitiativeDataAttributes) GetLikesOk() (*int32, bool)`
+`func (o *InitiativeDataAttributes) GetLikesOk() (*int64, bool)`
 
 GetLikesOk returns a tuple with the Likes field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetLikes
 
-`func (o *InitiativeDataAttributes) SetLikes(v int32)`
+`func (o *InitiativeDataAttributes) SetLikes(v int64)`
 
 SetLikes sets Likes field to given value.
 
 
 ### GetReposts
 
-`func (o *InitiativeDataAttributes) GetReposts() int32`
+`func (o *InitiativeDataAttributes) GetReposts() int64`
 
 GetReposts returns the Reposts field if non-nil, zero value otherwise.
 
 ### GetRepostsOk
 
-`func (o *InitiativeDataAttributes) GetRepostsOk() (*int32, bool)`
+`func (o *InitiativeDataAttributes) GetRepostsOk() (*int64, bool)`
 
 GetRepostsOk returns a tuple with the Reposts field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetReposts
 
-`func (o *InitiativeDataAttributes) SetReposts(v int32)`
+`func (o *InitiativeDataAttributes) SetReposts(v int64)`
 
 SetReposts sets Reposts field to given value.
 
 
 ### GetReports
 
-`func (o *InitiativeDataAttributes) GetReports() int32`
+`func (o *InitiativeDataAttributes) GetReports() int64`
 
 GetReports returns the Reports field if non-nil, zero value otherwise.
 
 ### GetReportsOk
 
-`func (o *InitiativeDataAttributes) GetReportsOk() (*int32, bool)`
+`func (o *InitiativeDataAttributes) GetReportsOk() (*int64, bool)`
 
 GetReportsOk returns a tuple with the Reports field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetReports
 
-`func (o *InitiativeDataAttributes) SetReports(v int32)`
+`func (o *InitiativeDataAttributes) SetReports(v int64)`
 
 SetReports sets Reports field to given value.
 

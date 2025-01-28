@@ -1,46 +1,46 @@
-# LinkDirect
+# LinksDirect
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Links** | [**LinkDirectLinks**](LinkDirectLinks.md) |  | 
+**Links** | [**LinksDirectLinks**](LinksDirectLinks.md) |  | 
 
 ## Methods
 
-### NewLinkDirect
+### NewLinksDirect
 
-`func NewLinkDirect(links LinkDirectLinks, ) *LinkDirect`
+`func NewLinksDirect(links LinksDirectLinks, ) *LinksDirect`
 
-NewLinkDirect instantiates a new LinkDirect object
+NewLinksDirect instantiates a new LinksDirect object
 This constructor will assign default values to properties that have it defined,
 and makes sure properties required by API are set, but the set of arguments
 will change when the set of required properties is changed
 
-### NewLinkDirectWithDefaults
+### NewLinksDirectWithDefaults
 
-`func NewLinkDirectWithDefaults() *LinkDirect`
+`func NewLinksDirectWithDefaults() *LinksDirect`
 
-NewLinkDirectWithDefaults instantiates a new LinkDirect object
+NewLinksDirectWithDefaults instantiates a new LinksDirect object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
 ### GetLinks
 
-`func (o *LinkDirect) GetLinks() LinkDirectLinks`
+`func (o *LinksDirect) GetLinks() LinksDirectLinks`
 
 GetLinks returns the Links field if non-nil, zero value otherwise.
 
 ### GetLinksOk
 
-`func (o *LinkDirect) GetLinksOk() (*LinkDirectLinks, bool)`
+`func (o *LinksDirect) GetLinksOk() (*LinksDirectLinks, bool)`
 
 GetLinksOk returns a tuple with the Links field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetLinks
 
-`func (o *LinkDirect) SetLinks(v LinkDirectLinks)`
+`func (o *LinksDirect) SetLinks(v LinksDirectLinks)`
 
 SetLinks sets Links field to given value.
 

@@ -4,16 +4,16 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Parent** | Pointer to [**LinkDirect**](LinkDirect.md) |  | [optional] 
-**PublishedBy** | [**LinkDirect**](LinkDirect.md) |  | 
-**Initiative** | [**LinkDirect**](LinkDirect.md) |  | 
-**Plan** | [**LinkDirect**](LinkDirect.md) |  | 
+**Parent** | Pointer to [**LinksDirect**](LinksDirect.md) |  | [optional] 
+**PublishedBy** | [**LinksDirect**](LinksDirect.md) |  | 
+**Initiative** | [**LinksDirect**](LinksDirect.md) |  | 
+**Plan** | [**LinksDirect**](LinksDirect.md) |  | 
 
 ## Methods
 
 ### NewPointDataRelationships
 
-`func NewPointDataRelationships(publishedBy LinkDirect, initiative LinkDirect, plan LinkDirect, ) *PointDataRelationships`
+`func NewPointDataRelationships(publishedBy LinksDirect, initiative LinksDirect, plan LinksDirect, ) *PointDataRelationships`
 
 NewPointDataRelationships instantiates a new PointDataRelationships object
 This constructor will assign default values to properties that have it defined,
@@ -30,20 +30,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetParent
 
-`func (o *PointDataRelationships) GetParent() LinkDirect`
+`func (o *PointDataRelationships) GetParent() LinksDirect`
 
 GetParent returns the Parent field if non-nil, zero value otherwise.
 
 ### GetParentOk
 
-`func (o *PointDataRelationships) GetParentOk() (*LinkDirect, bool)`
+`func (o *PointDataRelationships) GetParentOk() (*LinksDirect, bool)`
 
 GetParentOk returns a tuple with the Parent field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetParent
 
-`func (o *PointDataRelationships) SetParent(v LinkDirect)`
+`func (o *PointDataRelationships) SetParent(v LinksDirect)`
 
 SetParent sets Parent field to given value.
 
@@ -55,60 +55,60 @@ HasParent returns a boolean if a field has been set.
 
 ### GetPublishedBy
 
-`func (o *PointDataRelationships) GetPublishedBy() LinkDirect`
+`func (o *PointDataRelationships) GetPublishedBy() LinksDirect`
 
 GetPublishedBy returns the PublishedBy field if non-nil, zero value otherwise.
 
 ### GetPublishedByOk
 
-`func (o *PointDataRelationships) GetPublishedByOk() (*LinkDirect, bool)`
+`func (o *PointDataRelationships) GetPublishedByOk() (*LinksDirect, bool)`
 
 GetPublishedByOk returns a tuple with the PublishedBy field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetPublishedBy
 
-`func (o *PointDataRelationships) SetPublishedBy(v LinkDirect)`
+`func (o *PointDataRelationships) SetPublishedBy(v LinksDirect)`
 
 SetPublishedBy sets PublishedBy field to given value.
 
 
 ### GetInitiative
 
-`func (o *PointDataRelationships) GetInitiative() LinkDirect`
+`func (o *PointDataRelationships) GetInitiative() LinksDirect`
 
 GetInitiative returns the Initiative field if non-nil, zero value otherwise.
 
 ### GetInitiativeOk
 
-`func (o *PointDataRelationships) GetInitiativeOk() (*LinkDirect, bool)`
+`func (o *PointDataRelationships) GetInitiativeOk() (*LinksDirect, bool)`
 
 GetInitiativeOk returns a tuple with the Initiative field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetInitiative
 
-`func (o *PointDataRelationships) SetInitiative(v LinkDirect)`
+`func (o *PointDataRelationships) SetInitiative(v LinksDirect)`
 
 SetInitiative sets Initiative field to given value.
 
 
 ### GetPlan
 
-`func (o *PointDataRelationships) GetPlan() LinkDirect`
+`func (o *PointDataRelationships) GetPlan() LinksDirect`
 
 GetPlan returns the Plan field if non-nil, zero value otherwise.
 
 ### GetPlanOk
 
-`func (o *PointDataRelationships) GetPlanOk() (*LinkDirect, bool)`
+`func (o *PointDataRelationships) GetPlanOk() (*LinksDirect, bool)`
 
 GetPlanOk returns a tuple with the Plan field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetPlan
 
-`func (o *PointDataRelationships) SetPlan(v LinkDirect)`
+`func (o *PointDataRelationships) SetPlan(v LinksDirect)`
 
 SetPlan sets Plan field to given value.
 

@@ -6,6 +6,7 @@ import (
 	"github.com/recovery-flow/comtools/cifractx"
 	"github.com/recovery-flow/comtools/httpkit"
 	"github.com/recovery-flow/initiative-tracker/internal/config"
+	"github.com/recovery-flow/initiative-tracker/internal/service/handlers"
 	"github.com/recovery-flow/roles"
 	"github.com/sirupsen/logrus"
 
@@ -30,7 +31,7 @@ func Run(ctx context.Context) {
 				r.Use(authMW)
 
 				r.Route("/initiative", func(r chi.Router) {
-					r.Post("/", nil)
+					r.Post("/", handlers.InitiativeCreate)
 
 					r.Route("/{initiative_id}", func(r chi.Router) {
 						r.Patch("/", nil)     //update

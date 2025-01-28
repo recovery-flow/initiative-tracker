@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**Id** | **string** | point id | 
 **Type** | **string** |  | 
 **Attributes** | [**PointCreateDataAttributes**](PointCreateDataAttributes.md) |  | 
 
@@ -11,7 +12,7 @@ Name | Type | Description | Notes
 
 ### NewPointCreateData
 
-`func NewPointCreateData(type_ string, attributes PointCreateDataAttributes, ) *PointCreateData`
+`func NewPointCreateData(id string, type_ string, attributes PointCreateDataAttributes, ) *PointCreateData`
 
 NewPointCreateData instantiates a new PointCreateData object
 This constructor will assign default values to properties that have it defined,
@@ -25,6 +26,26 @@ will change when the set of required properties is changed
 NewPointCreateDataWithDefaults instantiates a new PointCreateData object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetId
+
+`func (o *PointCreateData) GetId() string`
+
+GetId returns the Id field if non-nil, zero value otherwise.
+
+### GetIdOk
+
+`func (o *PointCreateData) GetIdOk() (*string, bool)`
+
+GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetId
+
+`func (o *PointCreateData) SetId(v string)`
+
+SetId sets Id field to given value.
+
 
 ### GetType
 

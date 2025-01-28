@@ -5,13 +5,13 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Data** | [**InitiativeData**](InitiativeData.md) |  | 
-**Included** | [**InitiativeIncluded**](InitiativeIncluded.md) |  | 
+**Included** | Pointer to [**InitiativeIncluded**](InitiativeIncluded.md) |  | [optional] 
 
 ## Methods
 
 ### NewInitiative
 
-`func NewInitiative(data InitiativeData, included InitiativeIncluded, ) *Initiative`
+`func NewInitiative(data InitiativeData, ) *Initiative`
 
 NewInitiative instantiates a new Initiative object
 This constructor will assign default values to properties that have it defined,
@@ -65,6 +65,11 @@ and a boolean to check if the value has been set.
 
 SetIncluded sets Included field to given value.
 
+### HasIncluded
+
+`func (o *Initiative) HasIncluded() bool`
+
+HasIncluded returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

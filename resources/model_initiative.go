@@ -22,7 +22,7 @@ var _ MappedNullable = &Initiative{}
 // Initiative struct for Initiative
 type Initiative struct {
 	Data InitiativeData `json:"data"`
-	Included InitiativeIncluded `json:"included"`
+	Included *InitiativeIncluded `json:"included,omitempty"`
 }
 
 type _Initiative Initiative
@@ -31,10 +31,9 @@ type _Initiative Initiative
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewInitiative(data InitiativeData, included InitiativeIncluded) *Initiative {
+func NewInitiative(data InitiativeData) *Initiative {
 	this := Initiative{}
 	this.Data = data
-	this.Included = included
 	return &this
 }
 
@@ -70,28 +69,36 @@ func (o *Initiative) SetData(v InitiativeData) {
 	o.Data = v
 }
 
-// GetIncluded returns the Included field value
+// GetIncluded returns the Included field value if set, zero value otherwise.
 func (o *Initiative) GetIncluded() InitiativeIncluded {
-	if o == nil {
+	if o == nil || IsNil(o.Included) {
 		var ret InitiativeIncluded
 		return ret
 	}
-
-	return o.Included
+	return *o.Included
 }
 
-// GetIncludedOk returns a tuple with the Included field value
+// GetIncludedOk returns a tuple with the Included field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Initiative) GetIncludedOk() (*InitiativeIncluded, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Included) {
 		return nil, false
 	}
-	return &o.Included, true
+	return o.Included, true
 }
 
-// SetIncluded sets field value
+// HasIncluded returns a boolean if a field has been set.
+func (o *Initiative) HasIncluded() bool {
+	if o != nil && !IsNil(o.Included) {
+		return true
+	}
+
+	return false
+}
+
+// SetIncluded gets a reference to the given InitiativeIncluded and assigns it to the Included field.
 func (o *Initiative) SetIncluded(v InitiativeIncluded) {
-	o.Included = v
+	o.Included = &v
 }
 
 func (o Initiative) MarshalJSON() ([]byte, error) {
@@ -105,7 +112,9 @@ func (o Initiative) MarshalJSON() ([]byte, error) {
 func (o Initiative) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["data"] = o.Data
-	toSerialize["included"] = o.Included
+	if !IsNil(o.Included) {
+		toSerialize["included"] = o.Included
+	}
 	return toSerialize, nil
 }
 
@@ -115,7 +124,6 @@ func (o *Initiative) UnmarshalJSON(data []byte) (err error) {
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
 		"data",
-		"included",
 	}
 
 	allProperties := make(map[string]interface{})
