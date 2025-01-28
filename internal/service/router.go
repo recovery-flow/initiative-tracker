@@ -60,10 +60,10 @@ func Run(ctx context.Context) {
 
 			r.Route("/public", func(r chi.Router) {
 				r.Route("/initiative", func(r chi.Router) {
-					r.Get("/", nil)
+					r.Get("/", nil) //list
 
 					r.Route("/{initiative_id}", func(r chi.Router) {
-						r.Get("/", nil)
+						r.Get("/", handlers.InitiativeGet)
 
 						r.Route("/participant", func(r chi.Router) {
 							r.Get("/", nil)
