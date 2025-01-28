@@ -1,0 +1,40 @@
+type: object
+required:
+  - data
+  - included
+properties:
+  data:
+    required:
+      - id
+      - type
+      - attributes
+    properties:
+      id:
+        type: string
+        description: "initiative id"
+      type:
+        type: string
+        enum: [ initiative_update ]
+      attributes:
+        type: object
+        required:
+          - name
+          - desc
+          - goal
+          - status
+        properties:
+          name:
+            type: string
+            description: "name of initiative"
+          desc:
+            type: string
+            description: "description of initiative"
+          goal:
+            type: string
+            description: "goal of initiative"
+          location:
+            type: string
+            description: "location of initiative"
+          status:
+            type: string
+            description: "status of initiative"

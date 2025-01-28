@@ -59,5 +59,5 @@ func (j *jar) Update(ctx context.Context, jarData models.Jar) (*models.Jar, erro
 
 	// 5. Возвращаем обновлённую структуру Jar (поле bank_info)
 	//    Если в updatedPoint нет поля Jar (nil), значит где-то не совпали названия/типы.
-	return updatedPoint.Jar, nil
+	return &updatedPoint.Jar, nil
 }

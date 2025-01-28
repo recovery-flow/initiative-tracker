@@ -1,0 +1,7 @@
+type: object
+required:
+  - links
+properties:
+  links:
+    type: string
+    description: "Link to chat"

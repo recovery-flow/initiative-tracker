@@ -5,6 +5,7 @@ import (
 	"sync"
 
 	"github.com/recovery-flow/initiative-tracker/internal/service"
+	"github.com/recovery-flow/initiative-tracker/internal/service/events"
 )
 
 func runServices(ctx context.Context, wg *sync.WaitGroup) {

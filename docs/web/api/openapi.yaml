@@ -1,0 +1,854 @@
+openapi: 3.0.3
+info:
+  description: example
+  title: test
+  version: 0.0.0
+servers:
+- url: /
+paths:
+  /test:
+    post:
+      operationId: test
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Participant'
+          description: Ok
+      summary: Test
+components:
+  schemas:
+    LinkDirect:
+      properties:
+        links:
+          description: Link to chat
+          type: string
+      required:
+      - links
+      type: object
+    LinksPagination:
+      properties:
+        previous:
+          description: Link to the previous page
+          type: string
+        self:
+          description: Link to the current page
+          type: string
+        next:
+          description: Link to the next page
+          type: string
+      type: object
+    LinksDirectPagination:
+      properties:
+        links:
+          $ref: '#/components/schemas/LinksDirectPagination_links'
+      required:
+      - links
+      type: object
+    Owner:
+      properties:
+        first_name:
+          description: first name of participant
+          type: string
+        second_name:
+          description: second name of participant
+          type: string
+        third_name:
+          description: third name of participant
+          type: string
+        display_name:
+          description: name of participant
+          type: string
+        position:
+          description: position in the company
+          type: string
+        desc:
+          description: description of participant
+          type: string
+      required:
+      - desc
+      - display_name
+      - first_name
+      - position
+      - second_name
+      type: object
+    Initiative:
+      properties:
+        data:
+          $ref: '#/components/schemas/Initiative_data'
+        included:
+          $ref: '#/components/schemas/Initiative_included'
+      required:
+      - data
+      - included
+      type: object
+    InitiativeCreate:
+      properties:
+        data:
+          $ref: '#/components/schemas/InitiativeCreate_data'
+      required:
+      - data
+      type: object
+    InitiativeUpdate:
+      properties:
+        data:
+          $ref: '#/components/schemas/InitiativeUpdate_data'
+      required:
+      - data
+      - included
+      type: object
+    InitiativeTagAdd:
+      properties:
+        data:
+          $ref: '#/components/schemas/InitiativeTagAdd_data'
+      required:
+      - data
+      type: object
+    InitiativeTagData:
+      properties:
+        id:
+          description: tag id
+          type: string
+        name:
+          description: tag name
+          type: string
+        weight:
+          description: tag weight
+          type: integer
+      required:
+      - id
+      - name
+      - weight
+      type: object
+    Point:
+      properties:
+        data:
+          $ref: '#/components/schemas/Point_data'
+        included:
+          $ref: '#/components/schemas/JarAttributes'
+      required:
+      - data
+      - included
+      type: object
+    PointCreate:
+      properties:
+        data:
+          $ref: '#/components/schemas/PointCreate_data'
+      required:
+      - data
+      type: object
+    PointUpdate:
+      properties:
+        data:
+          $ref: '#/components/schemas/PointUpdate_data'
+      required:
+      - data
+      type: object
+    Jar:
+      properties:
+        data:
+          $ref: '#/components/schemas/Jar_data'
+      required:
+      - data
+      type: object
+    JarUpdate:
+      properties:
+        data:
+          $ref: '#/components/schemas/JarUpdate_data'
+      required:
+      - data
+      type: object
+    Participant:
+      example:
+        data:
+          relationships:
+            user:
+              links: https://api.example.com/v1/users/1
+          attributes:
+            role: role
+            updated_at: 2021-01-01T00:00:00Z
+            verified: verified
+            second_name: second_name
+            created_at: 2021-01-01T00:00:00Z
+            third_name: third_name
+            position: position
+            display_name: display_name
+            first_name: first_name
+            desc: desc
+          id: id
+          type: participant
+      properties:
+        data:
+          $ref: '#/components/schemas/Participant_data'
+      required:
+      - data
+      type: object
+    ParticipantData:
+      properties:
+        id:
+          description: user id
+          type: string
+        type:
+          enum:
+          - participant
+          type: string
+        attributes:
+          $ref: '#/components/schemas/Participant_data_attributes'
+        relationships:
+          $ref: '#/components/schemas/Participant_data_relationships'
+      required:
+      - attributes
+      - id
+      - relationships
+      - type
+      type: object
+    ParticipantCreate:
+      properties:
+        data:
+          $ref: '#/components/schemas/ParticipantCreate_data'
+      required:
+      - data
+      type: object
+    ParticipantUpdate:
+      properties:
+        data:
+          $ref: '#/components/schemas/ParticipantUpdate_data'
+      required:
+      - data
+      type: object
+    ParticipantsCollection:
+      properties:
+        data:
+          items:
+            $ref: '#/components/schemas/ParticipantData'
+          type: array
+        links:
+          $ref: '#/components/schemas/LinksPagination'
+      required:
+      - data
+      - links
+      - meta
+      type: object
+    ParticipantCollection:
+      properties:
+        data:
+          items:
+            $ref: '#/components/schemas/ParticipantData'
+          type: array
+        links:
+          $ref: '#/components/schemas/LinksPagination'
+      required:
+      - data
+      - links
+      - meta
+      type: object
+    PointAttributes:
+      properties:
+        initiative_id:
+          description: initiative id
+          type: string
+        parent_id:
+          description: parent id
+          type: string
+        title:
+          description: title of point
+          type: string
+        desc:
+          description: description of point
+          type: string
+        published_by:
+          description: published by
+          type: string
+        local_cost:
+          description: local cost
+          type: integer
+        local_collected:
+          description: local collected
+          type: integer
+        cumulative_cost:
+          description: cumulative cost
+          type: integer
+        cumulative_collected:
+          description: cumulative collected
+          type: integer
+        status:
+          description: status of point
+          type: string
+        created_at:
+          description: point creation timestamp
+          format: date-time
+          type: string
+        updated_at:
+          description: point updated timestamp
+          format: date-time
+          type: string
+      required:
+      - created_at
+      - cumulative_collected
+      - cumulative_cost
+      - desc
+      - initiative_id
+      - local_collected
+      - local_cost
+      - published_by
+      - status
+      - title
+      type: object
+    JarAttributes:
+      properties:
+        bank:
+          description: bank of jar
+          type: string
+        url:
+          description: url of jar
+          type: string
+      required:
+      - bank
+      - url
+      type: object
+    LinksDirectPagination_links:
+      properties:
+        self:
+          description: Link to participants
+          type: string
+        related:
+          description: Link to participants
+          type: string
+      required:
+      - related
+      - self
+      type: object
+    Initiative_data_attributes:
+      properties:
+        name:
+          description: name of initiative
+          type: string
+        desc:
+          description: description of initiative
+          type: string
+        goal:
+          description: goal of initiative
+          type: string
+        verified:
+          description: verified status
+          type: string
+        location:
+          description: location of initiative
+          type: string
+        status:
+          description: status of initiative
+          type: string
+        likes:
+          description: likes of initiative
+          type: integer
+        reposts:
+          description: reposts of initiative
+          type: integer
+        reports:
+          description: reports of initiative
+          type: integer
+        created_at:
+          description: Initiative created at
+          example: 2021-01-01T00:00:00Z
+          format: date-time
+          type: string
+        updated_at:
+          description: Initiative updated at
+          example: 2021-01-01T00:00:00Z
+          format: date-time
+          type: string
+        closed_at:
+          description: Initiative closed at
+          example: 2021-01-01T00:00:00Z
+          format: date-time
+          type: string
+      required:
+      - created_at
+      - desc
+      - goal
+      - likes
+      - name
+      - reports
+      - reposts
+      - status
+      - verified
+      type: object
+    Initiative_data:
+      properties:
+        id:
+          description: initiative id
+          type: string
+        type:
+          enum:
+          - initiative
+          type: string
+        attributes:
+          $ref: '#/components/schemas/Initiative_data_attributes'
+      required:
+      - attributes
+      - id
+      - relationships
+      - type
+      type: object
+    Initiative_included:
+      properties:
+        tags:
+          items:
+            $ref: '#/components/schemas/InitiativeTagData'
+          type: array
+      required:
+      - tags
+      type: object
+    InitiativeCreate_data_attributes:
+      properties:
+        name:
+          description: name of initiative
+          type: string
+        desc:
+          description: description of initiative
+          type: string
+        goal:
+          description: goal of initiative
+          type: string
+        location:
+          description: location of initiative
+          type: string
+        owner:
+          $ref: '#/components/schemas/Owner'
+      required:
+      - desc
+      - goal
+      - location
+      - name
+      - owner
+      type: object
+    InitiativeCreate_data:
+      properties:
+        type:
+          enum:
+          - initiative_create
+          type: string
+        attributes:
+          $ref: '#/components/schemas/InitiativeCreate_data_attributes'
+      required:
+      - attributes
+      - type
+      type: object
+    InitiativeUpdate_data_attributes:
+      properties:
+        name:
+          description: name of initiative
+          type: string
+        desc:
+          description: description of initiative
+          type: string
+        goal:
+          description: goal of initiative
+          type: string
+        location:
+          description: location of initiative
+          type: string
+        status:
+          description: status of initiative
+          type: string
+      required:
+      - desc
+      - goal
+      - name
+      - status
+      type: object
+    InitiativeUpdate_data:
+      properties:
+        id:
+          description: initiative id
+          type: string
+        type:
+          enum:
+          - initiative_update
+          type: string
+        attributes:
+          $ref: '#/components/schemas/InitiativeUpdate_data_attributes'
+      required:
+      - attributes
+      - id
+      - type
+      type: object
+    InitiativeTagAdd_data:
+      properties:
+        id:
+          description: initiative_id
+          type: string
+        type:
+          enum:
+          - initiative_add_tag
+          type: string
+        attributes:
+          $ref: '#/components/schemas/InitiativeTagData'
+      required:
+      - attributes
+      - id
+      - type
+      type: object
+    Point_data_relationships:
+      properties:
+        parent:
+          $ref: '#/components/schemas/LinkDirect'
+        published_by:
+          $ref: '#/components/schemas/LinkDirect'
+        initiative:
+          $ref: '#/components/schemas/LinkDirect'
+        plan:
+          $ref: '#/components/schemas/LinkDirect'
+      required:
+      - initiative
+      - jar
+      - plan
+      - published_by
+      type: object
+    Point_data:
+      properties:
+        id:
+          description: point id
+          type: string
+        type:
+          enum:
+          - point
+          type: string
+        attributes:
+          $ref: '#/components/schemas/PointAttributes'
+        relationships:
+          $ref: '#/components/schemas/Point_data_relationships'
+      required:
+      - attributes
+      - id
+      - relationships
+      - type
+      type: object
+    PointCreate_data_attributes:
+      properties:
+        initiative_id:
+          description: initiative id
+          type: string
+        parent_id:
+          description: parent id
+          type: string
+        title:
+          description: title of point
+          type: string
+        desc:
+          description: description of point
+          type: string
+        local_cost:
+          description: local cost
+          type: integer
+        jar:
+          $ref: '#/components/schemas/JarAttributes'
+      required:
+      - desc
+      - initiative_id
+      - jar
+      - local_cost
+      - title
+      type: object
+    PointCreate_data:
+      properties:
+        type:
+          enum:
+          - point_create
+          type: string
+        attributes:
+          $ref: '#/components/schemas/PointCreate_data_attributes'
+      required:
+      - attributes
+      - id
+      - type
+      type: object
+    PointUpdate_data_attributes:
+      properties:
+        parent_id:
+          description: parent id
+          type: string
+        title:
+          description: title of point
+          type: string
+        desc:
+          description: description of point
+          type: string
+        local_cost:
+          description: local cost
+          type: integer
+      required:
+      - desc
+      - local_cost
+      - status
+      - title
+      type: object
+    PointUpdate_data:
+      properties:
+        type:
+          enum:
+          - point_update
+          type: string
+        attributes:
+          $ref: '#/components/schemas/PointUpdate_data_attributes'
+      required:
+      - attributes
+      - id
+      - type
+      type: object
+    Jar_data_relationships:
+      properties:
+        initiative:
+          $ref: '#/components/schemas/LinkDirect'
+        point:
+          $ref: '#/components/schemas/LinkDirect'
+      required:
+      - initiative
+      - point
+      type: object
+    Jar_data:
+      properties:
+        id:
+          description: point id
+          type: string
+        type:
+          enum:
+          - jar
+          type: string
+        attributes:
+          $ref: '#/components/schemas/JarAttributes'
+        relationships:
+          $ref: '#/components/schemas/Jar_data_relationships'
+      required:
+      - attributes
+      - id
+      - relationships
+      - type
+      type: object
+    JarUpdate_data:
+      properties:
+        id:
+          description: point id
+          type: string
+        type:
+          enum:
+          - jar_update
+          type: string
+        attributes:
+          $ref: '#/components/schemas/JarAttributes'
+      required:
+      - attributes
+      - id
+      - type
+      type: object
+    Participant_data_attributes:
+      example:
+        role: role
+        updated_at: 2021-01-01T00:00:00Z
+        verified: verified
+        second_name: second_name
+        created_at: 2021-01-01T00:00:00Z
+        third_name: third_name
+        position: position
+        display_name: display_name
+        first_name: first_name
+        desc: desc
+      properties:
+        first_name:
+          description: first name of participant
+          type: string
+        second_name:
+          description: second name of participant
+          type: string
+        third_name:
+          description: third name of participant
+          type: string
+        display_name:
+          description: name of participant
+          type: string
+        position:
+          description: position in the company
+          type: string
+        verified:
+          description: verified status
+          type: string
+        desc:
+          description: description of participant
+          type: string
+        role:
+          description: User role
+          type: string
+        updated_at:
+          description: User updated at
+          example: 2021-01-01T00:00:00Z
+          format: date-time
+          type: string
+        created_at:
+          description: User created at
+          example: 2021-01-01T00:00:00Z
+          format: date-time
+          type: string
+      required:
+      - created_at
+      - desc
+      - display_name
+      - first_name
+      - position
+      - role
+      - second_name
+      - verified
+      type: object
+    Participant_data_relationships_user:
+      example:
+        links: https://api.example.com/v1/users/1
+      properties:
+        links:
+          description: Link to user
+          example: https://api.example.com/v1/users/1
+          type: string
+      required:
+      - links
+      type: object
+    Participant_data_relationships:
+      example:
+        user:
+          links: https://api.example.com/v1/users/1
+      properties:
+        user:
+          $ref: '#/components/schemas/Participant_data_relationships_user'
+      required:
+      - user
+      type: object
+    Participant_data:
+      example:
+        relationships:
+          user:
+            links: https://api.example.com/v1/users/1
+        attributes:
+          role: role
+          updated_at: 2021-01-01T00:00:00Z
+          verified: verified
+          second_name: second_name
+          created_at: 2021-01-01T00:00:00Z
+          third_name: third_name
+          position: position
+          display_name: display_name
+          first_name: first_name
+          desc: desc
+        id: id
+        type: participant
+      properties:
+        id:
+          description: user id
+          type: string
+        type:
+          enum:
+          - participant
+          type: string
+        attributes:
+          $ref: '#/components/schemas/Participant_data_attributes'
+        relationships:
+          $ref: '#/components/schemas/Participant_data_relationships'
+      required:
+      - attributes
+      - id
+      - relationships
+      - type
+      type: object
+    ParticipantCreate_data_attributes:
+      properties:
+        org_id:
+          description: organization ID
+          type: string
+        user_id:
+          description: user ID
+          type: string
+        first_name:
+          description: first name of participant
+          type: string
+        second_name:
+          description: second name of participant
+          type: string
+        third_name:
+          description: third name of participant
+          type: string
+        display_name:
+          description: name of participant
+          type: string
+        position:
+          description: position in the company
+          type: string
+        desc:
+          description: description of participant
+          type: string
+        role:
+          description: participant role
+          type: string
+      required:
+      - desc
+      - display_name
+      - first_name
+      - org_id
+      - position
+      - role
+      - second_name
+      - user_id
+      type: object
+    ParticipantCreate_data:
+      properties:
+        type:
+          enum:
+          - participant_create
+          type: string
+        attributes:
+          $ref: '#/components/schemas/ParticipantCreate_data_attributes'
+      required:
+      - attributes
+      - type
+      type: object
+    ParticipantUpdate_data_attributes:
+      properties:
+        org_id:
+          description: Organization id
+          type: string
+        first_name:
+          description: first name of participant
+          type: string
+        second_name:
+          description: second name of participant
+          type: string
+        third_name:
+          description: third name of participant
+          type: string
+        display_name:
+          description: name of participant
+          type: string
+        position:
+          description: position in the company
+          type: string
+        desc:
+          description: Description
+          type: string
+        role:
+          description: User role
+          type: string
+      required:
+      - org_id
+      type: object
+    ParticipantUpdate_data:
+      properties:
+        id:
+          description: user Id
+          type: string
+        type:
+          enum:
+          - participant_update
+          type: string
+        attributes:
+          $ref: '#/components/schemas/ParticipantUpdate_data_attributes'
+      required:
+      - attributes
+      - id
+      - type
+      type: object

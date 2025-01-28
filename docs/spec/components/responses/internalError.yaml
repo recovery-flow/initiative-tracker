@@ -1,0 +1,5 @@
+description: Internal server error
+content:
+  application/vnd.api+json:
+    schemas:
+      $ref: '../schemas/Errors.yaml'

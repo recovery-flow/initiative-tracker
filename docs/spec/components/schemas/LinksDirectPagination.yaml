@@ -1,0 +1,16 @@
+type: object
+required:
+  - links
+properties:
+  links:
+    type: object
+    required:
+      - self
+      - related
+    properties:
+      self:
+        type: string
+        description: "Link to participants"
+      related:
+        type: string
+        description: "Link to participants"

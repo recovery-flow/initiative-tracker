@@ -1,6 +1,6 @@
 package models
 
 type Jar struct {
-	BankName  string `bson:"bank_name" json:"bank_name"`
+	Bank      string `bson:"bank" json:"bank"`
 	PublicURL string `bson:"public_url" json:"public_url"`
 }

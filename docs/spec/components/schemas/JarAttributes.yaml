@@ -1,0 +1,11 @@
+type: object
+required:
+  - bank
+  - url
+properties:
+  bank:
+    type: string
+    description: "bank of jar"
+  url:
+    type: string
+    description: "url of jar"

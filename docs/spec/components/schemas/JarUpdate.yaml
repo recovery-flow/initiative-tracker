@@ -1,0 +1,18 @@
+type: object
+required:
+  - data
+properties:
+  data:
+    required:
+      - id
+      - type
+      - attributes
+    properties:
+      id:
+        type: string
+        description: "point id"
+      type:
+        type: string
+        enum: [ jar_update ]
+      attributes:
+        $ref: "./JarAttributes.yaml"

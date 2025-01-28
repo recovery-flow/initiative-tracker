@@ -1,0 +1,93 @@
+# InitiativeTagAddData
+
+## Properties
+
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**Id** | **string** | initiative_id | 
+**Type** | **string** |  | 
+**Attributes** | [**InitiativeTagData**](InitiativeTagData.md) |  | 
+
+## Methods
+
+### NewInitiativeTagAddData
+
+`func NewInitiativeTagAddData(id string, type_ string, attributes InitiativeTagData, ) *InitiativeTagAddData`
+
+NewInitiativeTagAddData instantiates a new InitiativeTagAddData object
+This constructor will assign default values to properties that have it defined,
+and makes sure properties required by API are set, but the set of arguments
+will change when the set of required properties is changed
+
+### NewInitiativeTagAddDataWithDefaults
+
+`func NewInitiativeTagAddDataWithDefaults() *InitiativeTagAddData`
+
+NewInitiativeTagAddDataWithDefaults instantiates a new InitiativeTagAddData object
+This constructor will only assign default values to properties that have it defined,
+but it doesn't guarantee that properties required by API are set
+
+### GetId
+
+`func (o *InitiativeTagAddData) GetId() string`
+
+GetId returns the Id field if non-nil, zero value otherwise.
+
+### GetIdOk
+
+`func (o *InitiativeTagAddData) GetIdOk() (*string, bool)`
+
+GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetId
+
+`func (o *InitiativeTagAddData) SetId(v string)`
+
+SetId sets Id field to given value.
+
+
+### GetType
+
+`func (o *InitiativeTagAddData) GetType() string`
+
+GetType returns the Type field if non-nil, zero value otherwise.
+
+### GetTypeOk
+
+`func (o *InitiativeTagAddData) GetTypeOk() (*string, bool)`
+
+GetTypeOk returns a tuple with the Type field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetType
+
+`func (o *InitiativeTagAddData) SetType(v string)`
+
+SetType sets Type field to given value.
+
+
+### GetAttributes
+
+`func (o *InitiativeTagAddData) GetAttributes() InitiativeTagData`
+
+GetAttributes returns the Attributes field if non-nil, zero value otherwise.
+
+### GetAttributesOk
+
+`func (o *InitiativeTagAddData) GetAttributesOk() (*InitiativeTagData, bool)`
+
+GetAttributesOk returns a tuple with the Attributes field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAttributes
+
+`func (o *InitiativeTagAddData) SetAttributes(v InitiativeTagData)`
+
+SetAttributes sets Attributes field to given value.
+
+
+
+[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+

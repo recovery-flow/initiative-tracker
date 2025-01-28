@@ -1,0 +1,51 @@
+type: object
+required:
+  - initiative_id
+  - title
+  - desc
+  - published_by
+  - local_cost
+  - local_collected
+  - cumulative_cost
+  - cumulative_collected
+  - status
+  - created_at
+properties:
+  initiative_id:
+    type: string
+    description: "initiative id"
+  parent_id:
+    type: string
+    description: "parent id"
+  title:
+    type: string
+    description: "title of point"
+  desc:
+    type: string
+    description: "description of point"
+  published_by:
+    type: string
+    description: "published by"
+  local_cost:
+    type: integer
+    description: "local cost"
+  local_collected:
+    type: integer
+    description: "local collected"
+  cumulative_cost:
+    type: integer
+    description: "cumulative cost"
+  cumulative_collected:
+    type: integer
+    description: "cumulative collected"
+  status:
+    type: string
+    description: "status of point"
+  created_at:
+    type: string
+    format: date-time
+    description: "point creation timestamp"
+  updated_at:
+    type: string
+    format: date-time
+    description: "point updated timestamp"
