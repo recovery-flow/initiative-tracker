@@ -4,13 +4,9 @@ required:
 properties:
   data:
     required:
-      - id
       - type
       - attributes
     properties:
-      id:
-        type: string
-        description: "participant id"
       type:
         type: string
         enum: [ participant_update ]

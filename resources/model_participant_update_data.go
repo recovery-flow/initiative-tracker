@@ -21,8 +21,6 @@ var _ MappedNullable = &ParticipantUpdateData{}
 
 // ParticipantUpdateData struct for ParticipantUpdateData
 type ParticipantUpdateData struct {
-	// participant id
-	Id string `json:"id"`
 	Type string `json:"type"`
 	Attributes ParticipantUpdateDataAttributes `json:"attributes"`
 }
@@ -33,9 +31,8 @@ type _ParticipantUpdateData ParticipantUpdateData
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewParticipantUpdateData(id string, type_ string, attributes ParticipantUpdateDataAttributes) *ParticipantUpdateData {
+func NewParticipantUpdateData(type_ string, attributes ParticipantUpdateDataAttributes) *ParticipantUpdateData {
 	this := ParticipantUpdateData{}
-	this.Id = id
 	this.Type = type_
 	this.Attributes = attributes
 	return &this
@@ -47,30 +44,6 @@ func NewParticipantUpdateData(id string, type_ string, attributes ParticipantUpd
 func NewParticipantUpdateDataWithDefaults() *ParticipantUpdateData {
 	this := ParticipantUpdateData{}
 	return &this
-}
-
-// GetId returns the Id field value
-func (o *ParticipantUpdateData) GetId() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.Id
-}
-
-// GetIdOk returns a tuple with the Id field value
-// and a boolean to check if the value has been set.
-func (o *ParticipantUpdateData) GetIdOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Id, true
-}
-
-// SetId sets field value
-func (o *ParticipantUpdateData) SetId(v string) {
-	o.Id = v
 }
 
 // GetType returns the Type field value
@@ -131,7 +104,6 @@ func (o ParticipantUpdateData) MarshalJSON() ([]byte, error) {
 
 func (o ParticipantUpdateData) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["id"] = o.Id
 	toSerialize["type"] = o.Type
 	toSerialize["attributes"] = o.Attributes
 	return toSerialize, nil
@@ -142,7 +114,6 @@ func (o *ParticipantUpdateData) UnmarshalJSON(data []byte) (err error) {
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
-		"id",
 		"type",
 		"attributes",
 	}

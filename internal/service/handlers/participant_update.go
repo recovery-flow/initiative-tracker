@@ -33,13 +33,6 @@ func ParticipantUpdate(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	participantId, err := primitive.ObjectIDFromHex(req.Data.Id)
-	if err != nil {
-		log.WithError(err).Error("Failed to parse participant id")
-		httpkit.RenderErr(w, problems.BadRequest(err)...)
-		return
-	}
-
 	participantUserId, err := uuid.Parse(chi.URLParam(r, "user_id"))
 	if err != nil {
 		log.WithError(err).Error("Failed to parse participant user id")
@@ -72,7 +65,6 @@ func ParticipantUpdate(w http.ResponseWriter, r *http.Request) {
 	}
 
 	participant, err := server.MongoDB.Participants.New().Filter(map[string]any{
-		"_id":           participantId,
 		"user_id":       participantUserId,
 		"initiative_id": iniId,
 	}).Get(r.Context())
@@ -120,7 +112,6 @@ func ParticipantUpdate(w http.ResponseWriter, r *http.Request) {
 	}
 
 	res, err := server.MongoDB.Participants.New().Filter(map[string]any{
-		"_id":           participantId,
 		"user_id":       participantUserId,
 		"initiative_id": iniId,
 	}).UpdateOne(r.Context(), stmt)

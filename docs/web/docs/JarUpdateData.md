@@ -4,7 +4,6 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **string** | point id | 
 **Type** | **string** |  | 
 **Attributes** | [**JarAttributes**](JarAttributes.md) |  | 
 
@@ -12,7 +11,7 @@ Name | Type | Description | Notes
 
 ### NewJarUpdateData
 
-`func NewJarUpdateData(id string, type_ string, attributes JarAttributes, ) *JarUpdateData`
+`func NewJarUpdateData(type_ string, attributes JarAttributes, ) *JarUpdateData`
 
 NewJarUpdateData instantiates a new JarUpdateData object
 This constructor will assign default values to properties that have it defined,
@@ -26,26 +25,6 @@ will change when the set of required properties is changed
 NewJarUpdateDataWithDefaults instantiates a new JarUpdateData object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
-
-### GetId
-
-`func (o *JarUpdateData) GetId() string`
-
-GetId returns the Id field if non-nil, zero value otherwise.
-
-### GetIdOk
-
-`func (o *JarUpdateData) GetIdOk() (*string, bool)`
-
-GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetId
-
-`func (o *JarUpdateData) SetId(v string)`
-
-SetId sets Id field to given value.
-
 
 ### GetType
 

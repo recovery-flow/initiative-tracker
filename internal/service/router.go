@@ -47,7 +47,7 @@ func Run(ctx context.Context) {
 						//TODO add work with tags need new service for tags for correct work
 						r.Route("/tags", func(r chi.Router) {
 							r.Get("/", nil)
-							r.Post("/", handlers.PointCreate)
+							r.Post("/", nil)
 
 							r.Route("/{tag_id}", func(r chi.Router) {
 								r.Patch("/", nil)
@@ -55,11 +55,13 @@ func Run(ctx context.Context) {
 							})
 						})
 
-						r.Route("/plan", func(r chi.Router) {
-							r.Post("/", nil)
+						r.Route("/points", func(r chi.Router) {
+							r.Get("/", nil)
+							r.Post("/", handlers.PointCreate)
 
-							r.Route("/{plan_id}", func(r chi.Router) {
-								r.Patch("/", nil)
+							r.Route("/{point_id}", func(r chi.Router) {
+								r.Patch("/", handlers.PointUpdate)
+								r.Delete("/", handlers.PointDelete)
 							})
 						})
 					})

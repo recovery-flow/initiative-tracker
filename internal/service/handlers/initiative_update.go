@@ -34,15 +34,6 @@ func InitiativeUpdate(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	if chi.URLParam(r, "initiative_id") != req.Data.Id {
-		log.Error("Request id does not match URL id")
-		httpkit.RenderErr(w, problems.BadRequest(validation.Errors{
-			"id": validation.NewError("id", "Request id does not match URL id"),
-		})...)
-		return
-
-	}
-
 	iniId, err := primitive.ObjectIDFromHex(chi.URLParam(r, "initiative_id"))
 	if err != nil {
 		log.WithError(err).Error("Failed to parse initiative id")

@@ -12,8 +12,6 @@ package resources
 
 import (
 	"encoding/json"
-	"bytes"
-	"fmt"
 )
 
 // checks if the PointUpdateDataAttributes type satisfies the MappedNullable interface at compile time
@@ -21,27 +19,24 @@ var _ MappedNullable = &PointUpdateDataAttributes{}
 
 // PointUpdateDataAttributes struct for PointUpdateDataAttributes
 type PointUpdateDataAttributes struct {
-	// parent id
-	ParentId *string `json:"parent_id,omitempty"`
+	// level of point
+	Level *int32 `json:"level,omitempty"`
 	// title of point
-	Title string `json:"title"`
+	Title *string `json:"title,omitempty"`
 	// description of point
-	Desc string `json:"desc"`
+	Desc *string `json:"desc,omitempty"`
 	// local cost
-	LocalCost int32 `json:"local_cost"`
+	LocalCost *int32 `json:"local_cost,omitempty"`
+	// status of point
+	Status *string `json:"status,omitempty"`
 }
-
-type _PointUpdateDataAttributes PointUpdateDataAttributes
 
 // NewPointUpdateDataAttributes instantiates a new PointUpdateDataAttributes object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewPointUpdateDataAttributes(title string, desc string, localCost int32) *PointUpdateDataAttributes {
+func NewPointUpdateDataAttributes() *PointUpdateDataAttributes {
 	this := PointUpdateDataAttributes{}
-	this.Title = title
-	this.Desc = desc
-	this.LocalCost = localCost
 	return &this
 }
 
@@ -53,108 +48,164 @@ func NewPointUpdateDataAttributesWithDefaults() *PointUpdateDataAttributes {
 	return &this
 }
 
-// GetParentId returns the ParentId field value if set, zero value otherwise.
-func (o *PointUpdateDataAttributes) GetParentId() string {
-	if o == nil || IsNil(o.ParentId) {
-		var ret string
+// GetLevel returns the Level field value if set, zero value otherwise.
+func (o *PointUpdateDataAttributes) GetLevel() int32 {
+	if o == nil || IsNil(o.Level) {
+		var ret int32
 		return ret
 	}
-	return *o.ParentId
+	return *o.Level
 }
 
-// GetParentIdOk returns a tuple with the ParentId field value if set, nil otherwise
+// GetLevelOk returns a tuple with the Level field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PointUpdateDataAttributes) GetParentIdOk() (*string, bool) {
-	if o == nil || IsNil(o.ParentId) {
+func (o *PointUpdateDataAttributes) GetLevelOk() (*int32, bool) {
+	if o == nil || IsNil(o.Level) {
 		return nil, false
 	}
-	return o.ParentId, true
+	return o.Level, true
 }
 
-// HasParentId returns a boolean if a field has been set.
-func (o *PointUpdateDataAttributes) HasParentId() bool {
-	if o != nil && !IsNil(o.ParentId) {
+// HasLevel returns a boolean if a field has been set.
+func (o *PointUpdateDataAttributes) HasLevel() bool {
+	if o != nil && !IsNil(o.Level) {
 		return true
 	}
 
 	return false
 }
 
-// SetParentId gets a reference to the given string and assigns it to the ParentId field.
-func (o *PointUpdateDataAttributes) SetParentId(v string) {
-	o.ParentId = &v
+// SetLevel gets a reference to the given int32 and assigns it to the Level field.
+func (o *PointUpdateDataAttributes) SetLevel(v int32) {
+	o.Level = &v
 }
 
-// GetTitle returns the Title field value
+// GetTitle returns the Title field value if set, zero value otherwise.
 func (o *PointUpdateDataAttributes) GetTitle() string {
-	if o == nil {
+	if o == nil || IsNil(o.Title) {
 		var ret string
 		return ret
 	}
-
-	return o.Title
+	return *o.Title
 }
 
-// GetTitleOk returns a tuple with the Title field value
+// GetTitleOk returns a tuple with the Title field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PointUpdateDataAttributes) GetTitleOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Title) {
 		return nil, false
 	}
-	return &o.Title, true
+	return o.Title, true
 }
 
-// SetTitle sets field value
+// HasTitle returns a boolean if a field has been set.
+func (o *PointUpdateDataAttributes) HasTitle() bool {
+	if o != nil && !IsNil(o.Title) {
+		return true
+	}
+
+	return false
+}
+
+// SetTitle gets a reference to the given string and assigns it to the Title field.
 func (o *PointUpdateDataAttributes) SetTitle(v string) {
-	o.Title = v
+	o.Title = &v
 }
 
-// GetDesc returns the Desc field value
+// GetDesc returns the Desc field value if set, zero value otherwise.
 func (o *PointUpdateDataAttributes) GetDesc() string {
-	if o == nil {
+	if o == nil || IsNil(o.Desc) {
 		var ret string
 		return ret
 	}
-
-	return o.Desc
+	return *o.Desc
 }
 
-// GetDescOk returns a tuple with the Desc field value
+// GetDescOk returns a tuple with the Desc field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PointUpdateDataAttributes) GetDescOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Desc) {
 		return nil, false
 	}
-	return &o.Desc, true
+	return o.Desc, true
 }
 
-// SetDesc sets field value
+// HasDesc returns a boolean if a field has been set.
+func (o *PointUpdateDataAttributes) HasDesc() bool {
+	if o != nil && !IsNil(o.Desc) {
+		return true
+	}
+
+	return false
+}
+
+// SetDesc gets a reference to the given string and assigns it to the Desc field.
 func (o *PointUpdateDataAttributes) SetDesc(v string) {
-	o.Desc = v
+	o.Desc = &v
 }
 
-// GetLocalCost returns the LocalCost field value
+// GetLocalCost returns the LocalCost field value if set, zero value otherwise.
 func (o *PointUpdateDataAttributes) GetLocalCost() int32 {
-	if o == nil {
+	if o == nil || IsNil(o.LocalCost) {
 		var ret int32
 		return ret
 	}
-
-	return o.LocalCost
+	return *o.LocalCost
 }
 
-// GetLocalCostOk returns a tuple with the LocalCost field value
+// GetLocalCostOk returns a tuple with the LocalCost field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PointUpdateDataAttributes) GetLocalCostOk() (*int32, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.LocalCost) {
 		return nil, false
 	}
-	return &o.LocalCost, true
+	return o.LocalCost, true
 }
 
-// SetLocalCost sets field value
+// HasLocalCost returns a boolean if a field has been set.
+func (o *PointUpdateDataAttributes) HasLocalCost() bool {
+	if o != nil && !IsNil(o.LocalCost) {
+		return true
+	}
+
+	return false
+}
+
+// SetLocalCost gets a reference to the given int32 and assigns it to the LocalCost field.
 func (o *PointUpdateDataAttributes) SetLocalCost(v int32) {
-	o.LocalCost = v
+	o.LocalCost = &v
+}
+
+// GetStatus returns the Status field value if set, zero value otherwise.
+func (o *PointUpdateDataAttributes) GetStatus() string {
+	if o == nil || IsNil(o.Status) {
+		var ret string
+		return ret
+	}
+	return *o.Status
+}
+
+// GetStatusOk returns a tuple with the Status field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PointUpdateDataAttributes) GetStatusOk() (*string, bool) {
+	if o == nil || IsNil(o.Status) {
+		return nil, false
+	}
+	return o.Status, true
+}
+
+// HasStatus returns a boolean if a field has been set.
+func (o *PointUpdateDataAttributes) HasStatus() bool {
+	if o != nil && !IsNil(o.Status) {
+		return true
+	}
+
+	return false
+}
+
+// SetStatus gets a reference to the given string and assigns it to the Status field.
+func (o *PointUpdateDataAttributes) SetStatus(v string) {
+	o.Status = &v
 }
 
 func (o PointUpdateDataAttributes) MarshalJSON() ([]byte, error) {
@@ -167,52 +218,22 @@ func (o PointUpdateDataAttributes) MarshalJSON() ([]byte, error) {
 
 func (o PointUpdateDataAttributes) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.ParentId) {
-		toSerialize["parent_id"] = o.ParentId
+	if !IsNil(o.Level) {
+		toSerialize["level"] = o.Level
 	}
-	toSerialize["title"] = o.Title
-	toSerialize["desc"] = o.Desc
-	toSerialize["local_cost"] = o.LocalCost
+	if !IsNil(o.Title) {
+		toSerialize["title"] = o.Title
+	}
+	if !IsNil(o.Desc) {
+		toSerialize["desc"] = o.Desc
+	}
+	if !IsNil(o.LocalCost) {
+		toSerialize["local_cost"] = o.LocalCost
+	}
+	if !IsNil(o.Status) {
+		toSerialize["status"] = o.Status
+	}
 	return toSerialize, nil
-}
-
-func (o *PointUpdateDataAttributes) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"title",
-		"desc",
-		"local_cost",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err;
-	}
-
-	for _, requiredProperty := range(requiredProperties) {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varPointUpdateDataAttributes := _PointUpdateDataAttributes{}
-
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varPointUpdateDataAttributes)
-
-	if err != nil {
-		return err
-	}
-
-	*o = PointUpdateDataAttributes(varPointUpdateDataAttributes)
-
-	return err
 }
 
 type NullablePointUpdateDataAttributes struct {

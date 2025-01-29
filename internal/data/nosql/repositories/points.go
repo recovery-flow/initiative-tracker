@@ -185,14 +185,11 @@ func (p *points) Update(ctx context.Context, fields map[string]any) (*models.Poi
 	}
 
 	validFields := map[string]bool{
-		"parent_id":            true,
-		"title":                true,
-		"desc":                 true,
-		"local_cost":           true,
-		"local_collected":      true,
-		"cumulative_cost":      true,
-		"cumulative_collected": true,
-		"bank_info":            true,
+		"parent_id":     true,
+		"title":         true,
+		"desc":          true,
+		"local_cost":    true,
+		"publicised_by": true,
 	}
 
 	updateFields := bson.M{}

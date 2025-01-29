@@ -4,7 +4,6 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **string** | initiative id | 
 **Type** | **string** |  | 
 **Attributes** | [**InitiativeUpdateDataAttributes**](InitiativeUpdateDataAttributes.md) |  | 
 
@@ -12,7 +11,7 @@ Name | Type | Description | Notes
 
 ### NewInitiativeUpdateData
 
-`func NewInitiativeUpdateData(id string, type_ string, attributes InitiativeUpdateDataAttributes, ) *InitiativeUpdateData`
+`func NewInitiativeUpdateData(type_ string, attributes InitiativeUpdateDataAttributes, ) *InitiativeUpdateData`
 
 NewInitiativeUpdateData instantiates a new InitiativeUpdateData object
 This constructor will assign default values to properties that have it defined,
@@ -26,26 +25,6 @@ will change when the set of required properties is changed
 NewInitiativeUpdateDataWithDefaults instantiates a new InitiativeUpdateData object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
-
-### GetId
-
-`func (o *InitiativeUpdateData) GetId() string`
-
-GetId returns the Id field if non-nil, zero value otherwise.
-
-### GetIdOk
-
-`func (o *InitiativeUpdateData) GetIdOk() (*string, bool)`
-
-GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetId
-
-`func (o *InitiativeUpdateData) SetId(v string)`
-
-SetId sets Id field to given value.
-
 
 ### GetType
 

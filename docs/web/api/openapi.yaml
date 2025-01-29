@@ -488,9 +488,6 @@ components:
       type: object
     InitiativeUpdate_data:
       properties:
-        id:
-          description: initiative id
-          type: string
         type:
           enum:
           - initiative_update
@@ -499,7 +496,6 @@ components:
           $ref: '#/components/schemas/InitiativeUpdate_data_attributes'
       required:
       - attributes
-      - id
       - type
       type: object
     Point_data_relationships:
@@ -575,9 +571,9 @@ components:
       type: object
     PointUpdate_data_attributes:
       properties:
-        parent_id:
-          description: parent id
-          type: string
+        level:
+          description: level of point
+          type: integer
         title:
           description: title of point
           type: string
@@ -587,17 +583,12 @@ components:
         local_cost:
           description: local cost
           type: integer
-      required:
-      - desc
-      - local_cost
-      - status
-      - title
+        status:
+          description: status of point
+          type: string
       type: object
     PointUpdate_data:
       properties:
-        id:
-          description: point id
-          type: string
         type:
           enum:
           - point_update
@@ -606,14 +597,10 @@ components:
           $ref: '#/components/schemas/PointUpdate_data_attributes'
       required:
       - attributes
-      - id
       - type
       type: object
     JarUpdate_data:
       properties:
-        id:
-          description: point id
-          type: string
         type:
           enum:
           - jar_update
@@ -622,7 +609,6 @@ components:
           $ref: '#/components/schemas/JarAttributes'
       required:
       - attributes
-      - id
       - type
       type: object
     ParticipantData_attributes:
@@ -753,9 +739,6 @@ components:
       type: object
     ParticipantUpdate_data:
       properties:
-        id:
-          description: participant id
-          type: string
         type:
           enum:
           - participant_update
@@ -764,7 +747,6 @@ components:
           $ref: '#/components/schemas/ParticipantUpdate_data_attributes'
       required:
       - attributes
-      - id
       - type
       type: object
     JarData_relationships:

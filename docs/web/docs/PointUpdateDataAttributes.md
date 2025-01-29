@@ -4,16 +4,17 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**ParentId** | Pointer to **string** | parent id | [optional] 
-**Title** | **string** | title of point | 
-**Desc** | **string** | description of point | 
-**LocalCost** | **int32** | local cost | 
+**Level** | Pointer to **int32** | level of point | [optional] 
+**Title** | Pointer to **string** | title of point | [optional] 
+**Desc** | Pointer to **string** | description of point | [optional] 
+**LocalCost** | Pointer to **int32** | local cost | [optional] 
+**Status** | Pointer to **string** | status of point | [optional] 
 
 ## Methods
 
 ### NewPointUpdateDataAttributes
 
-`func NewPointUpdateDataAttributes(title string, desc string, localCost int32, ) *PointUpdateDataAttributes`
+`func NewPointUpdateDataAttributes() *PointUpdateDataAttributes`
 
 NewPointUpdateDataAttributes instantiates a new PointUpdateDataAttributes object
 This constructor will assign default values to properties that have it defined,
@@ -28,30 +29,30 @@ NewPointUpdateDataAttributesWithDefaults instantiates a new PointUpdateDataAttri
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
-### GetParentId
+### GetLevel
 
-`func (o *PointUpdateDataAttributes) GetParentId() string`
+`func (o *PointUpdateDataAttributes) GetLevel() int32`
 
-GetParentId returns the ParentId field if non-nil, zero value otherwise.
+GetLevel returns the Level field if non-nil, zero value otherwise.
 
-### GetParentIdOk
+### GetLevelOk
 
-`func (o *PointUpdateDataAttributes) GetParentIdOk() (*string, bool)`
+`func (o *PointUpdateDataAttributes) GetLevelOk() (*int32, bool)`
 
-GetParentIdOk returns a tuple with the ParentId field if it's non-nil, zero value otherwise
+GetLevelOk returns a tuple with the Level field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetParentId
+### SetLevel
 
-`func (o *PointUpdateDataAttributes) SetParentId(v string)`
+`func (o *PointUpdateDataAttributes) SetLevel(v int32)`
 
-SetParentId sets ParentId field to given value.
+SetLevel sets Level field to given value.
 
-### HasParentId
+### HasLevel
 
-`func (o *PointUpdateDataAttributes) HasParentId() bool`
+`func (o *PointUpdateDataAttributes) HasLevel() bool`
 
-HasParentId returns a boolean if a field has been set.
+HasLevel returns a boolean if a field has been set.
 
 ### GetTitle
 
@@ -72,6 +73,11 @@ and a boolean to check if the value has been set.
 
 SetTitle sets Title field to given value.
 
+### HasTitle
+
+`func (o *PointUpdateDataAttributes) HasTitle() bool`
+
+HasTitle returns a boolean if a field has been set.
 
 ### GetDesc
 
@@ -92,6 +98,11 @@ and a boolean to check if the value has been set.
 
 SetDesc sets Desc field to given value.
 
+### HasDesc
+
+`func (o *PointUpdateDataAttributes) HasDesc() bool`
+
+HasDesc returns a boolean if a field has been set.
 
 ### GetLocalCost
 
@@ -112,6 +123,36 @@ and a boolean to check if the value has been set.
 
 SetLocalCost sets LocalCost field to given value.
 
+### HasLocalCost
+
+`func (o *PointUpdateDataAttributes) HasLocalCost() bool`
+
+HasLocalCost returns a boolean if a field has been set.
+
+### GetStatus
+
+`func (o *PointUpdateDataAttributes) GetStatus() string`
+
+GetStatus returns the Status field if non-nil, zero value otherwise.
+
+### GetStatusOk
+
+`func (o *PointUpdateDataAttributes) GetStatusOk() (*string, bool)`
+
+GetStatusOk returns a tuple with the Status field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetStatus
+
+`func (o *PointUpdateDataAttributes) SetStatus(v string)`
+
+SetStatus sets Status field to given value.
+
+### HasStatus
+
+`func (o *PointUpdateDataAttributes) HasStatus() bool`
+
+HasStatus returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

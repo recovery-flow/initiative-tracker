@@ -5,13 +5,9 @@ required:
 properties:
   data:
     required:
-      - id
       - type
       - attributes
     properties:
-      id:
-        type: string
-        description: "initiative id"
       type:
         type: string
         enum: [ initiative_update ]

@@ -16,7 +16,6 @@ func NewInitiativeUpdate(r *http.Request) (req *resources.InitiativeUpdate, err 
 	}
 
 	errs := validation.Errors{
-		"data/id":         validation.Validate(req.Data.Id, validation.Required),
 		"data/type":       validation.Validate(req.Data.Type, validation.Required, validation.In(resources.InitiativeUpdateType)),
 		"data/attributes": validation.Validate(req.Data.Attributes, validation.Required),
 	}
