@@ -4,18 +4,18 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**InitiativeId** | **string** | initiative id | 
 **ParentId** | Pointer to **string** | parent id | [optional] 
+**Level** | **int32** | level of point | 
 **Title** | **string** | title of point | 
 **Desc** | **string** | description of point | 
-**LocalCost** | **int32** | local cost | 
-**Jar** | [**JarAttributes**](JarAttributes.md) |  | 
+**LocalCost** | Pointer to **float64** | local cost | [optional] 
+**Jar** | Pointer to [**JarAttributes**](JarAttributes.md) |  | [optional] 
 
 ## Methods
 
 ### NewPointCreateDataAttributes
 
-`func NewPointCreateDataAttributes(initiativeId string, title string, desc string, localCost int32, jar JarAttributes, ) *PointCreateDataAttributes`
+`func NewPointCreateDataAttributes(level int32, title string, desc string, ) *PointCreateDataAttributes`
 
 NewPointCreateDataAttributes instantiates a new PointCreateDataAttributes object
 This constructor will assign default values to properties that have it defined,
@@ -29,26 +29,6 @@ will change when the set of required properties is changed
 NewPointCreateDataAttributesWithDefaults instantiates a new PointCreateDataAttributes object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
-
-### GetInitiativeId
-
-`func (o *PointCreateDataAttributes) GetInitiativeId() string`
-
-GetInitiativeId returns the InitiativeId field if non-nil, zero value otherwise.
-
-### GetInitiativeIdOk
-
-`func (o *PointCreateDataAttributes) GetInitiativeIdOk() (*string, bool)`
-
-GetInitiativeIdOk returns a tuple with the InitiativeId field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetInitiativeId
-
-`func (o *PointCreateDataAttributes) SetInitiativeId(v string)`
-
-SetInitiativeId sets InitiativeId field to given value.
-
 
 ### GetParentId
 
@@ -74,6 +54,26 @@ SetParentId sets ParentId field to given value.
 `func (o *PointCreateDataAttributes) HasParentId() bool`
 
 HasParentId returns a boolean if a field has been set.
+
+### GetLevel
+
+`func (o *PointCreateDataAttributes) GetLevel() int32`
+
+GetLevel returns the Level field if non-nil, zero value otherwise.
+
+### GetLevelOk
+
+`func (o *PointCreateDataAttributes) GetLevelOk() (*int32, bool)`
+
+GetLevelOk returns a tuple with the Level field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLevel
+
+`func (o *PointCreateDataAttributes) SetLevel(v int32)`
+
+SetLevel sets Level field to given value.
+
 
 ### GetTitle
 
@@ -117,23 +117,28 @@ SetDesc sets Desc field to given value.
 
 ### GetLocalCost
 
-`func (o *PointCreateDataAttributes) GetLocalCost() int32`
+`func (o *PointCreateDataAttributes) GetLocalCost() float64`
 
 GetLocalCost returns the LocalCost field if non-nil, zero value otherwise.
 
 ### GetLocalCostOk
 
-`func (o *PointCreateDataAttributes) GetLocalCostOk() (*int32, bool)`
+`func (o *PointCreateDataAttributes) GetLocalCostOk() (*float64, bool)`
 
 GetLocalCostOk returns a tuple with the LocalCost field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetLocalCost
 
-`func (o *PointCreateDataAttributes) SetLocalCost(v int32)`
+`func (o *PointCreateDataAttributes) SetLocalCost(v float64)`
 
 SetLocalCost sets LocalCost field to given value.
 
+### HasLocalCost
+
+`func (o *PointCreateDataAttributes) HasLocalCost() bool`
+
+HasLocalCost returns a boolean if a field has been set.
 
 ### GetJar
 
@@ -154,6 +159,11 @@ and a boolean to check if the value has been set.
 
 SetJar sets Jar field to given value.
 
+### HasJar
+
+`func (o *PointCreateDataAttributes) HasJar() bool`
+
+HasJar returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

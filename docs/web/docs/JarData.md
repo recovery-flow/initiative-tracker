@@ -7,13 +7,13 @@ Name | Type | Description | Notes
 **Id** | **string** | point id | 
 **Type** | **string** |  | 
 **Attributes** | [**JarAttributes**](JarAttributes.md) |  | 
-**Relationships** | [**JarDataRelationships**](JarDataRelationships.md) |  | 
+**Relationships** | Pointer to [**JarDataRelationships**](JarDataRelationships.md) |  | [optional] 
 
 ## Methods
 
 ### NewJarData
 
-`func NewJarData(id string, type_ string, attributes JarAttributes, relationships JarDataRelationships, ) *JarData`
+`func NewJarData(id string, type_ string, attributes JarAttributes, ) *JarData`
 
 NewJarData instantiates a new JarData object
 This constructor will assign default values to properties that have it defined,
@@ -107,6 +107,11 @@ and a boolean to check if the value has been set.
 
 SetRelationships sets Relationships field to given value.
 
+### HasRelationships
+
+`func (o *JarData) HasRelationships() bool`
+
+HasRelationships returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

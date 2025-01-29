@@ -3,27 +3,4 @@ required:
   - data
 properties:
   data:
-    required:
-      - id
-      - type
-      - attributes
-      - relationships
-    properties:
-      id:
-        type: string
-        description: "point id"
-      type:
-        type: string
-        enum: [ jar ]
-      attributes:
-        $ref: "./JarAttributes.yaml"
-      relationships:
-        type: object
-        required:
-          - initiative
-          - point
-        properties:
-          initiative:
-            $ref: "./LinksDirect.yaml"
-          point:
-            $ref: "./LinksDirect.yaml"
+    $ref: "./JarData.yaml"

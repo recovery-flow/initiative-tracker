@@ -28,6 +28,8 @@ type Participants interface {
 	DeleteMany(ctx context.Context) error
 	DeleteOne(ctx context.Context) error
 
+	//TODO add Tag methods
+
 	SortBy(field string, ascending bool) Participants
 	Limit(limit int64) Participants
 	Skip(skip int64) Participants

@@ -5,14 +5,13 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **InitiativeId** | **string** | initiative id | 
+**Level** | **int32** | level of point | 
 **ParentId** | Pointer to **string** | parent id | [optional] 
 **Title** | **string** | title of point | 
 **Desc** | **string** | description of point | 
 **PublishedBy** | **string** | published by | 
-**LocalCost** | **int32** | local cost | 
-**LocalCollected** | **int32** | local collected | 
-**CumulativeCost** | **int32** | cumulative cost | 
-**CumulativeCollected** | **int32** | cumulative collected | 
+**LocalCost** | **float64** | local cost | 
+**LocalCollected** | **float64** | local collected | 
 **Status** | **string** | status of point | 
 **CreatedAt** | **time.Time** | point creation timestamp | 
 **UpdatedAt** | Pointer to **time.Time** | point updated timestamp | [optional] 
@@ -21,7 +20,7 @@ Name | Type | Description | Notes
 
 ### NewPointAttributes
 
-`func NewPointAttributes(initiativeId string, title string, desc string, publishedBy string, localCost int32, localCollected int32, cumulativeCost int32, cumulativeCollected int32, status string, createdAt time.Time, ) *PointAttributes`
+`func NewPointAttributes(initiativeId string, level int32, title string, desc string, publishedBy string, localCost float64, localCollected float64, status string, createdAt time.Time, ) *PointAttributes`
 
 NewPointAttributes instantiates a new PointAttributes object
 This constructor will assign default values to properties that have it defined,
@@ -54,6 +53,26 @@ and a boolean to check if the value has been set.
 `func (o *PointAttributes) SetInitiativeId(v string)`
 
 SetInitiativeId sets InitiativeId field to given value.
+
+
+### GetLevel
+
+`func (o *PointAttributes) GetLevel() int32`
+
+GetLevel returns the Level field if non-nil, zero value otherwise.
+
+### GetLevelOk
+
+`func (o *PointAttributes) GetLevelOk() (*int32, bool)`
+
+GetLevelOk returns a tuple with the Level field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLevel
+
+`func (o *PointAttributes) SetLevel(v int32)`
+
+SetLevel sets Level field to given value.
 
 
 ### GetParentId
@@ -143,82 +162,42 @@ SetPublishedBy sets PublishedBy field to given value.
 
 ### GetLocalCost
 
-`func (o *PointAttributes) GetLocalCost() int32`
+`func (o *PointAttributes) GetLocalCost() float64`
 
 GetLocalCost returns the LocalCost field if non-nil, zero value otherwise.
 
 ### GetLocalCostOk
 
-`func (o *PointAttributes) GetLocalCostOk() (*int32, bool)`
+`func (o *PointAttributes) GetLocalCostOk() (*float64, bool)`
 
 GetLocalCostOk returns a tuple with the LocalCost field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetLocalCost
 
-`func (o *PointAttributes) SetLocalCost(v int32)`
+`func (o *PointAttributes) SetLocalCost(v float64)`
 
 SetLocalCost sets LocalCost field to given value.
 
 
 ### GetLocalCollected
 
-`func (o *PointAttributes) GetLocalCollected() int32`
+`func (o *PointAttributes) GetLocalCollected() float64`
 
 GetLocalCollected returns the LocalCollected field if non-nil, zero value otherwise.
 
 ### GetLocalCollectedOk
 
-`func (o *PointAttributes) GetLocalCollectedOk() (*int32, bool)`
+`func (o *PointAttributes) GetLocalCollectedOk() (*float64, bool)`
 
 GetLocalCollectedOk returns a tuple with the LocalCollected field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetLocalCollected
 
-`func (o *PointAttributes) SetLocalCollected(v int32)`
+`func (o *PointAttributes) SetLocalCollected(v float64)`
 
 SetLocalCollected sets LocalCollected field to given value.
-
-
-### GetCumulativeCost
-
-`func (o *PointAttributes) GetCumulativeCost() int32`
-
-GetCumulativeCost returns the CumulativeCost field if non-nil, zero value otherwise.
-
-### GetCumulativeCostOk
-
-`func (o *PointAttributes) GetCumulativeCostOk() (*int32, bool)`
-
-GetCumulativeCostOk returns a tuple with the CumulativeCost field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetCumulativeCost
-
-`func (o *PointAttributes) SetCumulativeCost(v int32)`
-
-SetCumulativeCost sets CumulativeCost field to given value.
-
-
-### GetCumulativeCollected
-
-`func (o *PointAttributes) GetCumulativeCollected() int32`
-
-GetCumulativeCollected returns the CumulativeCollected field if non-nil, zero value otherwise.
-
-### GetCumulativeCollectedOk
-
-`func (o *PointAttributes) GetCumulativeCollectedOk() (*int32, bool)`
-
-GetCumulativeCollectedOk returns a tuple with the CumulativeCollected field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetCumulativeCollected
-
-`func (o *PointAttributes) SetCumulativeCollected(v int32)`
-
-SetCumulativeCollected sets CumulativeCollected field to given value.
 
 
 ### GetStatus

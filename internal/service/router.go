@@ -35,13 +35,23 @@ func Run(ctx context.Context) {
 
 					r.Route("/{initiative_id}", func(r chi.Router) {
 						r.Put("/", handlers.InitiativeUpdate)
-						r.Patch("/tags", nil) //update
 
 						r.Route("/participant", func(r chi.Router) {
 							r.Post("/", handlers.ParticipantCreate)
 
 							r.Route("/{user_id}", func(r chi.Router) {
 								r.Patch("/", handlers.ParticipantUpdate)
+							})
+						})
+
+						//TODO add work with tags need new service for tags for correct work
+						r.Route("/tags", func(r chi.Router) {
+							r.Get("/", nil)
+							r.Post("/", handlers.PointCreate)
+
+							r.Route("/{tag_id}", func(r chi.Router) {
+								r.Patch("/", nil)
+								r.Delete("/", nil)
 							})
 						})
 

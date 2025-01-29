@@ -47,3 +47,11 @@ func StatusFromString(s string) *Status {
 		return nil
 	}
 }
+
+//TODO add tags to the model this model is example
+
+type Tag struct {
+	ID     primitive.ObjectID `bson:"_id" json:"id"`
+	Name   string             `bson:"name" json:"name"`
+	Weight int                `bson:"weight" json:"weight"`
+}

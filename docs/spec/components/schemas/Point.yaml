@@ -1,7 +1,6 @@
 type: object
 required:
   - data
-  - included
 properties:
   data:
     required:
@@ -24,8 +23,6 @@ properties:
           - published_by
           - initiative
           - plan
-          - jar
-          - parent
         properties:
           parent:
             $ref: "./LinksDirect.yaml"
@@ -36,4 +33,6 @@ properties:
           plan:
             $ref: "./LinksDirect.yaml"
   included:
-    $ref: "./JarAttributes.yaml"
+    type: array
+    items:
+      $ref: "./JarData.yaml"

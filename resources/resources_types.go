@@ -9,11 +9,15 @@ const (
 	ParticipantCreateType = "participant_create"
 	ParticipantUpdateType = "participant_update"
 
-	TagAddType    = "tag_add"
-	TagRemoveType = "tag_remove"
+	TagAddType    = "initiative_tag_add"
+	TagRemoveType = "initiative_tag_remove"
 
+	JarType       = "jar"
 	JarUpdateType = "jar_update"
 
+	PlanType = "plan"
+
+	PointType       = "point"
 	PointCreateType = "point_create"
 	PointUpdateType = "point_update"
 )

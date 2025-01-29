@@ -24,6 +24,8 @@ var _ MappedNullable = &PointAttributes{}
 type PointAttributes struct {
 	// initiative id
 	InitiativeId string `json:"initiative_id"`
+	// level of point
+	Level int32 `json:"level"`
 	// parent id
 	ParentId *string `json:"parent_id,omitempty"`
 	// title of point
@@ -33,13 +35,9 @@ type PointAttributes struct {
 	// published by
 	PublishedBy string `json:"published_by"`
 	// local cost
-	LocalCost int32 `json:"local_cost"`
+	LocalCost float64 `json:"local_cost"`
 	// local collected
-	LocalCollected int32 `json:"local_collected"`
-	// cumulative cost
-	CumulativeCost int32 `json:"cumulative_cost"`
-	// cumulative collected
-	CumulativeCollected int32 `json:"cumulative_collected"`
+	LocalCollected float64 `json:"local_collected"`
 	// status of point
 	Status string `json:"status"`
 	// point creation timestamp
@@ -54,16 +52,15 @@ type _PointAttributes PointAttributes
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewPointAttributes(initiativeId string, title string, desc string, publishedBy string, localCost int32, localCollected int32, cumulativeCost int32, cumulativeCollected int32, status string, createdAt time.Time) *PointAttributes {
+func NewPointAttributes(initiativeId string, level int32, title string, desc string, publishedBy string, localCost float64, localCollected float64, status string, createdAt time.Time) *PointAttributes {
 	this := PointAttributes{}
 	this.InitiativeId = initiativeId
+	this.Level = level
 	this.Title = title
 	this.Desc = desc
 	this.PublishedBy = publishedBy
 	this.LocalCost = localCost
 	this.LocalCollected = localCollected
-	this.CumulativeCost = cumulativeCost
-	this.CumulativeCollected = cumulativeCollected
 	this.Status = status
 	this.CreatedAt = createdAt
 	return &this
@@ -99,6 +96,30 @@ func (o *PointAttributes) GetInitiativeIdOk() (*string, bool) {
 // SetInitiativeId sets field value
 func (o *PointAttributes) SetInitiativeId(v string) {
 	o.InitiativeId = v
+}
+
+// GetLevel returns the Level field value
+func (o *PointAttributes) GetLevel() int32 {
+	if o == nil {
+		var ret int32
+		return ret
+	}
+
+	return o.Level
+}
+
+// GetLevelOk returns a tuple with the Level field value
+// and a boolean to check if the value has been set.
+func (o *PointAttributes) GetLevelOk() (*int32, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Level, true
+}
+
+// SetLevel sets field value
+func (o *PointAttributes) SetLevel(v int32) {
+	o.Level = v
 }
 
 // GetParentId returns the ParentId field value if set, zero value otherwise.
@@ -206,9 +227,9 @@ func (o *PointAttributes) SetPublishedBy(v string) {
 }
 
 // GetLocalCost returns the LocalCost field value
-func (o *PointAttributes) GetLocalCost() int32 {
+func (o *PointAttributes) GetLocalCost() float64 {
 	if o == nil {
-		var ret int32
+		var ret float64
 		return ret
 	}
 
@@ -217,7 +238,7 @@ func (o *PointAttributes) GetLocalCost() int32 {
 
 // GetLocalCostOk returns a tuple with the LocalCost field value
 // and a boolean to check if the value has been set.
-func (o *PointAttributes) GetLocalCostOk() (*int32, bool) {
+func (o *PointAttributes) GetLocalCostOk() (*float64, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -225,14 +246,14 @@ func (o *PointAttributes) GetLocalCostOk() (*int32, bool) {
 }
 
 // SetLocalCost sets field value
-func (o *PointAttributes) SetLocalCost(v int32) {
+func (o *PointAttributes) SetLocalCost(v float64) {
 	o.LocalCost = v
 }
 
 // GetLocalCollected returns the LocalCollected field value
-func (o *PointAttributes) GetLocalCollected() int32 {
+func (o *PointAttributes) GetLocalCollected() float64 {
 	if o == nil {
-		var ret int32
+		var ret float64
 		return ret
 	}
 
@@ -241,7 +262,7 @@ func (o *PointAttributes) GetLocalCollected() int32 {
 
 // GetLocalCollectedOk returns a tuple with the LocalCollected field value
 // and a boolean to check if the value has been set.
-func (o *PointAttributes) GetLocalCollectedOk() (*int32, bool) {
+func (o *PointAttributes) GetLocalCollectedOk() (*float64, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -249,56 +270,8 @@ func (o *PointAttributes) GetLocalCollectedOk() (*int32, bool) {
 }
 
 // SetLocalCollected sets field value
-func (o *PointAttributes) SetLocalCollected(v int32) {
+func (o *PointAttributes) SetLocalCollected(v float64) {
 	o.LocalCollected = v
-}
-
-// GetCumulativeCost returns the CumulativeCost field value
-func (o *PointAttributes) GetCumulativeCost() int32 {
-	if o == nil {
-		var ret int32
-		return ret
-	}
-
-	return o.CumulativeCost
-}
-
-// GetCumulativeCostOk returns a tuple with the CumulativeCost field value
-// and a boolean to check if the value has been set.
-func (o *PointAttributes) GetCumulativeCostOk() (*int32, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.CumulativeCost, true
-}
-
-// SetCumulativeCost sets field value
-func (o *PointAttributes) SetCumulativeCost(v int32) {
-	o.CumulativeCost = v
-}
-
-// GetCumulativeCollected returns the CumulativeCollected field value
-func (o *PointAttributes) GetCumulativeCollected() int32 {
-	if o == nil {
-		var ret int32
-		return ret
-	}
-
-	return o.CumulativeCollected
-}
-
-// GetCumulativeCollectedOk returns a tuple with the CumulativeCollected field value
-// and a boolean to check if the value has been set.
-func (o *PointAttributes) GetCumulativeCollectedOk() (*int32, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.CumulativeCollected, true
-}
-
-// SetCumulativeCollected sets field value
-func (o *PointAttributes) SetCumulativeCollected(v int32) {
-	o.CumulativeCollected = v
 }
 
 // GetStatus returns the Status field value
@@ -392,6 +365,7 @@ func (o PointAttributes) MarshalJSON() ([]byte, error) {
 func (o PointAttributes) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["initiative_id"] = o.InitiativeId
+	toSerialize["level"] = o.Level
 	if !IsNil(o.ParentId) {
 		toSerialize["parent_id"] = o.ParentId
 	}
@@ -400,8 +374,6 @@ func (o PointAttributes) ToMap() (map[string]interface{}, error) {
 	toSerialize["published_by"] = o.PublishedBy
 	toSerialize["local_cost"] = o.LocalCost
 	toSerialize["local_collected"] = o.LocalCollected
-	toSerialize["cumulative_cost"] = o.CumulativeCost
-	toSerialize["cumulative_collected"] = o.CumulativeCollected
 	toSerialize["status"] = o.Status
 	toSerialize["created_at"] = o.CreatedAt
 	if !IsNil(o.UpdatedAt) {
@@ -416,13 +388,12 @@ func (o *PointAttributes) UnmarshalJSON(data []byte) (err error) {
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
 		"initiative_id",
+		"level",
 		"title",
 		"desc",
 		"published_by",
 		"local_cost",
 		"local_collected",
-		"cumulative_cost",
-		"cumulative_collected",
 		"status",
 		"created_at",
 	}

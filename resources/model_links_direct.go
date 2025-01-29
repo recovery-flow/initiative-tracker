@@ -22,6 +22,7 @@ var _ MappedNullable = &LinksDirect{}
 // LinksDirect struct for LinksDirect
 type LinksDirect struct {
 	Links LinksDirectLinks `json:"links"`
+	Data *LinksDirectData `json:"data,omitempty"`
 }
 
 type _LinksDirect LinksDirect
@@ -68,6 +69,38 @@ func (o *LinksDirect) SetLinks(v LinksDirectLinks) {
 	o.Links = v
 }
 
+// GetData returns the Data field value if set, zero value otherwise.
+func (o *LinksDirect) GetData() LinksDirectData {
+	if o == nil || IsNil(o.Data) {
+		var ret LinksDirectData
+		return ret
+	}
+	return *o.Data
+}
+
+// GetDataOk returns a tuple with the Data field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *LinksDirect) GetDataOk() (*LinksDirectData, bool) {
+	if o == nil || IsNil(o.Data) {
+		return nil, false
+	}
+	return o.Data, true
+}
+
+// HasData returns a boolean if a field has been set.
+func (o *LinksDirect) HasData() bool {
+	if o != nil && !IsNil(o.Data) {
+		return true
+	}
+
+	return false
+}
+
+// SetData gets a reference to the given LinksDirectData and assigns it to the Data field.
+func (o *LinksDirect) SetData(v LinksDirectData) {
+	o.Data = &v
+}
+
 func (o LinksDirect) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -79,6 +112,9 @@ func (o LinksDirect) MarshalJSON() ([]byte, error) {
 func (o LinksDirect) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["links"] = o.Links
+	if !IsNil(o.Data) {
+		toSerialize["data"] = o.Data
+	}
 	return toSerialize, nil
 }
 

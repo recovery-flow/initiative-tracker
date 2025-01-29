@@ -5,13 +5,13 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Data** | [**PointData**](PointData.md) |  | 
-**Included** | [**JarAttributes**](JarAttributes.md) |  | 
+**Included** | Pointer to [**[]JarData**](JarData.md) |  | [optional] 
 
 ## Methods
 
 ### NewPoint
 
-`func NewPoint(data PointData, included JarAttributes, ) *Point`
+`func NewPoint(data PointData, ) *Point`
 
 NewPoint instantiates a new Point object
 This constructor will assign default values to properties that have it defined,
@@ -48,23 +48,28 @@ SetData sets Data field to given value.
 
 ### GetIncluded
 
-`func (o *Point) GetIncluded() JarAttributes`
+`func (o *Point) GetIncluded() []JarData`
 
 GetIncluded returns the Included field if non-nil, zero value otherwise.
 
 ### GetIncludedOk
 
-`func (o *Point) GetIncludedOk() (*JarAttributes, bool)`
+`func (o *Point) GetIncludedOk() (*[]JarData, bool)`
 
 GetIncludedOk returns a tuple with the Included field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetIncluded
 
-`func (o *Point) SetIncluded(v JarAttributes)`
+`func (o *Point) SetIncluded(v []JarData)`
 
 SetIncluded sets Included field to given value.
 
+### HasIncluded
+
+`func (o *Point) HasIncluded() bool`
+
+HasIncluded returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

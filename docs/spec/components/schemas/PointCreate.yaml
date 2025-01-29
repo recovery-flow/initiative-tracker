@@ -4,31 +4,25 @@ required:
 properties:
   data:
     required:
-      - id
       - type
       - attributes
     properties:
-      id:
-        type: string
-        description: "point id"
       type:
         type: string
         enum: [ point_create ]
       attributes:
         type: object
         required:
-          - initiative_id
+          - level
           - title
           - desc
-          - local_cost
-          - jar
         properties:
-          initiative_id:
-            type: string
-            description: "initiative id"
           parent_id:
             type: string
             description: "parent id"
+          level:
+            type: integer
+            description: "level of point"
           title:
             type: string
             description: "title of point"
@@ -36,7 +30,8 @@ properties:
             type: string
             description: "description of point"
           local_cost:
-            type: integer
+            type: number
+            format: double
             description: "local cost"
           jar:
             $ref: "./JarAttributes.yaml"

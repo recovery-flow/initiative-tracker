@@ -21,17 +21,17 @@ var _ MappedNullable = &PointCreateDataAttributes{}
 
 // PointCreateDataAttributes struct for PointCreateDataAttributes
 type PointCreateDataAttributes struct {
-	// initiative id
-	InitiativeId string `json:"initiative_id"`
 	// parent id
 	ParentId *string `json:"parent_id,omitempty"`
+	// level of point
+	Level int32 `json:"level"`
 	// title of point
 	Title string `json:"title"`
 	// description of point
 	Desc string `json:"desc"`
 	// local cost
-	LocalCost int32 `json:"local_cost"`
-	Jar JarAttributes `json:"jar"`
+	LocalCost *float64 `json:"local_cost,omitempty"`
+	Jar *JarAttributes `json:"jar,omitempty"`
 }
 
 type _PointCreateDataAttributes PointCreateDataAttributes
@@ -40,13 +40,11 @@ type _PointCreateDataAttributes PointCreateDataAttributes
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewPointCreateDataAttributes(initiativeId string, title string, desc string, localCost int32, jar JarAttributes) *PointCreateDataAttributes {
+func NewPointCreateDataAttributes(level int32, title string, desc string) *PointCreateDataAttributes {
 	this := PointCreateDataAttributes{}
-	this.InitiativeId = initiativeId
+	this.Level = level
 	this.Title = title
 	this.Desc = desc
-	this.LocalCost = localCost
-	this.Jar = jar
 	return &this
 }
 
@@ -56,30 +54,6 @@ func NewPointCreateDataAttributes(initiativeId string, title string, desc string
 func NewPointCreateDataAttributesWithDefaults() *PointCreateDataAttributes {
 	this := PointCreateDataAttributes{}
 	return &this
-}
-
-// GetInitiativeId returns the InitiativeId field value
-func (o *PointCreateDataAttributes) GetInitiativeId() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.InitiativeId
-}
-
-// GetInitiativeIdOk returns a tuple with the InitiativeId field value
-// and a boolean to check if the value has been set.
-func (o *PointCreateDataAttributes) GetInitiativeIdOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.InitiativeId, true
-}
-
-// SetInitiativeId sets field value
-func (o *PointCreateDataAttributes) SetInitiativeId(v string) {
-	o.InitiativeId = v
 }
 
 // GetParentId returns the ParentId field value if set, zero value otherwise.
@@ -112,6 +86,30 @@ func (o *PointCreateDataAttributes) HasParentId() bool {
 // SetParentId gets a reference to the given string and assigns it to the ParentId field.
 func (o *PointCreateDataAttributes) SetParentId(v string) {
 	o.ParentId = &v
+}
+
+// GetLevel returns the Level field value
+func (o *PointCreateDataAttributes) GetLevel() int32 {
+	if o == nil {
+		var ret int32
+		return ret
+	}
+
+	return o.Level
+}
+
+// GetLevelOk returns a tuple with the Level field value
+// and a boolean to check if the value has been set.
+func (o *PointCreateDataAttributes) GetLevelOk() (*int32, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Level, true
+}
+
+// SetLevel sets field value
+func (o *PointCreateDataAttributes) SetLevel(v int32) {
+	o.Level = v
 }
 
 // GetTitle returns the Title field value
@@ -162,52 +160,68 @@ func (o *PointCreateDataAttributes) SetDesc(v string) {
 	o.Desc = v
 }
 
-// GetLocalCost returns the LocalCost field value
-func (o *PointCreateDataAttributes) GetLocalCost() int32 {
-	if o == nil {
-		var ret int32
+// GetLocalCost returns the LocalCost field value if set, zero value otherwise.
+func (o *PointCreateDataAttributes) GetLocalCost() float64 {
+	if o == nil || IsNil(o.LocalCost) {
+		var ret float64
 		return ret
 	}
-
-	return o.LocalCost
+	return *o.LocalCost
 }
 
-// GetLocalCostOk returns a tuple with the LocalCost field value
+// GetLocalCostOk returns a tuple with the LocalCost field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PointCreateDataAttributes) GetLocalCostOk() (*int32, bool) {
-	if o == nil {
+func (o *PointCreateDataAttributes) GetLocalCostOk() (*float64, bool) {
+	if o == nil || IsNil(o.LocalCost) {
 		return nil, false
 	}
-	return &o.LocalCost, true
+	return o.LocalCost, true
 }
 
-// SetLocalCost sets field value
-func (o *PointCreateDataAttributes) SetLocalCost(v int32) {
-	o.LocalCost = v
+// HasLocalCost returns a boolean if a field has been set.
+func (o *PointCreateDataAttributes) HasLocalCost() bool {
+	if o != nil && !IsNil(o.LocalCost) {
+		return true
+	}
+
+	return false
 }
 
-// GetJar returns the Jar field value
+// SetLocalCost gets a reference to the given float64 and assigns it to the LocalCost field.
+func (o *PointCreateDataAttributes) SetLocalCost(v float64) {
+	o.LocalCost = &v
+}
+
+// GetJar returns the Jar field value if set, zero value otherwise.
 func (o *PointCreateDataAttributes) GetJar() JarAttributes {
-	if o == nil {
+	if o == nil || IsNil(o.Jar) {
 		var ret JarAttributes
 		return ret
 	}
-
-	return o.Jar
+	return *o.Jar
 }
 
-// GetJarOk returns a tuple with the Jar field value
+// GetJarOk returns a tuple with the Jar field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PointCreateDataAttributes) GetJarOk() (*JarAttributes, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Jar) {
 		return nil, false
 	}
-	return &o.Jar, true
+	return o.Jar, true
 }
 
-// SetJar sets field value
+// HasJar returns a boolean if a field has been set.
+func (o *PointCreateDataAttributes) HasJar() bool {
+	if o != nil && !IsNil(o.Jar) {
+		return true
+	}
+
+	return false
+}
+
+// SetJar gets a reference to the given JarAttributes and assigns it to the Jar field.
 func (o *PointCreateDataAttributes) SetJar(v JarAttributes) {
-	o.Jar = v
+	o.Jar = &v
 }
 
 func (o PointCreateDataAttributes) MarshalJSON() ([]byte, error) {
@@ -220,14 +234,18 @@ func (o PointCreateDataAttributes) MarshalJSON() ([]byte, error) {
 
 func (o PointCreateDataAttributes) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["initiative_id"] = o.InitiativeId
 	if !IsNil(o.ParentId) {
 		toSerialize["parent_id"] = o.ParentId
 	}
+	toSerialize["level"] = o.Level
 	toSerialize["title"] = o.Title
 	toSerialize["desc"] = o.Desc
-	toSerialize["local_cost"] = o.LocalCost
-	toSerialize["jar"] = o.Jar
+	if !IsNil(o.LocalCost) {
+		toSerialize["local_cost"] = o.LocalCost
+	}
+	if !IsNil(o.Jar) {
+		toSerialize["jar"] = o.Jar
+	}
 	return toSerialize, nil
 }
 
@@ -236,11 +254,9 @@ func (o *PointCreateDataAttributes) UnmarshalJSON(data []byte) (err error) {
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
-		"initiative_id",
+		"level",
 		"title",
 		"desc",
-		"local_cost",
-		"jar",
 	}
 
 	allProperties := make(map[string]interface{})

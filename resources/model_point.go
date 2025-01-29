@@ -22,7 +22,7 @@ var _ MappedNullable = &Point{}
 // Point struct for Point
 type Point struct {
 	Data PointData `json:"data"`
-	Included JarAttributes `json:"included"`
+	Included []JarData `json:"included,omitempty"`
 }
 
 type _Point Point
@@ -31,10 +31,9 @@ type _Point Point
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewPoint(data PointData, included JarAttributes) *Point {
+func NewPoint(data PointData) *Point {
 	this := Point{}
 	this.Data = data
-	this.Included = included
 	return &this
 }
 
@@ -70,27 +69,35 @@ func (o *Point) SetData(v PointData) {
 	o.Data = v
 }
 
-// GetIncluded returns the Included field value
-func (o *Point) GetIncluded() JarAttributes {
-	if o == nil {
-		var ret JarAttributes
+// GetIncluded returns the Included field value if set, zero value otherwise.
+func (o *Point) GetIncluded() []JarData {
+	if o == nil || IsNil(o.Included) {
+		var ret []JarData
 		return ret
 	}
-
 	return o.Included
 }
 
-// GetIncludedOk returns a tuple with the Included field value
+// GetIncludedOk returns a tuple with the Included field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Point) GetIncludedOk() (*JarAttributes, bool) {
-	if o == nil {
+func (o *Point) GetIncludedOk() ([]JarData, bool) {
+	if o == nil || IsNil(o.Included) {
 		return nil, false
 	}
-	return &o.Included, true
+	return o.Included, true
 }
 
-// SetIncluded sets field value
-func (o *Point) SetIncluded(v JarAttributes) {
+// HasIncluded returns a boolean if a field has been set.
+func (o *Point) HasIncluded() bool {
+	if o != nil && !IsNil(o.Included) {
+		return true
+	}
+
+	return false
+}
+
+// SetIncluded gets a reference to the given []JarData and assigns it to the Included field.
+func (o *Point) SetIncluded(v []JarData) {
 	o.Included = v
 }
 
@@ -105,7 +112,9 @@ func (o Point) MarshalJSON() ([]byte, error) {
 func (o Point) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["data"] = o.Data
-	toSerialize["included"] = o.Included
+	if !IsNil(o.Included) {
+		toSerialize["included"] = o.Included
+	}
 	return toSerialize, nil
 }
 
@@ -115,7 +124,6 @@ func (o *Point) UnmarshalJSON(data []byte) (err error) {
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
 		"data",
-		"included",
 	}
 
 	allProperties := make(map[string]interface{})

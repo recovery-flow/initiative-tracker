@@ -19,6 +19,8 @@ components:
       properties:
         links:
           $ref: '#/components/schemas/LinksDirect_links'
+        data:
+          $ref: '#/components/schemas/LinksDirect_data'
       required:
       - links
       type: object
@@ -88,38 +90,16 @@ components:
       - data
       - included
       type: object
-    InitiativeTagAdd:
-      properties:
-        data:
-          $ref: '#/components/schemas/InitiativeTagAdd_data'
-      required:
-      - data
-      type: object
-    InitiativeTagData:
-      properties:
-        id:
-          description: tag id
-          type: string
-        name:
-          description: tag name
-          type: string
-        weight:
-          description: tag weight
-          type: integer
-      required:
-      - id
-      - name
-      - weight
-      type: object
     Point:
       properties:
         data:
           $ref: '#/components/schemas/Point_data'
         included:
-          $ref: '#/components/schemas/JarAttributes'
+          items:
+            $ref: '#/components/schemas/JarData'
+          type: array
       required:
       - data
-      - included
       type: object
     PointCreate:
       properties:
@@ -138,7 +118,7 @@ components:
     Jar:
       properties:
         data:
-          $ref: '#/components/schemas/Jar_data'
+          $ref: '#/components/schemas/JarData'
       required:
       - data
       type: object
@@ -215,11 +195,56 @@ components:
       - links
       - meta
       type: object
+    JarData:
+      properties:
+        id:
+          description: point id
+          type: string
+        type:
+          enum:
+          - jar
+          type: string
+        attributes:
+          $ref: '#/components/schemas/JarAttributes'
+        relationships:
+          $ref: '#/components/schemas/JarData_relationships'
+      required:
+      - attributes
+      - id
+      - type
+      type: object
+    LinkSelf:
+      properties:
+        self:
+          description: Link to participants
+          type: string
+      required:
+      - self
+      type: object
+    InitiativeTagData:
+      properties:
+        id:
+          description: tag id
+          type: string
+        name:
+          description: tag name
+          type: string
+        weight:
+          description: tag weight
+          type: integer
+      required:
+      - id
+      - name
+      - weight
+      type: object
     PointAttributes:
       properties:
         initiative_id:
           description: initiative id
           type: string
+        level:
+          description: level of point
+          type: integer
         parent_id:
           description: parent id
           type: string
@@ -234,16 +259,12 @@ components:
           type: string
         local_cost:
           description: local cost
-          type: integer
+          format: double
+          type: number
         local_collected:
           description: local collected
-          type: integer
-        cumulative_cost:
-          description: cumulative cost
-          type: integer
-        cumulative_collected:
-          description: cumulative collected
-          type: integer
+          format: double
+          type: number
         status:
           description: status of point
           type: string
@@ -257,10 +278,9 @@ components:
           type: string
       required:
       - created_at
-      - cumulative_collected
-      - cumulative_cost
       - desc
       - initiative_id
+      - level
       - local_collected
       - local_cost
       - published_by
@@ -279,14 +299,6 @@ components:
       - bank
       - url
       type: object
-    LinkSelf:
-      properties:
-        self:
-          description: Link to participants
-          type: string
-      required:
-      - self
-      type: object
     LinksDirect_links:
       properties:
         self:
@@ -298,6 +310,18 @@ components:
       required:
       - related
       - self
+      type: object
+    LinksDirect_data:
+      properties:
+        id:
+          description: resources id
+          type: string
+        type:
+          description: resources type
+          type: string
+      required:
+      - id
+      - type
       type: object
     Initiative_data_attributes:
       properties:
@@ -478,22 +502,6 @@ components:
       - id
       - type
       type: object
-    InitiativeTagAdd_data:
-      properties:
-        id:
-          description: initiative_id
-          type: string
-        type:
-          enum:
-          - initiative_add_tag
-          type: string
-        attributes:
-          $ref: '#/components/schemas/InitiativeTagData'
-      required:
-      - attributes
-      - id
-      - type
-      type: object
     Point_data_relationships:
       properties:
         parent:
@@ -506,8 +514,6 @@ components:
           $ref: '#/components/schemas/LinksDirect'
       required:
       - initiative
-      - jar
-      - parent
       - plan
       - published_by
       type: object
@@ -532,12 +538,12 @@ components:
       type: object
     PointCreate_data_attributes:
       properties:
-        initiative_id:
-          description: initiative id
-          type: string
         parent_id:
           description: parent id
           type: string
+        level:
+          description: level of point
+          type: integer
         title:
           description: title of point
           type: string
@@ -546,21 +552,17 @@ components:
           type: string
         local_cost:
           description: local cost
-          type: integer
+          format: double
+          type: number
         jar:
           $ref: '#/components/schemas/JarAttributes'
       required:
       - desc
-      - initiative_id
-      - jar
-      - local_cost
+      - level
       - title
       type: object
     PointCreate_data:
       properties:
-        id:
-          description: point id
-          type: string
         type:
           enum:
           - point_create
@@ -569,7 +571,6 @@ components:
           $ref: '#/components/schemas/PointCreate_data_attributes'
       required:
       - attributes
-      - id
       - type
       type: object
     PointUpdate_data_attributes:
@@ -606,35 +607,6 @@ components:
       required:
       - attributes
       - id
-      - type
-      type: object
-    Jar_data_relationships:
-      properties:
-        initiative:
-          $ref: '#/components/schemas/LinksDirect'
-        point:
-          $ref: '#/components/schemas/LinksDirect'
-      required:
-      - initiative
-      - point
-      type: object
-    Jar_data:
-      properties:
-        id:
-          description: point id
-          type: string
-        type:
-          enum:
-          - jar
-          type: string
-        attributes:
-          $ref: '#/components/schemas/JarAttributes'
-        relationships:
-          $ref: '#/components/schemas/Jar_data_relationships'
-      required:
-      - attributes
-      - id
-      - relationships
       - type
       type: object
     JarUpdate_data:
@@ -794,4 +766,14 @@ components:
       - attributes
       - id
       - type
+      type: object
+    JarData_relationships:
+      properties:
+        initiative:
+          $ref: '#/components/schemas/LinksDirect'
+        point:
+          $ref: '#/components/schemas/LinksDirect'
+      required:
+      - initiative
+      - point
       type: object

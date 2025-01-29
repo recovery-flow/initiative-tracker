@@ -1,0 +1,24 @@
+type: object
+required:
+  - id
+  - type
+  - attributes
+properties:
+  id:
+    type: string
+    description: "point id"
+  type:
+    type: string
+    enum: [ jar ]
+  attributes:
+    $ref: "./JarAttributes.yaml"
+  relationships:
+    type: object
+    required:
+      - initiative
+      - point
+    properties:
+      initiative:
+        $ref: "./LinksDirect.yaml"
+      point:
+        $ref: "./LinksDirect.yaml"

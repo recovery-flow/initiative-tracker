@@ -32,6 +32,10 @@ func Participant(participant models.Participant) resources.Participant {
 						Related: resources.BaseUserStorage + resources.UserStorageEndpoints.Base.Public + participant.UserID.String(),
 						Self:    resources.BaseUserStorage + resources.UserStorageEndpoints.Base.Private + participant.UserID.String(),
 					},
+					Data: &resources.LinksDirectData{
+						Id:   participant.UserID.String(),
+						Type: "user",
+					},
 				},
 			},
 		},

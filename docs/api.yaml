@@ -27,10 +27,6 @@ components:
       $ref: './spec/components/schemas/InitiativeCreate.yaml'
     InitiativeUpdate:
       $ref: './spec/components/schemas/InitiativeUpdate.yaml'
-    InitiativeTagAdd:
-      $ref: './spec/components/schemas/InitiativeTagAdd.yaml'
-    InitiativeTagData:
-      $ref: './spec/components/schemas/InitiativeTagData.yaml'
     Point:
       $ref: './spec/components/schemas/Point.yaml'
     PointCreate:

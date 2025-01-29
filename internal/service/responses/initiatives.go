@@ -35,6 +35,10 @@ func Initiative(ini models.Initiative) resources.Initiative {
 						Self:    resources.BaseChatStorage + resources.ChatEndpoints.Private + ini.ChatID.Hex(),
 						Related: resources.BaseChatStorage + resources.ChatEndpoints.Public + ini.ChatID.Hex(),
 					},
+					Data: &resources.LinksDirectData{
+						Id:   ini.ChatID.Hex(),
+						Type: "chat",
+					},
 				},
 				Likes: resources.LinksDirect{
 					Links: resources.LinksDirectLinks{

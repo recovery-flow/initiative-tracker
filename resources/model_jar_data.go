@@ -25,7 +25,7 @@ type JarData struct {
 	Id string `json:"id"`
 	Type string `json:"type"`
 	Attributes JarAttributes `json:"attributes"`
-	Relationships JarDataRelationships `json:"relationships"`
+	Relationships *JarDataRelationships `json:"relationships,omitempty"`
 }
 
 type _JarData JarData
@@ -34,12 +34,11 @@ type _JarData JarData
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewJarData(id string, type_ string, attributes JarAttributes, relationships JarDataRelationships) *JarData {
+func NewJarData(id string, type_ string, attributes JarAttributes) *JarData {
 	this := JarData{}
 	this.Id = id
 	this.Type = type_
 	this.Attributes = attributes
-	this.Relationships = relationships
 	return &this
 }
 
@@ -123,28 +122,36 @@ func (o *JarData) SetAttributes(v JarAttributes) {
 	o.Attributes = v
 }
 
-// GetRelationships returns the Relationships field value
+// GetRelationships returns the Relationships field value if set, zero value otherwise.
 func (o *JarData) GetRelationships() JarDataRelationships {
-	if o == nil {
+	if o == nil || IsNil(o.Relationships) {
 		var ret JarDataRelationships
 		return ret
 	}
-
-	return o.Relationships
+	return *o.Relationships
 }
 
-// GetRelationshipsOk returns a tuple with the Relationships field value
+// GetRelationshipsOk returns a tuple with the Relationships field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *JarData) GetRelationshipsOk() (*JarDataRelationships, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Relationships) {
 		return nil, false
 	}
-	return &o.Relationships, true
+	return o.Relationships, true
 }
 
-// SetRelationships sets field value
+// HasRelationships returns a boolean if a field has been set.
+func (o *JarData) HasRelationships() bool {
+	if o != nil && !IsNil(o.Relationships) {
+		return true
+	}
+
+	return false
+}
+
+// SetRelationships gets a reference to the given JarDataRelationships and assigns it to the Relationships field.
 func (o *JarData) SetRelationships(v JarDataRelationships) {
-	o.Relationships = v
+	o.Relationships = &v
 }
 
 func (o JarData) MarshalJSON() ([]byte, error) {
@@ -160,7 +167,9 @@ func (o JarData) ToMap() (map[string]interface{}, error) {
 	toSerialize["id"] = o.Id
 	toSerialize["type"] = o.Type
 	toSerialize["attributes"] = o.Attributes
-	toSerialize["relationships"] = o.Relationships
+	if !IsNil(o.Relationships) {
+		toSerialize["relationships"] = o.Relationships
+	}
 	return toSerialize, nil
 }
 
@@ -172,7 +181,6 @@ func (o *JarData) UnmarshalJSON(data []byte) (err error) {
 		"id",
 		"type",
 		"attributes",
-		"relationships",
 	}
 
 	allProperties := make(map[string]interface{})
