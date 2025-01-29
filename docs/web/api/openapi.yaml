@@ -480,11 +480,6 @@ components:
         status:
           description: status of initiative
           type: string
-      required:
-      - desc
-      - goal
-      - name
-      - status
       type: object
     InitiativeUpdate_data:
       properties:

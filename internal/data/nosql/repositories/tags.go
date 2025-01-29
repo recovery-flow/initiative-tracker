@@ -123,7 +123,7 @@ func (t *tags) Get(ctx context.Context) (*models.Tag, error) {
 
 	tagID, ok := t.filters["tags.tag_id"]
 	if !ok {
-		return nil, fmt.Errorf("participant user_id filter is missing (filters['tags.tag_id'])")
+		return nil, fmt.Errorf("participants user_id filter is missing (filters['tags.tag_id'])")
 	}
 
 	filter := bson.M{
@@ -232,7 +232,7 @@ func (t *tags) DeleteOne(ctx context.Context) error {
 		}
 	}
 	if len(subFilters) == 0 {
-		return fmt.Errorf("no participant filters found (keys like 'participant.*')")
+		return fmt.Errorf("no participants filters found (keys like 'participants.*')")
 	}
 
 	participantCondition := bson.M{"$and": subFilters}

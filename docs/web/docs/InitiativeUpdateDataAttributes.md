@@ -4,17 +4,17 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Name** | **string** | name of initiative | 
-**Desc** | **string** | description of initiative | 
-**Goal** | **string** | goal of initiative | 
+**Name** | Pointer to **string** | name of initiative | [optional] 
+**Desc** | Pointer to **string** | description of initiative | [optional] 
+**Goal** | Pointer to **string** | goal of initiative | [optional] 
 **Location** | Pointer to **string** | location of initiative | [optional] 
-**Status** | **string** | status of initiative | 
+**Status** | Pointer to **string** | status of initiative | [optional] 
 
 ## Methods
 
 ### NewInitiativeUpdateDataAttributes
 
-`func NewInitiativeUpdateDataAttributes(name string, desc string, goal string, status string, ) *InitiativeUpdateDataAttributes`
+`func NewInitiativeUpdateDataAttributes() *InitiativeUpdateDataAttributes`
 
 NewInitiativeUpdateDataAttributes instantiates a new InitiativeUpdateDataAttributes object
 This constructor will assign default values to properties that have it defined,
@@ -48,6 +48,11 @@ and a boolean to check if the value has been set.
 
 SetName sets Name field to given value.
 
+### HasName
+
+`func (o *InitiativeUpdateDataAttributes) HasName() bool`
+
+HasName returns a boolean if a field has been set.
 
 ### GetDesc
 
@@ -68,6 +73,11 @@ and a boolean to check if the value has been set.
 
 SetDesc sets Desc field to given value.
 
+### HasDesc
+
+`func (o *InitiativeUpdateDataAttributes) HasDesc() bool`
+
+HasDesc returns a boolean if a field has been set.
 
 ### GetGoal
 
@@ -88,6 +98,11 @@ and a boolean to check if the value has been set.
 
 SetGoal sets Goal field to given value.
 
+### HasGoal
+
+`func (o *InitiativeUpdateDataAttributes) HasGoal() bool`
+
+HasGoal returns a boolean if a field has been set.
 
 ### GetLocation
 
@@ -133,6 +148,11 @@ and a boolean to check if the value has been set.
 
 SetStatus sets Status field to given value.
 
+### HasStatus
+
+`func (o *InitiativeUpdateDataAttributes) HasStatus() bool`
+
+HasStatus returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

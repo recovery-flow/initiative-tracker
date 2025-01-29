@@ -17,11 +17,6 @@ properties:
         enum: [ initiative_update ]
       attributes:
         type: object
-        required:
-          - name
-          - desc
-          - goal
-          - status
         properties:
           name:
             type: string

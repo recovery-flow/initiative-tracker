@@ -45,7 +45,7 @@ func (a *DefaultAPIService) Test(ctx context.Context) ApiTestRequest {
 }
 
 // Execute executes the request
-//  @return Participant
+//  @return Participants
 func (a *DefaultAPIService) TestExecute(r ApiTestRequest) (*Participant, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost

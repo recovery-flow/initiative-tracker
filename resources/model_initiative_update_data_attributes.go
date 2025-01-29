@@ -12,8 +12,6 @@ package resources
 
 import (
 	"encoding/json"
-	"bytes"
-	"fmt"
 )
 
 // checks if the InitiativeUpdateDataAttributes type satisfies the MappedNullable interface at compile time
@@ -22,29 +20,23 @@ var _ MappedNullable = &InitiativeUpdateDataAttributes{}
 // InitiativeUpdateDataAttributes struct for InitiativeUpdateDataAttributes
 type InitiativeUpdateDataAttributes struct {
 	// name of initiative
-	Name string `json:"name"`
+	Name *string `json:"name,omitempty"`
 	// description of initiative
-	Desc string `json:"desc"`
+	Desc *string `json:"desc,omitempty"`
 	// goal of initiative
-	Goal string `json:"goal"`
+	Goal *string `json:"goal,omitempty"`
 	// location of initiative
 	Location *string `json:"location,omitempty"`
 	// status of initiative
-	Status string `json:"status"`
+	Status *string `json:"status,omitempty"`
 }
-
-type _InitiativeUpdateDataAttributes InitiativeUpdateDataAttributes
 
 // NewInitiativeUpdateDataAttributes instantiates a new InitiativeUpdateDataAttributes object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewInitiativeUpdateDataAttributes(name string, desc string, goal string, status string) *InitiativeUpdateDataAttributes {
+func NewInitiativeUpdateDataAttributes() *InitiativeUpdateDataAttributes {
 	this := InitiativeUpdateDataAttributes{}
-	this.Name = name
-	this.Desc = desc
-	this.Goal = goal
-	this.Status = status
 	return &this
 }
 
@@ -56,76 +48,100 @@ func NewInitiativeUpdateDataAttributesWithDefaults() *InitiativeUpdateDataAttrib
 	return &this
 }
 
-// GetName returns the Name field value
+// GetName returns the Name field value if set, zero value otherwise.
 func (o *InitiativeUpdateDataAttributes) GetName() string {
-	if o == nil {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
-
-	return o.Name
+	return *o.Name
 }
 
-// GetNameOk returns a tuple with the Name field value
+// GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *InitiativeUpdateDataAttributes) GetNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
-	return &o.Name, true
+	return o.Name, true
 }
 
-// SetName sets field value
+// HasName returns a boolean if a field has been set.
+func (o *InitiativeUpdateDataAttributes) HasName() bool {
+	if o != nil && !IsNil(o.Name) {
+		return true
+	}
+
+	return false
+}
+
+// SetName gets a reference to the given string and assigns it to the Name field.
 func (o *InitiativeUpdateDataAttributes) SetName(v string) {
-	o.Name = v
+	o.Name = &v
 }
 
-// GetDesc returns the Desc field value
+// GetDesc returns the Desc field value if set, zero value otherwise.
 func (o *InitiativeUpdateDataAttributes) GetDesc() string {
-	if o == nil {
+	if o == nil || IsNil(o.Desc) {
 		var ret string
 		return ret
 	}
-
-	return o.Desc
+	return *o.Desc
 }
 
-// GetDescOk returns a tuple with the Desc field value
+// GetDescOk returns a tuple with the Desc field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *InitiativeUpdateDataAttributes) GetDescOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Desc) {
 		return nil, false
 	}
-	return &o.Desc, true
+	return o.Desc, true
 }
 
-// SetDesc sets field value
+// HasDesc returns a boolean if a field has been set.
+func (o *InitiativeUpdateDataAttributes) HasDesc() bool {
+	if o != nil && !IsNil(o.Desc) {
+		return true
+	}
+
+	return false
+}
+
+// SetDesc gets a reference to the given string and assigns it to the Desc field.
 func (o *InitiativeUpdateDataAttributes) SetDesc(v string) {
-	o.Desc = v
+	o.Desc = &v
 }
 
-// GetGoal returns the Goal field value
+// GetGoal returns the Goal field value if set, zero value otherwise.
 func (o *InitiativeUpdateDataAttributes) GetGoal() string {
-	if o == nil {
+	if o == nil || IsNil(o.Goal) {
 		var ret string
 		return ret
 	}
-
-	return o.Goal
+	return *o.Goal
 }
 
-// GetGoalOk returns a tuple with the Goal field value
+// GetGoalOk returns a tuple with the Goal field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *InitiativeUpdateDataAttributes) GetGoalOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Goal) {
 		return nil, false
 	}
-	return &o.Goal, true
+	return o.Goal, true
 }
 
-// SetGoal sets field value
+// HasGoal returns a boolean if a field has been set.
+func (o *InitiativeUpdateDataAttributes) HasGoal() bool {
+	if o != nil && !IsNil(o.Goal) {
+		return true
+	}
+
+	return false
+}
+
+// SetGoal gets a reference to the given string and assigns it to the Goal field.
 func (o *InitiativeUpdateDataAttributes) SetGoal(v string) {
-	o.Goal = v
+	o.Goal = &v
 }
 
 // GetLocation returns the Location field value if set, zero value otherwise.
@@ -160,28 +176,36 @@ func (o *InitiativeUpdateDataAttributes) SetLocation(v string) {
 	o.Location = &v
 }
 
-// GetStatus returns the Status field value
+// GetStatus returns the Status field value if set, zero value otherwise.
 func (o *InitiativeUpdateDataAttributes) GetStatus() string {
-	if o == nil {
+	if o == nil || IsNil(o.Status) {
 		var ret string
 		return ret
 	}
-
-	return o.Status
+	return *o.Status
 }
 
-// GetStatusOk returns a tuple with the Status field value
+// GetStatusOk returns a tuple with the Status field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *InitiativeUpdateDataAttributes) GetStatusOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Status) {
 		return nil, false
 	}
-	return &o.Status, true
+	return o.Status, true
 }
 
-// SetStatus sets field value
+// HasStatus returns a boolean if a field has been set.
+func (o *InitiativeUpdateDataAttributes) HasStatus() bool {
+	if o != nil && !IsNil(o.Status) {
+		return true
+	}
+
+	return false
+}
+
+// SetStatus gets a reference to the given string and assigns it to the Status field.
 func (o *InitiativeUpdateDataAttributes) SetStatus(v string) {
-	o.Status = v
+	o.Status = &v
 }
 
 func (o InitiativeUpdateDataAttributes) MarshalJSON() ([]byte, error) {
@@ -194,54 +218,22 @@ func (o InitiativeUpdateDataAttributes) MarshalJSON() ([]byte, error) {
 
 func (o InitiativeUpdateDataAttributes) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["name"] = o.Name
-	toSerialize["desc"] = o.Desc
-	toSerialize["goal"] = o.Goal
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
+	}
+	if !IsNil(o.Desc) {
+		toSerialize["desc"] = o.Desc
+	}
+	if !IsNil(o.Goal) {
+		toSerialize["goal"] = o.Goal
+	}
 	if !IsNil(o.Location) {
 		toSerialize["location"] = o.Location
 	}
-	toSerialize["status"] = o.Status
+	if !IsNil(o.Status) {
+		toSerialize["status"] = o.Status
+	}
 	return toSerialize, nil
-}
-
-func (o *InitiativeUpdateDataAttributes) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"name",
-		"desc",
-		"goal",
-		"status",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err;
-	}
-
-	for _, requiredProperty := range(requiredProperties) {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varInitiativeUpdateDataAttributes := _InitiativeUpdateDataAttributes{}
-
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varInitiativeUpdateDataAttributes)
-
-	if err != nil {
-		return err
-	}
-
-	*o = InitiativeUpdateDataAttributes(varInitiativeUpdateDataAttributes)
-
-	return err
 }
 
 type NullableInitiativeUpdateDataAttributes struct {

@@ -34,7 +34,7 @@ func Run(ctx context.Context) {
 					r.Post("/", handlers.InitiativeCreate)
 
 					r.Route("/{initiative_id}", func(r chi.Router) {
-						r.Patch("/", nil)     //update
+						r.Put("/", handlers.InitiativeUpdate)
 						r.Patch("/tags", nil) //update
 
 						r.Route("/participant", func(r chi.Router) {
