@@ -12,6 +12,8 @@ package resources
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the LinksPagination type satisfies the MappedNullable interface at compile time
@@ -20,19 +22,24 @@ var _ MappedNullable = &LinksPagination{}
 // LinksPagination struct for LinksPagination
 type LinksPagination struct {
 	// Link to the previous page
-	Previous *string `json:"previous,omitempty"`
+	Previous string `json:"previous"`
 	// Link to the current page
-	Self *string `json:"self,omitempty"`
+	Self string `json:"self"`
 	// Link to the next page
-	Next *string `json:"next,omitempty"`
+	Next string `json:"next"`
 }
+
+type _LinksPagination LinksPagination
 
 // NewLinksPagination instantiates a new LinksPagination object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewLinksPagination() *LinksPagination {
+func NewLinksPagination(previous string, self string, next string) *LinksPagination {
 	this := LinksPagination{}
+	this.Previous = previous
+	this.Self = self
+	this.Next = next
 	return &this
 }
 
@@ -44,100 +51,76 @@ func NewLinksPaginationWithDefaults() *LinksPagination {
 	return &this
 }
 
-// GetPrevious returns the Previous field value if set, zero value otherwise.
+// GetPrevious returns the Previous field value
 func (o *LinksPagination) GetPrevious() string {
-	if o == nil || IsNil(o.Previous) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.Previous
+
+	return o.Previous
 }
 
-// GetPreviousOk returns a tuple with the Previous field value if set, nil otherwise
+// GetPreviousOk returns a tuple with the Previous field value
 // and a boolean to check if the value has been set.
 func (o *LinksPagination) GetPreviousOk() (*string, bool) {
-	if o == nil || IsNil(o.Previous) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Previous, true
+	return &o.Previous, true
 }
 
-// HasPrevious returns a boolean if a field has been set.
-func (o *LinksPagination) HasPrevious() bool {
-	if o != nil && !IsNil(o.Previous) {
-		return true
-	}
-
-	return false
-}
-
-// SetPrevious gets a reference to the given string and assigns it to the Previous field.
+// SetPrevious sets field value
 func (o *LinksPagination) SetPrevious(v string) {
-	o.Previous = &v
+	o.Previous = v
 }
 
-// GetSelf returns the Self field value if set, zero value otherwise.
+// GetSelf returns the Self field value
 func (o *LinksPagination) GetSelf() string {
-	if o == nil || IsNil(o.Self) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.Self
+
+	return o.Self
 }
 
-// GetSelfOk returns a tuple with the Self field value if set, nil otherwise
+// GetSelfOk returns a tuple with the Self field value
 // and a boolean to check if the value has been set.
 func (o *LinksPagination) GetSelfOk() (*string, bool) {
-	if o == nil || IsNil(o.Self) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Self, true
+	return &o.Self, true
 }
 
-// HasSelf returns a boolean if a field has been set.
-func (o *LinksPagination) HasSelf() bool {
-	if o != nil && !IsNil(o.Self) {
-		return true
-	}
-
-	return false
-}
-
-// SetSelf gets a reference to the given string and assigns it to the Self field.
+// SetSelf sets field value
 func (o *LinksPagination) SetSelf(v string) {
-	o.Self = &v
+	o.Self = v
 }
 
-// GetNext returns the Next field value if set, zero value otherwise.
+// GetNext returns the Next field value
 func (o *LinksPagination) GetNext() string {
-	if o == nil || IsNil(o.Next) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.Next
+
+	return o.Next
 }
 
-// GetNextOk returns a tuple with the Next field value if set, nil otherwise
+// GetNextOk returns a tuple with the Next field value
 // and a boolean to check if the value has been set.
 func (o *LinksPagination) GetNextOk() (*string, bool) {
-	if o == nil || IsNil(o.Next) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Next, true
+	return &o.Next, true
 }
 
-// HasNext returns a boolean if a field has been set.
-func (o *LinksPagination) HasNext() bool {
-	if o != nil && !IsNil(o.Next) {
-		return true
-	}
-
-	return false
-}
-
-// SetNext gets a reference to the given string and assigns it to the Next field.
+// SetNext sets field value
 func (o *LinksPagination) SetNext(v string) {
-	o.Next = &v
+	o.Next = v
 }
 
 func (o LinksPagination) MarshalJSON() ([]byte, error) {
@@ -150,16 +133,49 @@ func (o LinksPagination) MarshalJSON() ([]byte, error) {
 
 func (o LinksPagination) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Previous) {
-		toSerialize["previous"] = o.Previous
-	}
-	if !IsNil(o.Self) {
-		toSerialize["self"] = o.Self
-	}
-	if !IsNil(o.Next) {
-		toSerialize["next"] = o.Next
-	}
+	toSerialize["previous"] = o.Previous
+	toSerialize["self"] = o.Self
+	toSerialize["next"] = o.Next
 	return toSerialize, nil
+}
+
+func (o *LinksPagination) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"previous",
+		"self",
+		"next",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varLinksPagination := _LinksPagination{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varLinksPagination)
+
+	if err != nil {
+		return err
+	}
+
+	*o = LinksPagination(varLinksPagination)
+
+	return err
 }
 
 type NullableLinksPagination struct {

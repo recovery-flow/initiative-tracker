@@ -10,7 +10,7 @@ Method | HTTP request | Description
 
 ## Test
 
-> Participant Test(ctx).Execute()
+> Test(ctx).Execute()
 
 Test
 
@@ -30,13 +30,11 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.DefaultAPI.Test(context.Background()).Execute()
+	r, err := apiClient.DefaultAPI.Test(context.Background()).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `DefaultAPI.Test``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `Test`: Participant
-	fmt.Fprintf(os.Stdout, "Response from `DefaultAPI.Test`: %v\n", resp)
 }
 ```
 
@@ -51,7 +49,7 @@ Other parameters are passed through a pointer to a apiTestRequest struct via the
 
 ### Return type
 
-[**Participant**](Participant.md)
+ (empty response body)
 
 ### Authorization
 
@@ -60,7 +58,7 @@ No authorization required
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: Not defined
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)

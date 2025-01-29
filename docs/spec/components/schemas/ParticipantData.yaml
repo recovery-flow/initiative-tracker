@@ -63,11 +63,4 @@ properties:
       - user
     properties:
       user:
-        type: object
-        required:
-          - links
-        properties:
-          links:
-            type: string
-            description: "Link to user"
-            example: "https://api.example.com/v1/users/1"
+        $ref: "./LinksDirect.yaml"

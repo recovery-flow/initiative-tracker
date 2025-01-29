@@ -32,6 +32,15 @@ var ReactionsEndpoints = struct {
 	},
 }
 
+var UserStorageEndpoints = struct {
+	Base Endpoint
+}{
+	Base: Endpoint{
+		Public:  "/public/users/",
+		Private: "/private/users/",
+	},
+}
+
 var InitiativeEndpoints = struct {
 	Base         Endpoint
 	Participants Endpoint

@@ -21,7 +21,7 @@ var _ MappedNullable = &PointDataRelationships{}
 
 // PointDataRelationships struct for PointDataRelationships
 type PointDataRelationships struct {
-	Parent *LinksDirect `json:"parent,omitempty"`
+	Parent LinksDirect `json:"parent"`
 	PublishedBy LinksDirect `json:"published_by"`
 	Initiative LinksDirect `json:"initiative"`
 	Plan LinksDirect `json:"plan"`
@@ -33,8 +33,9 @@ type _PointDataRelationships PointDataRelationships
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewPointDataRelationships(publishedBy LinksDirect, initiative LinksDirect, plan LinksDirect) *PointDataRelationships {
+func NewPointDataRelationships(parent LinksDirect, publishedBy LinksDirect, initiative LinksDirect, plan LinksDirect) *PointDataRelationships {
 	this := PointDataRelationships{}
+	this.Parent = parent
 	this.PublishedBy = publishedBy
 	this.Initiative = initiative
 	this.Plan = plan
@@ -49,36 +50,28 @@ func NewPointDataRelationshipsWithDefaults() *PointDataRelationships {
 	return &this
 }
 
-// GetParent returns the Parent field value if set, zero value otherwise.
+// GetParent returns the Parent field value
 func (o *PointDataRelationships) GetParent() LinksDirect {
-	if o == nil || IsNil(o.Parent) {
+	if o == nil {
 		var ret LinksDirect
 		return ret
 	}
-	return *o.Parent
+
+	return o.Parent
 }
 
-// GetParentOk returns a tuple with the Parent field value if set, nil otherwise
+// GetParentOk returns a tuple with the Parent field value
 // and a boolean to check if the value has been set.
 func (o *PointDataRelationships) GetParentOk() (*LinksDirect, bool) {
-	if o == nil || IsNil(o.Parent) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Parent, true
+	return &o.Parent, true
 }
 
-// HasParent returns a boolean if a field has been set.
-func (o *PointDataRelationships) HasParent() bool {
-	if o != nil && !IsNil(o.Parent) {
-		return true
-	}
-
-	return false
-}
-
-// SetParent gets a reference to the given LinksDirect and assigns it to the Parent field.
+// SetParent sets field value
 func (o *PointDataRelationships) SetParent(v LinksDirect) {
-	o.Parent = &v
+	o.Parent = v
 }
 
 // GetPublishedBy returns the PublishedBy field value
@@ -163,9 +156,7 @@ func (o PointDataRelationships) MarshalJSON() ([]byte, error) {
 
 func (o PointDataRelationships) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Parent) {
-		toSerialize["parent"] = o.Parent
-	}
+	toSerialize["parent"] = o.Parent
 	toSerialize["published_by"] = o.PublishedBy
 	toSerialize["initiative"] = o.Initiative
 	toSerialize["plan"] = o.Plan
@@ -177,6 +168,7 @@ func (o *PointDataRelationships) UnmarshalJSON(data []byte) (err error) {
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
+		"parent",
 		"published_by",
 		"initiative",
 		"plan",

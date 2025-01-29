@@ -5,6 +5,10 @@ const (
 	InitiativeCreateType = "initiative_create"
 	InitiativeUpdateType = "initiative_update"
 
+	ParticipantType       = "participant"
+	ParticipantCreateType = "participant_create"
+	ParticipantUpdateType = "participant_update"
+
 	TagAddType    = "tag_add"
 	TagRemoveType = "tag_remove"
 

@@ -11,10 +11,6 @@ paths:
       operationId: test
       responses:
         "201":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Participant'
           description: Ok
       summary: Test
 components:
@@ -37,6 +33,10 @@ components:
         next:
           description: Link to the next page
           type: string
+      required:
+      - next
+      - previous
+      - self
       type: object
     Owner:
       properties:
@@ -151,27 +151,9 @@ components:
       - data
       type: object
     Participant:
-      example:
-        data:
-          relationships:
-            user:
-              links: https://api.example.com/v1/users/1
-          attributes:
-            role: role
-            updated_at: 2021-01-01T00:00:00Z
-            verified: verified
-            second_name: second_name
-            created_at: 2021-01-01T00:00:00Z
-            third_name: third_name
-            position: position
-            display_name: display_name
-            first_name: first_name
-            desc: desc
-          id: id
-          type: participant
       properties:
         data:
-          $ref: '#/components/schemas/Participant_data'
+          $ref: '#/components/schemas/ParticipantData'
       required:
       - data
       type: object
@@ -185,9 +167,9 @@ components:
           - participant
           type: string
         attributes:
-          $ref: '#/components/schemas/Participant_data_attributes'
+          $ref: '#/components/schemas/ParticipantData_attributes'
         relationships:
-          $ref: '#/components/schemas/Participant_data_relationships'
+          $ref: '#/components/schemas/ParticipantData_relationships'
       required:
       - attributes
       - id
@@ -526,6 +508,7 @@ components:
       required:
       - initiative
       - jar
+      - parent
       - plan
       - published_by
       type: object
@@ -671,18 +654,7 @@ components:
       - id
       - type
       type: object
-    Participant_data_attributes:
-      example:
-        role: role
-        updated_at: 2021-01-01T00:00:00Z
-        verified: verified
-        second_name: second_name
-        created_at: 2021-01-01T00:00:00Z
-        third_name: third_name
-        position: position
-        display_name: display_name
-        first_name: first_name
-        desc: desc
+    ParticipantData_attributes:
       properties:
         first_name:
           description: first name of participant
@@ -728,62 +700,12 @@ components:
       - second_name
       - verified
       type: object
-    Participant_data_relationships_user:
-      example:
-        links: https://api.example.com/v1/users/1
-      properties:
-        links:
-          description: Link to user
-          example: https://api.example.com/v1/users/1
-          type: string
-      required:
-      - links
-      type: object
-    Participant_data_relationships:
-      example:
-        user:
-          links: https://api.example.com/v1/users/1
+    ParticipantData_relationships:
       properties:
         user:
-          $ref: '#/components/schemas/Participant_data_relationships_user'
+          $ref: '#/components/schemas/LinksDirect'
       required:
       - user
-      type: object
-    Participant_data:
-      example:
-        relationships:
-          user:
-            links: https://api.example.com/v1/users/1
-        attributes:
-          role: role
-          updated_at: 2021-01-01T00:00:00Z
-          verified: verified
-          second_name: second_name
-          created_at: 2021-01-01T00:00:00Z
-          third_name: third_name
-          position: position
-          display_name: display_name
-          first_name: first_name
-          desc: desc
-        id: id
-        type: participant
-      properties:
-        id:
-          description: user id
-          type: string
-        type:
-          enum:
-          - participant
-          type: string
-        attributes:
-          $ref: '#/components/schemas/Participant_data_attributes'
-        relationships:
-          $ref: '#/components/schemas/Participant_data_relationships'
-      required:
-      - attributes
-      - id
-      - relationships
-      - type
       type: object
     ParticipantCreate_data_attributes:
       properties:

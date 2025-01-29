@@ -21,7 +21,7 @@ var _ MappedNullable = &ParticipantDataRelationships{}
 
 // ParticipantDataRelationships struct for ParticipantDataRelationships
 type ParticipantDataRelationships struct {
-	User ParticipantDataRelationshipsUser `json:"user"`
+	User LinksDirect `json:"user"`
 }
 
 type _ParticipantDataRelationships ParticipantDataRelationships
@@ -30,7 +30,7 @@ type _ParticipantDataRelationships ParticipantDataRelationships
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewParticipantDataRelationships(user ParticipantDataRelationshipsUser) *ParticipantDataRelationships {
+func NewParticipantDataRelationships(user LinksDirect) *ParticipantDataRelationships {
 	this := ParticipantDataRelationships{}
 	this.User = user
 	return &this
@@ -45,9 +45,9 @@ func NewParticipantDataRelationshipsWithDefaults() *ParticipantDataRelationships
 }
 
 // GetUser returns the User field value
-func (o *ParticipantDataRelationships) GetUser() ParticipantDataRelationshipsUser {
+func (o *ParticipantDataRelationships) GetUser() LinksDirect {
 	if o == nil {
-		var ret ParticipantDataRelationshipsUser
+		var ret LinksDirect
 		return ret
 	}
 
@@ -56,7 +56,7 @@ func (o *ParticipantDataRelationships) GetUser() ParticipantDataRelationshipsUse
 
 // GetUserOk returns a tuple with the User field value
 // and a boolean to check if the value has been set.
-func (o *ParticipantDataRelationships) GetUserOk() (*ParticipantDataRelationshipsUser, bool) {
+func (o *ParticipantDataRelationships) GetUserOk() (*LinksDirect, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -64,7 +64,7 @@ func (o *ParticipantDataRelationships) GetUserOk() (*ParticipantDataRelationship
 }
 
 // SetUser sets field value
-func (o *ParticipantDataRelationships) SetUser(v ParticipantDataRelationshipsUser) {
+func (o *ParticipantDataRelationships) SetUser(v LinksDirect) {
 	o.User = v
 }
 

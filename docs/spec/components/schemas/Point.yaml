@@ -25,6 +25,7 @@ properties:
           - initiative
           - plan
           - jar
+          - parent
         properties:
           parent:
             $ref: "./LinksDirect.yaml"

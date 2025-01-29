@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Parent** | Pointer to [**LinksDirect**](LinksDirect.md) |  | [optional] 
+**Parent** | [**LinksDirect**](LinksDirect.md) |  | 
 **PublishedBy** | [**LinksDirect**](LinksDirect.md) |  | 
 **Initiative** | [**LinksDirect**](LinksDirect.md) |  | 
 **Plan** | [**LinksDirect**](LinksDirect.md) |  | 
@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 
 ### NewPointDataRelationships
 
-`func NewPointDataRelationships(publishedBy LinksDirect, initiative LinksDirect, plan LinksDirect, ) *PointDataRelationships`
+`func NewPointDataRelationships(parent LinksDirect, publishedBy LinksDirect, initiative LinksDirect, plan LinksDirect, ) *PointDataRelationships`
 
 NewPointDataRelationships instantiates a new PointDataRelationships object
 This constructor will assign default values to properties that have it defined,
@@ -47,11 +47,6 @@ and a boolean to check if the value has been set.
 
 SetParent sets Parent field to given value.
 
-### HasParent
-
-`func (o *PointDataRelationships) HasParent() bool`
-
-HasParent returns a boolean if a field has been set.
 
 ### GetPublishedBy
 
