@@ -10,13 +10,12 @@ properties:
     properties:
       id:
         type: string
-        description: "user Id"
+        description: "participant id"
       type:
         type: string
         enum: [ participant_update ]
       attributes:
         type: object
-        required:
         properties:
           first_name:
             type: string

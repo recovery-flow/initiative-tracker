@@ -22,6 +22,8 @@ var _ MappedNullable = &ParticipantDataAttributes{}
 
 // ParticipantDataAttributes struct for ParticipantDataAttributes
 type ParticipantDataAttributes struct {
+	// user id
+	UserId string `json:"user_id"`
 	// first name of participant
 	FirstName string `json:"first_name"`
 	// second name of participant
@@ -50,8 +52,9 @@ type _ParticipantDataAttributes ParticipantDataAttributes
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewParticipantDataAttributes(firstName string, secondName string, displayName string, position string, verified bool, role string, createdAt time.Time) *ParticipantDataAttributes {
+func NewParticipantDataAttributes(userId string, firstName string, secondName string, displayName string, position string, verified bool, role string, createdAt time.Time) *ParticipantDataAttributes {
 	this := ParticipantDataAttributes{}
+	this.UserId = userId
 	this.FirstName = firstName
 	this.SecondName = secondName
 	this.DisplayName = displayName
@@ -68,6 +71,30 @@ func NewParticipantDataAttributes(firstName string, secondName string, displayNa
 func NewParticipantDataAttributesWithDefaults() *ParticipantDataAttributes {
 	this := ParticipantDataAttributes{}
 	return &this
+}
+
+// GetUserId returns the UserId field value
+func (o *ParticipantDataAttributes) GetUserId() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.UserId
+}
+
+// GetUserIdOk returns a tuple with the UserId field value
+// and a boolean to check if the value has been set.
+func (o *ParticipantDataAttributes) GetUserIdOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.UserId, true
+}
+
+// SetUserId sets field value
+func (o *ParticipantDataAttributes) SetUserId(v string) {
+	o.UserId = v
 }
 
 // GetFirstName returns the FirstName field value
@@ -344,6 +371,7 @@ func (o ParticipantDataAttributes) MarshalJSON() ([]byte, error) {
 
 func (o ParticipantDataAttributes) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	toSerialize["user_id"] = o.UserId
 	toSerialize["first_name"] = o.FirstName
 	toSerialize["second_name"] = o.SecondName
 	if !IsNil(o.ThirdName) {
@@ -368,6 +396,7 @@ func (o *ParticipantDataAttributes) UnmarshalJSON(data []byte) (err error) {
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
+		"user_id",
 		"first_name",
 		"second_name",
 		"display_name",

@@ -41,7 +41,7 @@ func Run(ctx context.Context) {
 							r.Post("/", handlers.ParticipantCreate)
 
 							r.Route("/{user_id}", func(r chi.Router) {
-								r.Patch("/", nil)
+								r.Patch("/", handlers.ParticipantUpdate)
 							})
 						})
 

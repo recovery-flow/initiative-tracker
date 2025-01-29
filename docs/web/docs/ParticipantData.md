@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **string** | user id | 
+**Id** | **string** | participant id | 
 **Type** | **string** |  | 
 **Attributes** | [**ParticipantDataAttributes**](ParticipantDataAttributes.md) |  | 
 **Relationships** | [**ParticipantDataRelationships**](ParticipantDataRelationships.md) |  | 

@@ -166,6 +166,7 @@ func (p *participants) UpdateOne(ctx context.Context, fields map[string]any) (*m
 		"second_name":  true,
 		"third_name":   true,
 		"display_name": true,
+		"desc":         true,
 		"verified":     true,
 		"role":         true,
 		"position":     true,

@@ -159,7 +159,7 @@ components:
     ParticipantData:
       properties:
         id:
-          description: user id
+          description: participant id
           type: string
         type:
           enum:
@@ -655,6 +655,9 @@ components:
       type: object
     ParticipantData_attributes:
       properties:
+        user_id:
+          description: user id
+          type: string
         first_name:
           description: first name of participant
           type: string
@@ -696,6 +699,7 @@ components:
       - position
       - role
       - second_name
+      - user_id
       - verified
       type: object
     ParticipantData_relationships:
@@ -707,6 +711,9 @@ components:
       type: object
     ParticipantCreate_data_attributes:
       properties:
+        user_id:
+          description: user id
+          type: string
         first_name:
           description: first name of participant
           type: string
@@ -734,12 +741,10 @@ components:
       - position
       - role
       - second_name
+      - user_id
       type: object
     ParticipantCreate_data:
       properties:
-        id:
-          description: user ID
-          type: string
         type:
           enum:
           - participant_create
@@ -748,7 +753,6 @@ components:
           $ref: '#/components/schemas/ParticipantCreate_data_attributes'
       required:
       - attributes
-      - id
       - type
       type: object
     ParticipantUpdate_data_attributes:
@@ -778,7 +782,7 @@ components:
     ParticipantUpdate_data:
       properties:
         id:
-          description: user Id
+          description: participant id
           type: string
         type:
           enum:

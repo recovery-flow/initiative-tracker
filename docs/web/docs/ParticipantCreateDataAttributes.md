@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**UserId** | **string** | user id | 
 **FirstName** | **string** | first name of participant | 
 **SecondName** | **string** | second name of participant | 
 **ThirdName** | Pointer to **string** | third name of participant | [optional] 
@@ -16,7 +17,7 @@ Name | Type | Description | Notes
 
 ### NewParticipantCreateDataAttributes
 
-`func NewParticipantCreateDataAttributes(firstName string, secondName string, displayName string, position string, role string, ) *ParticipantCreateDataAttributes`
+`func NewParticipantCreateDataAttributes(userId string, firstName string, secondName string, displayName string, position string, role string, ) *ParticipantCreateDataAttributes`
 
 NewParticipantCreateDataAttributes instantiates a new ParticipantCreateDataAttributes object
 This constructor will assign default values to properties that have it defined,
@@ -30,6 +31,26 @@ will change when the set of required properties is changed
 NewParticipantCreateDataAttributesWithDefaults instantiates a new ParticipantCreateDataAttributes object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetUserId
+
+`func (o *ParticipantCreateDataAttributes) GetUserId() string`
+
+GetUserId returns the UserId field if non-nil, zero value otherwise.
+
+### GetUserIdOk
+
+`func (o *ParticipantCreateDataAttributes) GetUserIdOk() (*string, bool)`
+
+GetUserIdOk returns a tuple with the UserId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUserId
+
+`func (o *ParticipantCreateDataAttributes) SetUserId(v string)`
+
+SetUserId sets UserId field to given value.
+
 
 ### GetFirstName
 

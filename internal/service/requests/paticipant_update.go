@@ -9,14 +9,15 @@ import (
 	"github.com/recovery-flow/initiative-tracker/resources"
 )
 
-func ParticipantCreate(r *http.Request) (req *resources.ParticipantCreate, err error) {
+func ParticipantUpdate(r *http.Request) (req *resources.ParticipantUpdate, err error) {
 	if err = json.NewDecoder(r.Body).Decode(&req); err != nil {
 		err = jsonkit.NewDecodeError("body", err)
 		return
 	}
 
 	errs := validation.Errors{
-		"data/type":       validation.Validate(req.Data.Type, validation.Required, validation.In(resources.ParticipantCreateType)),
+		"data/id":         validation.Validate(req.Data.Id, validation.Required),
+		"data/type":       validation.Validate(req.Data.Type, validation.Required, validation.In(resources.ParticipantUpdateType)),
 		"data/attributes": validation.Validate(req.Data.Attributes, validation.Required),
 	}
 	return req, errs.Filter()

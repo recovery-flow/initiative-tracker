@@ -12,9 +12,10 @@ func Participant(participant models.Participant) resources.Participant {
 	}
 	return resources.Participant{
 		Data: resources.ParticipantData{
-			Id:   participant.UserID.String(),
+			Id:   participant.ID.String(),
 			Type: resources.ParticipantType,
 			Attributes: resources.ParticipantDataAttributes{
+				UserId:      participant.UserID.String(),
 				FirstName:   participant.FirstName,
 				SecondName:  participant.SecondName,
 				ThirdName:   participant.ThirdName,

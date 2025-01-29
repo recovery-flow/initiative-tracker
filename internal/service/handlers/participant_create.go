@@ -36,7 +36,7 @@ func ParticipantCreate(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	participantId, err := uuid.Parse(req.Data.Id)
+	participantId, err := uuid.Parse(req.Data.Attributes.UserId)
 	if err != nil {
 		log.WithError(err).Error("Failed to parse participant id")
 		httpkit.RenderErr(w, problems.BadRequest(err)...)

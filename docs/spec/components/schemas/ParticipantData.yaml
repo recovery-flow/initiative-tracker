@@ -7,13 +7,14 @@ required:
 properties:
   id:
     type: string
-    description: "user id"
+    description: "participant id"
   type:
     type: string
     enum: [ participant ]
   attributes:
     type: object
     required:
+      - user_id
       - first_name
       - second_name
       - display_name
@@ -22,6 +23,9 @@ properties:
       - role
       - created_at
     properties:
+      user_id:
+        type: string
+        description: "user id"
       first_name:
         type: string
         description: "first name of participant"
