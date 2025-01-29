@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **ThirdName** | Pointer to **string** | third name of participant | [optional] 
 **DisplayName** | **string** | name of participant | 
 **Position** | **string** | position in the company | 
-**Verified** | **string** | verified status | 
+**Verified** | **bool** | verified status | 
 **Desc** | **string** | description of participant | 
 **Role** | **string** | User role | 
 **UpdatedAt** | Pointer to **time.Time** | User updated at | [optional] 
@@ -19,7 +19,7 @@ Name | Type | Description | Notes
 
 ### NewParticipantDataAttributes
 
-`func NewParticipantDataAttributes(firstName string, secondName string, displayName string, position string, verified string, desc string, role string, createdAt time.Time, ) *ParticipantDataAttributes`
+`func NewParticipantDataAttributes(firstName string, secondName string, displayName string, position string, verified bool, desc string, role string, createdAt time.Time, ) *ParticipantDataAttributes`
 
 NewParticipantDataAttributes instantiates a new ParticipantDataAttributes object
 This constructor will assign default values to properties that have it defined,
@@ -141,20 +141,20 @@ SetPosition sets Position field to given value.
 
 ### GetVerified
 
-`func (o *ParticipantDataAttributes) GetVerified() string`
+`func (o *ParticipantDataAttributes) GetVerified() bool`
 
 GetVerified returns the Verified field if non-nil, zero value otherwise.
 
 ### GetVerifiedOk
 
-`func (o *ParticipantDataAttributes) GetVerifiedOk() (*string, bool)`
+`func (o *ParticipantDataAttributes) GetVerifiedOk() (*bool, bool)`
 
 GetVerifiedOk returns a tuple with the Verified field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetVerified
 
-`func (o *ParticipantDataAttributes) SetVerified(v string)`
+`func (o *ParticipantDataAttributes) SetVerified(v bool)`
 
 SetVerified sets Verified field to given value.
 

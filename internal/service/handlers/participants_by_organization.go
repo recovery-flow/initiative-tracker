@@ -73,13 +73,6 @@ func ParticipantsByOrganization(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	//totalUsers, err := server.MongoDB.Initiative.New().Filter(filters).Count(r.Context())
-	//if err != nil {
-	//	log.WithError(err).Errorf("Failed to count participants")
-	//	httpkit.RenderErr(w, problems.InternalError())
-	//	return
-	//}
-
 	baseURL := "private/organization/" + iniID.Hex() + "/participant"
 
 	log.Infof("Participants: %v", participants)

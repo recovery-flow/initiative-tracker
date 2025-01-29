@@ -33,7 +33,7 @@ type ParticipantDataAttributes struct {
 	// position in the company
 	Position string `json:"position"`
 	// verified status
-	Verified string `json:"verified"`
+	Verified bool `json:"verified"`
 	// description of participant
 	Desc string `json:"desc"`
 	// User role
@@ -50,7 +50,7 @@ type _ParticipantDataAttributes ParticipantDataAttributes
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewParticipantDataAttributes(firstName string, secondName string, displayName string, position string, verified string, desc string, role string, createdAt time.Time) *ParticipantDataAttributes {
+func NewParticipantDataAttributes(firstName string, secondName string, displayName string, position string, verified bool, desc string, role string, createdAt time.Time) *ParticipantDataAttributes {
 	this := ParticipantDataAttributes{}
 	this.FirstName = firstName
 	this.SecondName = secondName
@@ -200,9 +200,9 @@ func (o *ParticipantDataAttributes) SetPosition(v string) {
 }
 
 // GetVerified returns the Verified field value
-func (o *ParticipantDataAttributes) GetVerified() string {
+func (o *ParticipantDataAttributes) GetVerified() bool {
 	if o == nil {
-		var ret string
+		var ret bool
 		return ret
 	}
 
@@ -211,7 +211,7 @@ func (o *ParticipantDataAttributes) GetVerified() string {
 
 // GetVerifiedOk returns a tuple with the Verified field value
 // and a boolean to check if the value has been set.
-func (o *ParticipantDataAttributes) GetVerifiedOk() (*string, bool) {
+func (o *ParticipantDataAttributes) GetVerifiedOk() (*bool, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -219,7 +219,7 @@ func (o *ParticipantDataAttributes) GetVerifiedOk() (*string, bool) {
 }
 
 // SetVerified sets field value
-func (o *ParticipantDataAttributes) SetVerified(v string) {
+func (o *ParticipantDataAttributes) SetVerified(v bool) {
 	o.Verified = v
 }
 

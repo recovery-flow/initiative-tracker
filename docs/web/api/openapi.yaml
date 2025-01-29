@@ -673,7 +673,7 @@ components:
           type: string
         verified:
           description: verified status
-          type: string
+          type: boolean
         desc:
           description: description of participant
           type: string

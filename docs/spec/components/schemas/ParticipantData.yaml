@@ -39,7 +39,7 @@ properties:
         type: string
         description: "position in the company"
       verified:
-        type: string
+        type: boolean
         description: "verified status"
       desc:
         type: string

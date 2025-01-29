@@ -9,6 +9,7 @@ import (
 	"github.com/google/uuid"
 	"github.com/pkg/errors"
 	"github.com/recovery-flow/initiative-tracker/internal/data/nosql/models"
+	"go.mongodb.org/mongo-driver/bson/primitive"
 
 	"github.com/sirupsen/logrus"
 	"go.mongodb.org/mongo-driver/bson"
@@ -44,7 +45,7 @@ func (p *participants) Create(ctx context.Context, participant models.Participan
 		return nil, fmt.Errorf("no filters set for participants creation")
 	}
 
-	participant.CreatedAt = time.Now().UTC()
+	participant.CreatedAt = primitive.NewDateTimeFromTime(time.Now().UTC())
 
 	logrus.Infof("Creating participants: %v", participant)
 

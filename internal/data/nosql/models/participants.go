@@ -1,10 +1,9 @@
 package models
 
 import (
-	"time"
-
 	"github.com/google/uuid"
 	"github.com/recovery-flow/roles"
+	"go.mongodb.org/mongo-driver/bson/primitive"
 )
 
 type Participant struct {
@@ -18,6 +17,6 @@ type Participant struct {
 	Verified    bool           `bson:"verified" json:"verified"`
 	Role        roles.TeamRole `bson:"role" json:"role"`
 
-	CreatedAt time.Time  `bson:"created_at" json:"created_at"`
-	UpdatedAt *time.Time `bson:"updated_at,omitempty" json:"updated_at,omitempty"`
+	CreatedAt primitive.DateTime  `bson:"created_at" json:"created_at"`
+	UpdatedAt *primitive.DateTime `bson:"updated_at,omitempty" json:"updated_at,omitempty"`
 }

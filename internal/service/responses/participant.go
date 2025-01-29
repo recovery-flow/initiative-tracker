@@ -6,9 +6,9 @@ import (
 )
 
 func Participant(participant models.Participant) resources.Participant {
-	ver := "false"
+	ver := false
 	if participant.Verified {
-		ver = "true"
+		ver = true
 	}
 	return resources.Participant{
 		Data: resources.ParticipantData{
@@ -23,7 +23,7 @@ func Participant(participant models.Participant) resources.Participant {
 				Verified:    ver,
 				Desc:        participant.Desc,
 				Role:        string(participant.Role),
-				CreatedAt:   participant.CreatedAt,
+				CreatedAt:   participant.CreatedAt.Time().UTC(),
 			},
 			Relationships: resources.ParticipantDataRelationships{
 				User: resources.LinksDirect{

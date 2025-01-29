@@ -66,8 +66,8 @@ func Run(ctx context.Context) {
 
 						r.Route("/participant", func(r chi.Router) {
 							r.Get("/", handlers.ParticipantsByOrganization)
-							
-							r.Get("/{user_id}", nil)
+
+							r.Get("/{user_id}", handlers.ParticipantByOrganization)
 						})
 
 						r.Route("/plan", func(r chi.Router) {

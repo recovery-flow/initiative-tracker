@@ -54,6 +54,7 @@ func InitiativeCreate(w http.ResponseWriter, r *http.Request) {
 		Desc:        owner.Desc,
 		Verified:    false,
 		Role:        roles.RoleTeamOwner,
+		CreatedAt:   primitive.NewDateTimeFromTime(time.Now().UTC()),
 	}
 
 	initiative := models.Initiative{
@@ -71,7 +72,7 @@ func InitiativeCreate(w http.ResponseWriter, r *http.Request) {
 		Reposts: 0,
 		Reports: 0,
 
-		CreatedAt: primitive.NewDateTimeFromTime(time.Now()),
+		CreatedAt: primitive.NewDateTimeFromTime(time.Now().UTC()),
 	}
 
 	if req.Data.Attributes.Location != nil {
