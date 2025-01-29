@@ -4,7 +4,6 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**OrgId** | **string** | Organization id | 
 **FirstName** | Pointer to **string** | first name of participant | [optional] 
 **SecondName** | Pointer to **string** | second name of participant | [optional] 
 **ThirdName** | Pointer to **string** | third name of participant | [optional] 
@@ -17,7 +16,7 @@ Name | Type | Description | Notes
 
 ### NewParticipantUpdateDataAttributes
 
-`func NewParticipantUpdateDataAttributes(orgId string, ) *ParticipantUpdateDataAttributes`
+`func NewParticipantUpdateDataAttributes() *ParticipantUpdateDataAttributes`
 
 NewParticipantUpdateDataAttributes instantiates a new ParticipantUpdateDataAttributes object
 This constructor will assign default values to properties that have it defined,
@@ -31,26 +30,6 @@ will change when the set of required properties is changed
 NewParticipantUpdateDataAttributesWithDefaults instantiates a new ParticipantUpdateDataAttributes object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
-
-### GetOrgId
-
-`func (o *ParticipantUpdateDataAttributes) GetOrgId() string`
-
-GetOrgId returns the OrgId field if non-nil, zero value otherwise.
-
-### GetOrgIdOk
-
-`func (o *ParticipantUpdateDataAttributes) GetOrgIdOk() (*string, bool)`
-
-GetOrgIdOk returns a tuple with the OrgId field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetOrgId
-
-`func (o *ParticipantUpdateDataAttributes) SetOrgId(v string)`
-
-SetOrgId sets OrgId field to given value.
-
 
 ### GetFirstName
 

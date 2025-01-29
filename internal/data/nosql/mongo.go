@@ -5,8 +5,9 @@ import (
 )
 
 type Repo struct {
-	Initiative repositories.Initiatives
-	Points     repositories.Points
+	Initiative   repositories.Initiatives
+	Participants repositories.Participants
+	Points       repositories.Points
 }
 
 func NewRepositoryNoSql(uri, dbName string) (*Repo, error) {
@@ -18,8 +19,10 @@ func NewRepositoryNoSql(uri, dbName string) (*Repo, error) {
 	if err != nil {
 		return nil, err
 	}
+	prtcRepo, err := repositories.NewParticipant(uri, dbName, "participants")
 	return &Repo{
-		Initiative: initiativeRepo,
-		Points:     pointsRepo,
+		Initiative:   initiativeRepo,
+		Points:       pointsRepo,
+		Participants: prtcRepo,
 	}, nil
 }

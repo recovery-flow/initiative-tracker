@@ -4,7 +4,6 @@ required:
   - second_name
   - display_name
   - position
-  - desc
 properties:
   first_name:
     type: string

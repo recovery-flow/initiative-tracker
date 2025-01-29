@@ -35,7 +35,7 @@ type ParticipantDataAttributes struct {
 	// verified status
 	Verified bool `json:"verified"`
 	// description of participant
-	Desc string `json:"desc"`
+	Desc *string `json:"desc,omitempty"`
 	// User role
 	Role string `json:"role"`
 	// User updated at
@@ -50,14 +50,13 @@ type _ParticipantDataAttributes ParticipantDataAttributes
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewParticipantDataAttributes(firstName string, secondName string, displayName string, position string, verified bool, desc string, role string, createdAt time.Time) *ParticipantDataAttributes {
+func NewParticipantDataAttributes(firstName string, secondName string, displayName string, position string, verified bool, role string, createdAt time.Time) *ParticipantDataAttributes {
 	this := ParticipantDataAttributes{}
 	this.FirstName = firstName
 	this.SecondName = secondName
 	this.DisplayName = displayName
 	this.Position = position
 	this.Verified = verified
-	this.Desc = desc
 	this.Role = role
 	this.CreatedAt = createdAt
 	return &this
@@ -223,28 +222,36 @@ func (o *ParticipantDataAttributes) SetVerified(v bool) {
 	o.Verified = v
 }
 
-// GetDesc returns the Desc field value
+// GetDesc returns the Desc field value if set, zero value otherwise.
 func (o *ParticipantDataAttributes) GetDesc() string {
-	if o == nil {
+	if o == nil || IsNil(o.Desc) {
 		var ret string
 		return ret
 	}
-
-	return o.Desc
+	return *o.Desc
 }
 
-// GetDescOk returns a tuple with the Desc field value
+// GetDescOk returns a tuple with the Desc field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ParticipantDataAttributes) GetDescOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Desc) {
 		return nil, false
 	}
-	return &o.Desc, true
+	return o.Desc, true
 }
 
-// SetDesc sets field value
+// HasDesc returns a boolean if a field has been set.
+func (o *ParticipantDataAttributes) HasDesc() bool {
+	if o != nil && !IsNil(o.Desc) {
+		return true
+	}
+
+	return false
+}
+
+// SetDesc gets a reference to the given string and assigns it to the Desc field.
 func (o *ParticipantDataAttributes) SetDesc(v string) {
-	o.Desc = v
+	o.Desc = &v
 }
 
 // GetRole returns the Role field value
@@ -345,7 +352,9 @@ func (o ParticipantDataAttributes) ToMap() (map[string]interface{}, error) {
 	toSerialize["display_name"] = o.DisplayName
 	toSerialize["position"] = o.Position
 	toSerialize["verified"] = o.Verified
-	toSerialize["desc"] = o.Desc
+	if !IsNil(o.Desc) {
+		toSerialize["desc"] = o.Desc
+	}
 	toSerialize["role"] = o.Role
 	if !IsNil(o.UpdatedAt) {
 		toSerialize["updated_at"] = o.UpdatedAt
@@ -364,7 +373,6 @@ func (o *ParticipantDataAttributes) UnmarshalJSON(data []byte) (err error) {
 		"display_name",
 		"position",
 		"verified",
-		"desc",
 		"role",
 		"created_at",
 	}

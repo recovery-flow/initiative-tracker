@@ -44,39 +44,22 @@ func InitiativeCreate(w http.ResponseWriter, r *http.Request) {
 
 	owner := req.Data.Attributes.Owner
 
-	ownerPrt := models.Participant{
-		UserID:      userId,
-		FirstName:   owner.FirstName,
-		SecondName:  owner.SecondName,
-		ThirdName:   owner.ThirdName,
-		DisplayName: owner.DisplayName,
-		Position:    owner.Position,
-		Desc:        owner.Desc,
-		Verified:    false,
-		Role:        roles.RoleTeamOwner,
-		CreatedAt:   primitive.NewDateTimeFromTime(time.Now().UTC()),
-	}
-
 	initiative := models.Initiative{
-		ID:           primitive.NewObjectID(),
-		Name:         req.Data.Attributes.Name,
-		Desc:         req.Data.Attributes.Desc,
-		Goal:         req.Data.Attributes.Goal,
-		Verified:     false,
-		Status:       models.StatusInactive,
-		Tags:         []models.Tag{},
-		Participants: []models.Participant{ownerPrt},
-		ChatID:       primitive.NilObjectID,
+		ID:       primitive.NewObjectID(),
+		Name:     req.Data.Attributes.Name,
+		Desc:     req.Data.Attributes.Desc,
+		Goal:     req.Data.Attributes.Goal,
+		Verified: false,
+		Location: req.Data.Attributes.Location,
+		Status:   models.StatusInactive,
+		Tags:     []models.Tag{},
+		ChatID:   primitive.NilObjectID,
 
 		Likes:   0,
 		Reposts: 0,
 		Reports: 0,
 
 		CreatedAt: primitive.NewDateTimeFromTime(time.Now().UTC()),
-	}
-
-	if req.Data.Attributes.Location != nil {
-		initiative.Location = req.Data.Attributes.Location
 	}
 
 	res, err := server.MongoDB.Initiative.New().Insert(r.Context(), initiative)
@@ -90,6 +73,31 @@ func InitiativeCreate(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	log.Infof("Initiative created: %v", res)
+	ownerPrt := models.Participant{
+		UserID:       userId,
+		InitiativeID: res.ID,
+		FirstName:    owner.FirstName,
+		SecondName:   owner.SecondName,
+		ThirdName:    owner.ThirdName,
+		DisplayName:  owner.DisplayName,
+		Position:     owner.Position,
+		Desc:         owner.Desc,
+		Verified:     false,
+		Role:         roles.RoleTeamOwner,
+		CreatedAt:    primitive.NewDateTimeFromTime(time.Now().UTC()),
+	}
+
+	_, err = server.MongoDB.Participants.New().Insert(r.Context(), ownerPrt)
+	if err != nil {
+		if strings.HasPrefix(err.Error(), "failed to insert participant") {
+			httpkit.RenderErr(w, problems.InternalError("Failed to insert participant"))
+			return
+		}
+		log.Infof("Failed to create participant: %v", err)
+		httpkit.RenderErr(w, problems.BadRequest(err)...)
+		return
+	}
+
+	log.Infof("Initiative created: %v by user %s", res.ID, userId)
 	httpkit.Render(w, responses.Initiative(*res))
 }

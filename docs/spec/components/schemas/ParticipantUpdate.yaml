@@ -17,11 +17,7 @@ properties:
       attributes:
         type: object
         required:
-          - org_id
         properties:
-          org_id:
-            type: string
-            description: "Organization id"
           first_name:
             type: string
             description: "first name of participant"

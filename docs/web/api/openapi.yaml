@@ -59,7 +59,6 @@ components:
           description: description of participant
           type: string
       required:
-      - desc
       - display_name
       - first_name
       - position
@@ -692,7 +691,6 @@ components:
           type: string
       required:
       - created_at
-      - desc
       - display_name
       - first_name
       - position
@@ -709,12 +707,6 @@ components:
       type: object
     ParticipantCreate_data_attributes:
       properties:
-        org_id:
-          description: organization ID
-          type: string
-        user_id:
-          description: user ID
-          type: string
         first_name:
           description: first name of participant
           type: string
@@ -737,17 +729,17 @@ components:
           description: participant role
           type: string
       required:
-      - desc
       - display_name
       - first_name
-      - org_id
       - position
       - role
       - second_name
-      - user_id
       type: object
     ParticipantCreate_data:
       properties:
+        id:
+          description: user ID
+          type: string
         type:
           enum:
           - participant_create
@@ -756,13 +748,11 @@ components:
           $ref: '#/components/schemas/ParticipantCreate_data_attributes'
       required:
       - attributes
+      - id
       - type
       type: object
     ParticipantUpdate_data_attributes:
       properties:
-        org_id:
-          description: Organization id
-          type: string
         first_name:
           description: first name of participant
           type: string
@@ -784,8 +774,6 @@ components:
         role:
           description: User role
           type: string
-      required:
-      - org_id
       type: object
     ParticipantUpdate_data:
       properties:

@@ -38,10 +38,9 @@ func Run(ctx context.Context) {
 						r.Patch("/tags", nil) //update
 
 						r.Route("/participant", func(r chi.Router) {
-							r.Post("/", nil)
+							r.Post("/", handlers.ParticipantCreate)
 
 							r.Route("/{user_id}", func(r chi.Router) {
-								r.Get("/", nil)
 								r.Patch("/", nil)
 							})
 						})
@@ -67,7 +66,7 @@ func Run(ctx context.Context) {
 						r.Route("/participant", func(r chi.Router) {
 							r.Get("/", handlers.ParticipantsByOrganization)
 
-							r.Get("/{user_id}", handlers.ParticipantByOrganization)
+							r.Get("/{user_id}", handlers.ParticipantByOrgIdUserId)
 						})
 
 						r.Route("/plan", func(r chi.Router) {

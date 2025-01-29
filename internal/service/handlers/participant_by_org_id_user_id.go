@@ -14,7 +14,7 @@ import (
 	"go.mongodb.org/mongo-driver/bson/primitive"
 )
 
-func ParticipantByOrganization(w http.ResponseWriter, r *http.Request) {
+func ParticipantByOrgIdUserId(w http.ResponseWriter, r *http.Request) {
 	server, err := cifractx.GetValue[*config.Service](r.Context(), config.SERVER)
 	if err != nil {
 		logrus.Errorf("Failed to retrieve service configuration: %v", err)
@@ -36,14 +36,13 @@ func ParticipantByOrganization(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	res, err := server.MongoDB.Initiative.New().Filter(map[string]any{
-		"_id": iniID,
-	}).Participants().Filter(map[string]any{
-		"user_id": userID,
+	res, err := server.MongoDB.Participants.New().Filter(map[string]any{
+		"initiative_id": iniID,
+		"user_id":       userID,
 	}).Get(r.Context())
 	if err != nil {
 		log.WithError(err).Error("Failed to get participant")
-		httpkit.RenderErr(w, problems.InternalError("Failed to get participant"))
+		httpkit.RenderErr(w, problems.InternalError())
 		return
 	}
 

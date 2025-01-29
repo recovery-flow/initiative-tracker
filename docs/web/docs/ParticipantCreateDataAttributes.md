@@ -4,21 +4,19 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**OrgId** | **string** | organization ID | 
-**UserId** | **string** | user ID | 
 **FirstName** | **string** | first name of participant | 
 **SecondName** | **string** | second name of participant | 
 **ThirdName** | Pointer to **string** | third name of participant | [optional] 
 **DisplayName** | **string** | name of participant | 
 **Position** | **string** | position in the company | 
-**Desc** | **string** | description of participant | 
+**Desc** | Pointer to **string** | description of participant | [optional] 
 **Role** | **string** | participant role | 
 
 ## Methods
 
 ### NewParticipantCreateDataAttributes
 
-`func NewParticipantCreateDataAttributes(orgId string, userId string, firstName string, secondName string, displayName string, position string, desc string, role string, ) *ParticipantCreateDataAttributes`
+`func NewParticipantCreateDataAttributes(firstName string, secondName string, displayName string, position string, role string, ) *ParticipantCreateDataAttributes`
 
 NewParticipantCreateDataAttributes instantiates a new ParticipantCreateDataAttributes object
 This constructor will assign default values to properties that have it defined,
@@ -32,46 +30,6 @@ will change when the set of required properties is changed
 NewParticipantCreateDataAttributesWithDefaults instantiates a new ParticipantCreateDataAttributes object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
-
-### GetOrgId
-
-`func (o *ParticipantCreateDataAttributes) GetOrgId() string`
-
-GetOrgId returns the OrgId field if non-nil, zero value otherwise.
-
-### GetOrgIdOk
-
-`func (o *ParticipantCreateDataAttributes) GetOrgIdOk() (*string, bool)`
-
-GetOrgIdOk returns a tuple with the OrgId field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetOrgId
-
-`func (o *ParticipantCreateDataAttributes) SetOrgId(v string)`
-
-SetOrgId sets OrgId field to given value.
-
-
-### GetUserId
-
-`func (o *ParticipantCreateDataAttributes) GetUserId() string`
-
-GetUserId returns the UserId field if non-nil, zero value otherwise.
-
-### GetUserIdOk
-
-`func (o *ParticipantCreateDataAttributes) GetUserIdOk() (*string, bool)`
-
-GetUserIdOk returns a tuple with the UserId field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetUserId
-
-`func (o *ParticipantCreateDataAttributes) SetUserId(v string)`
-
-SetUserId sets UserId field to given value.
-
 
 ### GetFirstName
 
@@ -197,6 +155,11 @@ and a boolean to check if the value has been set.
 
 SetDesc sets Desc field to given value.
 
+### HasDesc
+
+`func (o *ParticipantCreateDataAttributes) HasDesc() bool`
+
+HasDesc returns a boolean if a field has been set.
 
 ### GetRole
 

@@ -25,7 +25,6 @@ type Initiatives interface {
 
 	Filter(filters map[string]any) Initiatives
 
-	Participants() Participants
 	Tags() Tags
 
 	UpdateOne(ctx context.Context, fields map[string]any) (*models.Initiative, error)
@@ -90,12 +89,6 @@ func (i *initiatives) Insert(ctx context.Context, initiative models.Initiative) 
 		return nil, fmt.Errorf("initiatives description cannot be empty")
 	}
 	initiative.Goal = strings.TrimSpace(initiative.Goal)
-	if initiative.Goal == "" {
-		return nil, fmt.Errorf("initiatives goal cannot be empty")
-	}
-	if len(initiative.Participants) == 0 {
-		return nil, fmt.Errorf("initiatives must have at least one participants")
-	}
 	if initiative.Location != nil {
 		*initiative.Location = strings.TrimSpace(*initiative.Location)
 		if *initiative.Location == "" {
@@ -183,18 +176,6 @@ func (i *initiatives) Filter(filters map[string]any) Initiatives {
 		i.filters[field] = value
 	}
 	return i
-}
-
-func (i *initiatives) Participants() Participants {
-	return &participants{
-		client:     i.client,
-		database:   i.database,
-		collection: i.collection,
-		filters:    i.filters,
-		sort:       i.sort,
-		limit:      i.limit,
-		skip:       i.skip,
-	}
 }
 
 func (i *initiatives) Tags() Tags {

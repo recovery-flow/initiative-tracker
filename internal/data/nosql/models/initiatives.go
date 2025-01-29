@@ -5,16 +5,15 @@ import (
 )
 
 type Initiative struct {
-	ID           primitive.ObjectID `bson:"_id" json:"id"`
-	Name         string             `bson:"name" json:"name"`
-	Desc         string             `bson:"desc" json:"desc"`
-	Goal         string             `bson:"goal" json:"goal"`
-	Verified     bool               `bson:"verified" json:"verified"`
-	Location     *string            `bson:"location,omitempty" json:"location,omitempty"`
-	Status       Status             `bson:"status" json:"status"`
-	Tags         []Tag              `bson:"tags,omitempty" json:"tags,omitempty"`
-	Participants []Participant      `bson:"participants" json:"participants"`
-	ChatID       primitive.ObjectID `bson:"chat_id" json:"chat_id"`
+	ID       primitive.ObjectID `bson:"_id" json:"id"`
+	Name     string             `bson:"name" json:"name"`
+	Desc     string             `bson:"desc" json:"desc"`
+	Goal     string             `bson:"goal" json:"goal"`
+	Verified bool               `bson:"verified" json:"verified"`
+	Location *string            `bson:"location,omitempty" json:"location,omitempty"`
+	Status   Status             `bson:"status" json:"status"`
+	Tags     []Tag              `bson:"tags,omitempty" json:"tags,omitempty"`
+	ChatID   primitive.ObjectID `bson:"chat_id" json:"chat_id"`
 
 	Likes   int `bson:"likes" json:"likes"`
 	Reposts int `bson:"reposts" json:"reposts"`

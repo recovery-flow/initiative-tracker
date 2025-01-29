@@ -59,10 +59,9 @@ func ParticipantsByOrganization(w http.ResponseWriter, r *http.Request) {
 	}
 
 	filters := make(map[string]any)
-	filters["_id"] = iniID
+	filters["initiative_id"] = iniID
 
-	participants, err := server.MongoDB.Initiative.New().Filter(filters).Limit(limit).Skip(skip).
-		Participants().Select(r.Context())
+	participants, err := server.MongoDB.Participants.New().Filter(filters).Limit(limit).Skip(skip).Select(r.Context())
 	if err != nil {
 		if errors.Is(err, mongo.ErrNoDocuments) {
 			httpkit.RenderErr(w, problems.NotFound("Participants not found"))

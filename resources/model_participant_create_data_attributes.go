@@ -21,10 +21,6 @@ var _ MappedNullable = &ParticipantCreateDataAttributes{}
 
 // ParticipantCreateDataAttributes struct for ParticipantCreateDataAttributes
 type ParticipantCreateDataAttributes struct {
-	// organization ID
-	OrgId string `json:"org_id"`
-	// user ID
-	UserId string `json:"user_id"`
 	// first name of participant
 	FirstName string `json:"first_name"`
 	// second name of participant
@@ -36,7 +32,7 @@ type ParticipantCreateDataAttributes struct {
 	// position in the company
 	Position string `json:"position"`
 	// description of participant
-	Desc string `json:"desc"`
+	Desc *string `json:"desc,omitempty"`
 	// participant role
 	Role string `json:"role"`
 }
@@ -47,15 +43,12 @@ type _ParticipantCreateDataAttributes ParticipantCreateDataAttributes
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewParticipantCreateDataAttributes(orgId string, userId string, firstName string, secondName string, displayName string, position string, desc string, role string) *ParticipantCreateDataAttributes {
+func NewParticipantCreateDataAttributes(firstName string, secondName string, displayName string, position string, role string) *ParticipantCreateDataAttributes {
 	this := ParticipantCreateDataAttributes{}
-	this.OrgId = orgId
-	this.UserId = userId
 	this.FirstName = firstName
 	this.SecondName = secondName
 	this.DisplayName = displayName
 	this.Position = position
-	this.Desc = desc
 	this.Role = role
 	return &this
 }
@@ -66,54 +59,6 @@ func NewParticipantCreateDataAttributes(orgId string, userId string, firstName s
 func NewParticipantCreateDataAttributesWithDefaults() *ParticipantCreateDataAttributes {
 	this := ParticipantCreateDataAttributes{}
 	return &this
-}
-
-// GetOrgId returns the OrgId field value
-func (o *ParticipantCreateDataAttributes) GetOrgId() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.OrgId
-}
-
-// GetOrgIdOk returns a tuple with the OrgId field value
-// and a boolean to check if the value has been set.
-func (o *ParticipantCreateDataAttributes) GetOrgIdOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.OrgId, true
-}
-
-// SetOrgId sets field value
-func (o *ParticipantCreateDataAttributes) SetOrgId(v string) {
-	o.OrgId = v
-}
-
-// GetUserId returns the UserId field value
-func (o *ParticipantCreateDataAttributes) GetUserId() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.UserId
-}
-
-// GetUserIdOk returns a tuple with the UserId field value
-// and a boolean to check if the value has been set.
-func (o *ParticipantCreateDataAttributes) GetUserIdOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.UserId, true
-}
-
-// SetUserId sets field value
-func (o *ParticipantCreateDataAttributes) SetUserId(v string) {
-	o.UserId = v
 }
 
 // GetFirstName returns the FirstName field value
@@ -244,28 +189,36 @@ func (o *ParticipantCreateDataAttributes) SetPosition(v string) {
 	o.Position = v
 }
 
-// GetDesc returns the Desc field value
+// GetDesc returns the Desc field value if set, zero value otherwise.
 func (o *ParticipantCreateDataAttributes) GetDesc() string {
-	if o == nil {
+	if o == nil || IsNil(o.Desc) {
 		var ret string
 		return ret
 	}
-
-	return o.Desc
+	return *o.Desc
 }
 
-// GetDescOk returns a tuple with the Desc field value
+// GetDescOk returns a tuple with the Desc field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ParticipantCreateDataAttributes) GetDescOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Desc) {
 		return nil, false
 	}
-	return &o.Desc, true
+	return o.Desc, true
 }
 
-// SetDesc sets field value
+// HasDesc returns a boolean if a field has been set.
+func (o *ParticipantCreateDataAttributes) HasDesc() bool {
+	if o != nil && !IsNil(o.Desc) {
+		return true
+	}
+
+	return false
+}
+
+// SetDesc gets a reference to the given string and assigns it to the Desc field.
 func (o *ParticipantCreateDataAttributes) SetDesc(v string) {
-	o.Desc = v
+	o.Desc = &v
 }
 
 // GetRole returns the Role field value
@@ -302,8 +255,6 @@ func (o ParticipantCreateDataAttributes) MarshalJSON() ([]byte, error) {
 
 func (o ParticipantCreateDataAttributes) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["org_id"] = o.OrgId
-	toSerialize["user_id"] = o.UserId
 	toSerialize["first_name"] = o.FirstName
 	toSerialize["second_name"] = o.SecondName
 	if !IsNil(o.ThirdName) {
@@ -311,7 +262,9 @@ func (o ParticipantCreateDataAttributes) ToMap() (map[string]interface{}, error)
 	}
 	toSerialize["display_name"] = o.DisplayName
 	toSerialize["position"] = o.Position
-	toSerialize["desc"] = o.Desc
+	if !IsNil(o.Desc) {
+		toSerialize["desc"] = o.Desc
+	}
 	toSerialize["role"] = o.Role
 	return toSerialize, nil
 }
@@ -321,13 +274,10 @@ func (o *ParticipantCreateDataAttributes) UnmarshalJSON(data []byte) (err error)
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
-		"org_id",
-		"user_id",
 		"first_name",
 		"second_name",
 		"display_name",
 		"position",
-		"desc",
 		"role",
 	}
 

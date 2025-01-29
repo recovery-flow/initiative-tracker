@@ -60,13 +60,12 @@ func InitiativeUpdate(w http.ResponseWriter, r *http.Request) {
 	}
 
 	filters := make(map[string]any)
-	filters["_id"] = iniId
+	filters["initiative_id"] = iniId
+	filters["user_id"] = initiatorId
 
-	participant, err := server.MongoDB.Initiative.New().Filter(filters).Participants().Filter(map[string]any{
-		"user_id": initiatorId,
-	}).Get(r.Context())
+	participant, err := server.MongoDB.Participants.New().Filter(filters).Get(r.Context())
 	if err != nil {
-		log.WithError(err).Error("Failed to update initiative")
+		log.WithError(err).Error("Failed to get initiative")
 		httpkit.RenderErr(w, problems.InternalError())
 		return
 	}
@@ -94,7 +93,9 @@ func InitiativeUpdate(w http.ResponseWriter, r *http.Request) {
 		stmt["status"] = req.Data.Attributes.Status
 	}
 
-	res, err := server.MongoDB.Initiative.New().Filter(filters).UpdateOne(r.Context(), stmt)
+	res, err := server.MongoDB.Initiative.New().Filter(map[string]any{
+		"_id": iniId,
+	}).UpdateOne(r.Context(), stmt)
 	if err != nil {
 		log.WithError(err).Error("Failed to update initiative")
 		httpkit.RenderErr(w, problems.InternalError())

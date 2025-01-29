@@ -19,7 +19,6 @@ properties:
       - display_name
       - position
       - verified
-      - desc
       - role
       - created_at
     properties:

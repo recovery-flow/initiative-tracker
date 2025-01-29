@@ -12,8 +12,6 @@ package resources
 
 import (
 	"encoding/json"
-	"bytes"
-	"fmt"
 )
 
 // checks if the ParticipantUpdateDataAttributes type satisfies the MappedNullable interface at compile time
@@ -21,8 +19,6 @@ var _ MappedNullable = &ParticipantUpdateDataAttributes{}
 
 // ParticipantUpdateDataAttributes struct for ParticipantUpdateDataAttributes
 type ParticipantUpdateDataAttributes struct {
-	// Organization id
-	OrgId string `json:"org_id"`
 	// first name of participant
 	FirstName *string `json:"first_name,omitempty"`
 	// second name of participant
@@ -39,15 +35,12 @@ type ParticipantUpdateDataAttributes struct {
 	Role *string `json:"role,omitempty"`
 }
 
-type _ParticipantUpdateDataAttributes ParticipantUpdateDataAttributes
-
 // NewParticipantUpdateDataAttributes instantiates a new ParticipantUpdateDataAttributes object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewParticipantUpdateDataAttributes(orgId string) *ParticipantUpdateDataAttributes {
+func NewParticipantUpdateDataAttributes() *ParticipantUpdateDataAttributes {
 	this := ParticipantUpdateDataAttributes{}
-	this.OrgId = orgId
 	return &this
 }
 
@@ -57,30 +50,6 @@ func NewParticipantUpdateDataAttributes(orgId string) *ParticipantUpdateDataAttr
 func NewParticipantUpdateDataAttributesWithDefaults() *ParticipantUpdateDataAttributes {
 	this := ParticipantUpdateDataAttributes{}
 	return &this
-}
-
-// GetOrgId returns the OrgId field value
-func (o *ParticipantUpdateDataAttributes) GetOrgId() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.OrgId
-}
-
-// GetOrgIdOk returns a tuple with the OrgId field value
-// and a boolean to check if the value has been set.
-func (o *ParticipantUpdateDataAttributes) GetOrgIdOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.OrgId, true
-}
-
-// SetOrgId sets field value
-func (o *ParticipantUpdateDataAttributes) SetOrgId(v string) {
-	o.OrgId = v
 }
 
 // GetFirstName returns the FirstName field value if set, zero value otherwise.
@@ -317,7 +286,6 @@ func (o ParticipantUpdateDataAttributes) MarshalJSON() ([]byte, error) {
 
 func (o ParticipantUpdateDataAttributes) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["org_id"] = o.OrgId
 	if !IsNil(o.FirstName) {
 		toSerialize["first_name"] = o.FirstName
 	}
@@ -340,43 +308,6 @@ func (o ParticipantUpdateDataAttributes) ToMap() (map[string]interface{}, error)
 		toSerialize["role"] = o.Role
 	}
 	return toSerialize, nil
-}
-
-func (o *ParticipantUpdateDataAttributes) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"org_id",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err;
-	}
-
-	for _, requiredProperty := range(requiredProperties) {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varParticipantUpdateDataAttributes := _ParticipantUpdateDataAttributes{}
-
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varParticipantUpdateDataAttributes)
-
-	if err != nil {
-		return err
-	}
-
-	*o = ParticipantUpdateDataAttributes(varParticipantUpdateDataAttributes)
-
-	return err
 }
 
 type NullableParticipantUpdateDataAttributes struct {

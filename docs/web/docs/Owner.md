@@ -9,13 +9,13 @@ Name | Type | Description | Notes
 **ThirdName** | Pointer to **string** | third name of participant | [optional] 
 **DisplayName** | **string** | name of participant | 
 **Position** | **string** | position in the company | 
-**Desc** | **string** | description of participant | 
+**Desc** | Pointer to **string** | description of participant | [optional] 
 
 ## Methods
 
 ### NewOwner
 
-`func NewOwner(firstName string, secondName string, displayName string, position string, desc string, ) *Owner`
+`func NewOwner(firstName string, secondName string, displayName string, position string, ) *Owner`
 
 NewOwner instantiates a new Owner object
 This constructor will assign default values to properties that have it defined,
@@ -154,6 +154,11 @@ and a boolean to check if the value has been set.
 
 SetDesc sets Desc field to given value.
 
+### HasDesc
+
+`func (o *Owner) HasDesc() bool`
+
+HasDesc returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

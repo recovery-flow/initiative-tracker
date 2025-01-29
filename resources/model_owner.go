@@ -32,7 +32,7 @@ type Owner struct {
 	// position in the company
 	Position string `json:"position"`
 	// description of participant
-	Desc string `json:"desc"`
+	Desc *string `json:"desc,omitempty"`
 }
 
 type _Owner Owner
@@ -41,13 +41,12 @@ type _Owner Owner
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewOwner(firstName string, secondName string, displayName string, position string, desc string) *Owner {
+func NewOwner(firstName string, secondName string, displayName string, position string) *Owner {
 	this := Owner{}
 	this.FirstName = firstName
 	this.SecondName = secondName
 	this.DisplayName = displayName
 	this.Position = position
-	this.Desc = desc
 	return &this
 }
 
@@ -187,28 +186,36 @@ func (o *Owner) SetPosition(v string) {
 	o.Position = v
 }
 
-// GetDesc returns the Desc field value
+// GetDesc returns the Desc field value if set, zero value otherwise.
 func (o *Owner) GetDesc() string {
-	if o == nil {
+	if o == nil || IsNil(o.Desc) {
 		var ret string
 		return ret
 	}
-
-	return o.Desc
+	return *o.Desc
 }
 
-// GetDescOk returns a tuple with the Desc field value
+// GetDescOk returns a tuple with the Desc field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Owner) GetDescOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Desc) {
 		return nil, false
 	}
-	return &o.Desc, true
+	return o.Desc, true
 }
 
-// SetDesc sets field value
+// HasDesc returns a boolean if a field has been set.
+func (o *Owner) HasDesc() bool {
+	if o != nil && !IsNil(o.Desc) {
+		return true
+	}
+
+	return false
+}
+
+// SetDesc gets a reference to the given string and assigns it to the Desc field.
 func (o *Owner) SetDesc(v string) {
-	o.Desc = v
+	o.Desc = &v
 }
 
 func (o Owner) MarshalJSON() ([]byte, error) {
@@ -228,7 +235,9 @@ func (o Owner) ToMap() (map[string]interface{}, error) {
 	}
 	toSerialize["display_name"] = o.DisplayName
 	toSerialize["position"] = o.Position
-	toSerialize["desc"] = o.Desc
+	if !IsNil(o.Desc) {
+		toSerialize["desc"] = o.Desc
+	}
 	return toSerialize, nil
 }
 
@@ -241,7 +250,6 @@ func (o *Owner) UnmarshalJSON(data []byte) (err error) {
 		"second_name",
 		"display_name",
 		"position",
-		"desc",
 	}
 
 	allProperties := make(map[string]interface{})

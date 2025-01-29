@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **DisplayName** | **string** | name of participant | 
 **Position** | **string** | position in the company | 
 **Verified** | **bool** | verified status | 
-**Desc** | **string** | description of participant | 
+**Desc** | Pointer to **string** | description of participant | [optional] 
 **Role** | **string** | User role | 
 **UpdatedAt** | Pointer to **time.Time** | User updated at | [optional] 
 **CreatedAt** | **time.Time** | User created at | 
@@ -19,7 +19,7 @@ Name | Type | Description | Notes
 
 ### NewParticipantDataAttributes
 
-`func NewParticipantDataAttributes(firstName string, secondName string, displayName string, position string, verified bool, desc string, role string, createdAt time.Time, ) *ParticipantDataAttributes`
+`func NewParticipantDataAttributes(firstName string, secondName string, displayName string, position string, verified bool, role string, createdAt time.Time, ) *ParticipantDataAttributes`
 
 NewParticipantDataAttributes instantiates a new ParticipantDataAttributes object
 This constructor will assign default values to properties that have it defined,
@@ -178,6 +178,11 @@ and a boolean to check if the value has been set.
 
 SetDesc sets Desc field to given value.
 
+### HasDesc
+
+`func (o *ParticipantDataAttributes) HasDesc() bool`
+
+HasDesc returns a boolean if a field has been set.
 
 ### GetRole
 
