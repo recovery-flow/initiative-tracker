@@ -1,0 +1,12 @@
+type: object
+required:
+  - data
+  - links
+  - meta
+properties:
+  data:
+    type: array
+    items:
+      $ref: './PointData.yaml'
+  links:
+   $ref: './LinksPagination.yaml'

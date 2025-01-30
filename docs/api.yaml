@@ -33,6 +33,8 @@ components:
       $ref: './spec/components/schemas/PointCreate.yaml'
     PointUpdate:
       $ref: './spec/components/schemas/PointUpdate.yaml'
+    PointCollection:
+      $ref: './spec/components/schemas/PointsCollection.yaml'
     Jar:
       $ref: './spec/components/schemas/Jar.yaml'
     JarUpdate:

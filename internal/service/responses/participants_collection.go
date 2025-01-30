@@ -29,6 +29,6 @@ func ParticipantCollection(participants []models.Participant, baseURL string, qu
 func generatePaginationLink(baseURL string, queryParams url.Values, pageNumber, pageSize int64) *string {
 	queryParams.Set("page[number]", fmt.Sprintf("%d", pageNumber))
 	queryParams.Set("page[size]", fmt.Sprintf("%d", pageSize))
-	res := fmt.Sprintf("%s/%s?%s", resources.BaseInitiative, baseURL, queryParams.Encode())
+	res := fmt.Sprintf("%s?%s", baseURL, queryParams.Encode())
 	return &res
 }

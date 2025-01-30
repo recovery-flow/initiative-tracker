@@ -1,0 +1,30 @@
+type: object
+required:
+  - id
+  - type
+  - attributes
+  - relationships
+properties:
+  id:
+    type: string
+    description: "point id"
+  type:
+    type: string
+    enum: [ point ]
+  attributes:
+    $ref: "./PointAttributes.yaml"
+  relationships:
+    type: object
+    required:
+      - published_by
+      - initiative
+      - plan
+    properties:
+      parent:
+        $ref: "./LinksDirect.yaml"
+      published_by:
+        $ref: "./LinksDirect.yaml"
+      initiative:
+        $ref: "./LinksDirect.yaml"
+      plan:
+        $ref: "./LinksDirect.yaml"

@@ -121,6 +121,7 @@ Class | Method | HTTP request | Description
  - [ParticipantsCollection](docs/ParticipantsCollection.md)
  - [Point](docs/Point.md)
  - [PointAttributes](docs/PointAttributes.md)
+ - [PointCollection](docs/PointCollection.md)
  - [PointCreate](docs/PointCreate.md)
  - [PointCreateData](docs/PointCreateData.md)
  - [PointCreateDataAttributes](docs/PointCreateDataAttributes.md)
@@ -129,6 +130,7 @@ Class | Method | HTTP request | Description
  - [PointUpdate](docs/PointUpdate.md)
  - [PointUpdateData](docs/PointUpdateData.md)
  - [PointUpdateDataAttributes](docs/PointUpdateDataAttributes.md)
+ - [PointsCollection](docs/PointsCollection.md)
 
 
 ## Documentation For Authorization

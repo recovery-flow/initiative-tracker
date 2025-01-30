@@ -1,9 +1,10 @@
 package resources
 
 const (
+	ServiceHost          = "http://localhost:8004"
 	BaseUserStorage      = "http://localhost:8002/users-storage/v1"
 	BaseOrganization     = "http://localhost:8003/org-storage/v1"
-	BaseInitiative       = "http://localhost:8004/initiative-storage/v1"
+	BaseInitiative       = "http://localhost:8004/initiative-tracker/v1"
 	BaseChatStorage      = "http://localhost:8008/chat-storage/v1"
 	BaseReactionsStorage = "http://localhost:8009/reactions-storage/v1"
 )

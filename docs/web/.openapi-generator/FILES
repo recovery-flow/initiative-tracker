@@ -44,6 +44,7 @@ docs/ParticipantUpdateDataAttributes.md
 docs/ParticipantsCollection.md
 docs/Point.md
 docs/PointAttributes.md
+docs/PointCollection.md
 docs/PointCreate.md
 docs/PointCreateData.md
 docs/PointCreateDataAttributes.md
@@ -52,6 +53,7 @@ docs/PointDataRelationships.md
 docs/PointUpdate.md
 docs/PointUpdateData.md
 docs/PointUpdateDataAttributes.md
+docs/PointsCollection.md
 git_push.sh
 go.mod
 go.sum
@@ -93,6 +95,7 @@ model_participant_update_data_attributes.go
 model_participants_collection.go
 model_point.go
 model_point_attributes.go
+model_point_collection.go
 model_point_create.go
 model_point_create_data.go
 model_point_create_data_attributes.go
@@ -101,6 +104,7 @@ model_point_data_relationships.go
 model_point_update.go
 model_point_update_data.go
 model_point_update_data_attributes.go
+model_points_collection.go
 response.go
 test/api_default_test.go
 utils.go

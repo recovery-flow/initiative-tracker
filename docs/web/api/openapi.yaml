@@ -93,7 +93,7 @@ components:
     Point:
       properties:
         data:
-          $ref: '#/components/schemas/Point_data'
+          $ref: '#/components/schemas/PointData'
         included:
           items:
             $ref: '#/components/schemas/JarData'
@@ -114,6 +114,19 @@ components:
           $ref: '#/components/schemas/PointUpdate_data'
       required:
       - data
+      type: object
+    PointCollection:
+      properties:
+        data:
+          items:
+            $ref: '#/components/schemas/PointData'
+          type: array
+        links:
+          $ref: '#/components/schemas/LinksPagination'
+      required:
+      - data
+      - links
+      - meta
       type: object
     Jar:
       properties:
@@ -182,6 +195,19 @@ components:
       - links
       - meta
       type: object
+    PointsCollection:
+      properties:
+        data:
+          items:
+            $ref: '#/components/schemas/PointData'
+          type: array
+        links:
+          $ref: '#/components/schemas/LinksPagination'
+      required:
+      - data
+      - links
+      - meta
+      type: object
     ParticipantCollection:
       properties:
         data:
@@ -194,6 +220,25 @@ components:
       - data
       - links
       - meta
+      type: object
+    PointData:
+      properties:
+        id:
+          description: point id
+          type: string
+        type:
+          enum:
+          - point
+          type: string
+        attributes:
+          $ref: '#/components/schemas/PointAttributes'
+        relationships:
+          $ref: '#/components/schemas/PointData_relationships'
+      required:
+      - attributes
+      - id
+      - relationships
+      - type
       type: object
     JarData:
       properties:
@@ -236,6 +281,18 @@ components:
       - id
       - name
       - weight
+      type: object
+    JarAttributes:
+      properties:
+        bank:
+          description: bank of jar
+          type: string
+        url:
+          description: url of jar
+          type: string
+      required:
+      - bank
+      - url
       type: object
     PointAttributes:
       properties:
@@ -286,18 +343,6 @@ components:
       - published_by
       - status
       - title
-      type: object
-    JarAttributes:
-      properties:
-        bank:
-          description: bank of jar
-          type: string
-        url:
-          description: url of jar
-          type: string
-      required:
-      - bank
-      - url
       type: object
     LinksDirect_links:
       properties:
@@ -496,40 +541,6 @@ components:
           $ref: '#/components/schemas/InitiativeUpdate_data_attributes'
       required:
       - attributes
-      - type
-      type: object
-    Point_data_relationships:
-      properties:
-        parent:
-          $ref: '#/components/schemas/LinksDirect'
-        published_by:
-          $ref: '#/components/schemas/LinksDirect'
-        initiative:
-          $ref: '#/components/schemas/LinksDirect'
-        plan:
-          $ref: '#/components/schemas/LinksDirect'
-      required:
-      - initiative
-      - plan
-      - published_by
-      type: object
-    Point_data:
-      properties:
-        id:
-          description: point id
-          type: string
-        type:
-          enum:
-          - point
-          type: string
-        attributes:
-          $ref: '#/components/schemas/PointAttributes'
-        relationships:
-          $ref: '#/components/schemas/Point_data_relationships'
-      required:
-      - attributes
-      - id
-      - relationships
       - type
       type: object
     PointCreate_data_attributes:
@@ -748,6 +759,21 @@ components:
       required:
       - attributes
       - type
+      type: object
+    PointData_relationships:
+      properties:
+        parent:
+          $ref: '#/components/schemas/LinksDirect'
+        published_by:
+          $ref: '#/components/schemas/LinksDirect'
+        initiative:
+          $ref: '#/components/schemas/LinksDirect'
+        plan:
+          $ref: '#/components/schemas/LinksDirect'
+      required:
+      - initiative
+      - plan
+      - published_by
       type: object
     JarData_relationships:
       properties:

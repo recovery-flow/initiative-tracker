@@ -134,8 +134,11 @@ func (p *points) Filter(filters map[string]any) Points {
 		"_id":           true,
 		"initiative_id": true,
 		"parent_id":     true,
+		"status":        true,
+		"publicised_by": true,
 		"title":         true,
 		"desc":          true,
+		"created_at":    true,
 	}
 
 	for field, value := range filters {
