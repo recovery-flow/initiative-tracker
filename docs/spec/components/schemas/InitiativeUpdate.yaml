@@ -13,6 +13,15 @@ properties:
         enum: [ initiative_update ]
       attributes:
         type: object
+        required:
+          - name
+          - desc
+          - goal
+          - type
+          - status
+          - final_cost
+          - wallets
+          - org_members
         properties:
           name:
             type: string
@@ -26,6 +35,19 @@ properties:
           location:
             type: string
             description: "location of initiative"
+          type:
+            type: string
+            description: "types of initiative"
           status:
             type: string
             description: "status of initiative"
+          final_cost:
+            type: integer
+            format: int64
+            description: "final cost of initiative"
+          wallets:
+            $ref: "./Wallets.yaml"
+          org_members:
+            type: array
+            items:
+              $ref: "./OrgMember.yaml"

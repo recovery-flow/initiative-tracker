@@ -9,11 +9,15 @@ Name | Type | Description | Notes
 **Goal** | **string** | goal of initiative | 
 **Verified** | **bool** | verified status | 
 **Location** | Pointer to **string** | location of initiative | [optional] 
+**Type** | **string** | types of initiative | 
 **Status** | **string** | status of initiative | 
+**FinalCost** | Pointer to **int64** | final cost of initiative | [optional] 
+**CollectedSum** | Pointer to **int64** | collected sum of initiative | [optional] 
 **Likes** | **int64** | likes of initiative | 
 **Reposts** | **int64** | reposts of initiative | 
 **Reports** | **int64** | reports of initiative | 
-**CreatedAt** | **time.Time** | Initiative created at | 
+**StartAt** | Pointer to **time.Time** | start date of initiative | [optional] 
+**EndAt** | Pointer to **time.Time** | end date of initiative | [optional] 
 **UpdatedAt** | Pointer to **time.Time** | Initiative updated at | [optional] 
 **ClosedAt** | Pointer to **time.Time** | Initiative closed at | [optional] 
 
@@ -21,7 +25,7 @@ Name | Type | Description | Notes
 
 ### NewInitiativeDataAttributes
 
-`func NewInitiativeDataAttributes(name string, desc string, goal string, verified bool, status string, likes int64, reposts int64, reports int64, createdAt time.Time, ) *InitiativeDataAttributes`
+`func NewInitiativeDataAttributes(name string, desc string, goal string, verified bool, type_ string, status string, likes int64, reposts int64, reports int64, ) *InitiativeDataAttributes`
 
 NewInitiativeDataAttributes instantiates a new InitiativeDataAttributes object
 This constructor will assign default values to properties that have it defined,
@@ -141,6 +145,26 @@ SetLocation sets Location field to given value.
 
 HasLocation returns a boolean if a field has been set.
 
+### GetType
+
+`func (o *InitiativeDataAttributes) GetType() string`
+
+GetType returns the Type field if non-nil, zero value otherwise.
+
+### GetTypeOk
+
+`func (o *InitiativeDataAttributes) GetTypeOk() (*string, bool)`
+
+GetTypeOk returns a tuple with the Type field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetType
+
+`func (o *InitiativeDataAttributes) SetType(v string)`
+
+SetType sets Type field to given value.
+
+
 ### GetStatus
 
 `func (o *InitiativeDataAttributes) GetStatus() string`
@@ -160,6 +184,56 @@ and a boolean to check if the value has been set.
 
 SetStatus sets Status field to given value.
 
+
+### GetFinalCost
+
+`func (o *InitiativeDataAttributes) GetFinalCost() int64`
+
+GetFinalCost returns the FinalCost field if non-nil, zero value otherwise.
+
+### GetFinalCostOk
+
+`func (o *InitiativeDataAttributes) GetFinalCostOk() (*int64, bool)`
+
+GetFinalCostOk returns a tuple with the FinalCost field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetFinalCost
+
+`func (o *InitiativeDataAttributes) SetFinalCost(v int64)`
+
+SetFinalCost sets FinalCost field to given value.
+
+### HasFinalCost
+
+`func (o *InitiativeDataAttributes) HasFinalCost() bool`
+
+HasFinalCost returns a boolean if a field has been set.
+
+### GetCollectedSum
+
+`func (o *InitiativeDataAttributes) GetCollectedSum() int64`
+
+GetCollectedSum returns the CollectedSum field if non-nil, zero value otherwise.
+
+### GetCollectedSumOk
+
+`func (o *InitiativeDataAttributes) GetCollectedSumOk() (*int64, bool)`
+
+GetCollectedSumOk returns a tuple with the CollectedSum field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCollectedSum
+
+`func (o *InitiativeDataAttributes) SetCollectedSum(v int64)`
+
+SetCollectedSum sets CollectedSum field to given value.
+
+### HasCollectedSum
+
+`func (o *InitiativeDataAttributes) HasCollectedSum() bool`
+
+HasCollectedSum returns a boolean if a field has been set.
 
 ### GetLikes
 
@@ -221,25 +295,55 @@ and a boolean to check if the value has been set.
 SetReports sets Reports field to given value.
 
 
-### GetCreatedAt
+### GetStartAt
 
-`func (o *InitiativeDataAttributes) GetCreatedAt() time.Time`
+`func (o *InitiativeDataAttributes) GetStartAt() time.Time`
 
-GetCreatedAt returns the CreatedAt field if non-nil, zero value otherwise.
+GetStartAt returns the StartAt field if non-nil, zero value otherwise.
 
-### GetCreatedAtOk
+### GetStartAtOk
 
-`func (o *InitiativeDataAttributes) GetCreatedAtOk() (*time.Time, bool)`
+`func (o *InitiativeDataAttributes) GetStartAtOk() (*time.Time, bool)`
 
-GetCreatedAtOk returns a tuple with the CreatedAt field if it's non-nil, zero value otherwise
+GetStartAtOk returns a tuple with the StartAt field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetCreatedAt
+### SetStartAt
 
-`func (o *InitiativeDataAttributes) SetCreatedAt(v time.Time)`
+`func (o *InitiativeDataAttributes) SetStartAt(v time.Time)`
 
-SetCreatedAt sets CreatedAt field to given value.
+SetStartAt sets StartAt field to given value.
 
+### HasStartAt
+
+`func (o *InitiativeDataAttributes) HasStartAt() bool`
+
+HasStartAt returns a boolean if a field has been set.
+
+### GetEndAt
+
+`func (o *InitiativeDataAttributes) GetEndAt() time.Time`
+
+GetEndAt returns the EndAt field if non-nil, zero value otherwise.
+
+### GetEndAtOk
+
+`func (o *InitiativeDataAttributes) GetEndAtOk() (*time.Time, bool)`
+
+GetEndAtOk returns a tuple with the EndAt field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEndAt
+
+`func (o *InitiativeDataAttributes) SetEndAt(v time.Time)`
+
+SetEndAt sets EndAt field to given value.
+
+### HasEndAt
+
+`func (o *InitiativeDataAttributes) HasEndAt() bool`
+
+HasEndAt returns a boolean if a field has been set.
 
 ### GetUpdatedAt
 

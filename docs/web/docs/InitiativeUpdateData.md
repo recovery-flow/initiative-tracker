@@ -5,13 +5,13 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Type** | **string** |  | 
-**Attributes** | [**InitiativeUpdateDataAttributes**](InitiativeUpdateDataAttributes.md) |  | 
+**Attributes** | [**InitiativeCreateDataAttributes**](InitiativeCreateDataAttributes.md) |  | 
 
 ## Methods
 
 ### NewInitiativeUpdateData
 
-`func NewInitiativeUpdateData(type_ string, attributes InitiativeUpdateDataAttributes, ) *InitiativeUpdateData`
+`func NewInitiativeUpdateData(type_ string, attributes InitiativeCreateDataAttributes, ) *InitiativeUpdateData`
 
 NewInitiativeUpdateData instantiates a new InitiativeUpdateData object
 This constructor will assign default values to properties that have it defined,
@@ -48,20 +48,20 @@ SetType sets Type field to given value.
 
 ### GetAttributes
 
-`func (o *InitiativeUpdateData) GetAttributes() InitiativeUpdateDataAttributes`
+`func (o *InitiativeUpdateData) GetAttributes() InitiativeCreateDataAttributes`
 
 GetAttributes returns the Attributes field if non-nil, zero value otherwise.
 
 ### GetAttributesOk
 
-`func (o *InitiativeUpdateData) GetAttributesOk() (*InitiativeUpdateDataAttributes, bool)`
+`func (o *InitiativeUpdateData) GetAttributesOk() (*InitiativeCreateDataAttributes, bool)`
 
 GetAttributesOk returns a tuple with the Attributes field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAttributes
 
-`func (o *InitiativeUpdateData) SetAttributes(v InitiativeUpdateDataAttributes)`
+`func (o *InitiativeUpdateData) SetAttributes(v InitiativeCreateDataAttributes)`
 
 SetAttributes sets Attributes field to given value.
 

@@ -22,7 +22,7 @@ var _ MappedNullable = &InitiativeUpdateData{}
 // InitiativeUpdateData struct for InitiativeUpdateData
 type InitiativeUpdateData struct {
 	Type string `json:"type"`
-	Attributes InitiativeUpdateDataAttributes `json:"attributes"`
+	Attributes InitiativeCreateDataAttributes `json:"attributes"`
 }
 
 type _InitiativeUpdateData InitiativeUpdateData
@@ -31,7 +31,7 @@ type _InitiativeUpdateData InitiativeUpdateData
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewInitiativeUpdateData(type_ string, attributes InitiativeUpdateDataAttributes) *InitiativeUpdateData {
+func NewInitiativeUpdateData(type_ string, attributes InitiativeCreateDataAttributes) *InitiativeUpdateData {
 	this := InitiativeUpdateData{}
 	this.Type = type_
 	this.Attributes = attributes
@@ -71,9 +71,9 @@ func (o *InitiativeUpdateData) SetType(v string) {
 }
 
 // GetAttributes returns the Attributes field value
-func (o *InitiativeUpdateData) GetAttributes() InitiativeUpdateDataAttributes {
+func (o *InitiativeUpdateData) GetAttributes() InitiativeCreateDataAttributes {
 	if o == nil {
-		var ret InitiativeUpdateDataAttributes
+		var ret InitiativeCreateDataAttributes
 		return ret
 	}
 
@@ -82,7 +82,7 @@ func (o *InitiativeUpdateData) GetAttributes() InitiativeUpdateDataAttributes {
 
 // GetAttributesOk returns a tuple with the Attributes field value
 // and a boolean to check if the value has been set.
-func (o *InitiativeUpdateData) GetAttributesOk() (*InitiativeUpdateDataAttributes, bool) {
+func (o *InitiativeUpdateData) GetAttributesOk() (*InitiativeCreateDataAttributes, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -90,7 +90,7 @@ func (o *InitiativeUpdateData) GetAttributesOk() (*InitiativeUpdateDataAttribute
 }
 
 // SetAttributes sets field value
-func (o *InitiativeUpdateData) SetAttributes(v InitiativeUpdateDataAttributes) {
+func (o *InitiativeUpdateData) SetAttributes(v InitiativeCreateDataAttributes) {
 	o.Attributes = v
 }
 

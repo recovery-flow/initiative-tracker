@@ -19,33 +19,9 @@ components:
       $ref: './spec/components/schemas/LinksDirect.yaml'
     LinksPagination:
       $ref: './spec/components/schemas/LinksPagination.yaml'
-    Owner:
-      $ref: './spec/components/schemas/Owner.yaml'
     Initiative:
       $ref: './spec/components/schemas/Initiative.yaml'
     InitiativeCreate:
       $ref: './spec/components/schemas/InitiativeCreate.yaml'
     InitiativeUpdate:
       $ref: './spec/components/schemas/InitiativeUpdate.yaml'
-    Point:
-      $ref: './spec/components/schemas/Point.yaml'
-    PointCreate:
-      $ref: './spec/components/schemas/PointCreate.yaml'
-    PointUpdate:
-      $ref: './spec/components/schemas/PointUpdate.yaml'
-    PointCollection:
-      $ref: './spec/components/schemas/PointsCollection.yaml'
-    Jar:
-      $ref: './spec/components/schemas/Jar.yaml'
-    JarUpdate:
-      $ref: './spec/components/schemas/JarUpdate.yaml'
-    Participant:
-      $ref: './spec/components/schemas/Participant.yaml'
-    ParticipantData:
-      $ref: './spec/components/schemas/ParticipantData.yaml'
-    ParticipantCreate:
-      $ref: './spec/components/schemas/ParticipantCreate.yaml'
-    ParticipantUpdate:
-      $ref: './spec/components/schemas/ParticipantUpdate.yaml'
-    ParticipantsCollection:
-      $ref: './spec/components/schemas/ParticipantCollection.yaml'

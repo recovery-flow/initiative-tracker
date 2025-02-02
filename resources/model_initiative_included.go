@@ -21,7 +21,8 @@ var _ MappedNullable = &InitiativeIncluded{}
 
 // InitiativeIncluded struct for InitiativeIncluded
 type InitiativeIncluded struct {
-	Tags []InitiativeTagData `json:"tags"`
+	Wallets Object `json:"wallets"`
+	Organization []Object `json:"organization"`
 }
 
 type _InitiativeIncluded InitiativeIncluded
@@ -30,9 +31,10 @@ type _InitiativeIncluded InitiativeIncluded
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewInitiativeIncluded(tags []InitiativeTagData) *InitiativeIncluded {
+func NewInitiativeIncluded(wallets Object, organization []Object) *InitiativeIncluded {
 	this := InitiativeIncluded{}
-	this.Tags = tags
+	this.Wallets = wallets
+	this.Organization = organization
 	return &this
 }
 
@@ -44,28 +46,52 @@ func NewInitiativeIncludedWithDefaults() *InitiativeIncluded {
 	return &this
 }
 
-// GetTags returns the Tags field value
-func (o *InitiativeIncluded) GetTags() []InitiativeTagData {
+// GetWallets returns the Wallets field value
+func (o *InitiativeIncluded) GetWallets() Object {
 	if o == nil {
-		var ret []InitiativeTagData
+		var ret Object
 		return ret
 	}
 
-	return o.Tags
+	return o.Wallets
 }
 
-// GetTagsOk returns a tuple with the Tags field value
+// GetWalletsOk returns a tuple with the Wallets field value
 // and a boolean to check if the value has been set.
-func (o *InitiativeIncluded) GetTagsOk() ([]InitiativeTagData, bool) {
+func (o *InitiativeIncluded) GetWalletsOk() (*Object, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.Tags, true
+	return &o.Wallets, true
 }
 
-// SetTags sets field value
-func (o *InitiativeIncluded) SetTags(v []InitiativeTagData) {
-	o.Tags = v
+// SetWallets sets field value
+func (o *InitiativeIncluded) SetWallets(v Object) {
+	o.Wallets = v
+}
+
+// GetOrganization returns the Organization field value
+func (o *InitiativeIncluded) GetOrganization() []Object {
+	if o == nil {
+		var ret []Object
+		return ret
+	}
+
+	return o.Organization
+}
+
+// GetOrganizationOk returns a tuple with the Organization field value
+// and a boolean to check if the value has been set.
+func (o *InitiativeIncluded) GetOrganizationOk() ([]Object, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.Organization, true
+}
+
+// SetOrganization sets field value
+func (o *InitiativeIncluded) SetOrganization(v []Object) {
+	o.Organization = v
 }
 
 func (o InitiativeIncluded) MarshalJSON() ([]byte, error) {
@@ -78,7 +104,8 @@ func (o InitiativeIncluded) MarshalJSON() ([]byte, error) {
 
 func (o InitiativeIncluded) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["tags"] = o.Tags
+	toSerialize["wallets"] = o.Wallets
+	toSerialize["organization"] = o.Organization
 	return toSerialize, nil
 }
 
@@ -87,7 +114,8 @@ func (o *InitiativeIncluded) UnmarshalJSON(data []byte) (err error) {
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
-		"tags",
+		"wallets",
+		"organization",
 	}
 
 	allProperties := make(map[string]interface{})

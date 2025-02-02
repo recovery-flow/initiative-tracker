@@ -32,16 +32,24 @@ type InitiativeDataAttributes struct {
 	Verified bool `json:"verified"`
 	// location of initiative
 	Location *string `json:"location,omitempty"`
+	// types of initiative
+	Type string `json:"type"`
 	// status of initiative
 	Status string `json:"status"`
+	// final cost of initiative
+	FinalCost *int64 `json:"final_cost,omitempty"`
+	// collected sum of initiative
+	CollectedSum *int64 `json:"collected_sum,omitempty"`
 	// likes of initiative
 	Likes int64 `json:"likes"`
 	// reposts of initiative
 	Reposts int64 `json:"reposts"`
 	// reports of initiative
 	Reports int64 `json:"reports"`
-	// Initiative created at
-	CreatedAt time.Time `json:"created_at"`
+	// start date of initiative
+	StartAt *time.Time `json:"start_at,omitempty"`
+	// end date of initiative
+	EndAt *time.Time `json:"end_at,omitempty"`
 	// Initiative updated at
 	UpdatedAt *time.Time `json:"updated_at,omitempty"`
 	// Initiative closed at
@@ -54,17 +62,17 @@ type _InitiativeDataAttributes InitiativeDataAttributes
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewInitiativeDataAttributes(name string, desc string, goal string, verified bool, status string, likes int64, reposts int64, reports int64, createdAt time.Time) *InitiativeDataAttributes {
+func NewInitiativeDataAttributes(name string, desc string, goal string, verified bool, type_ string, status string, likes int64, reposts int64, reports int64) *InitiativeDataAttributes {
 	this := InitiativeDataAttributes{}
 	this.Name = name
 	this.Desc = desc
 	this.Goal = goal
 	this.Verified = verified
+	this.Type = type_
 	this.Status = status
 	this.Likes = likes
 	this.Reposts = reposts
 	this.Reports = reports
-	this.CreatedAt = createdAt
 	return &this
 }
 
@@ -204,6 +212,30 @@ func (o *InitiativeDataAttributes) SetLocation(v string) {
 	o.Location = &v
 }
 
+// GetType returns the Type field value
+func (o *InitiativeDataAttributes) GetType() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.Type
+}
+
+// GetTypeOk returns a tuple with the Type field value
+// and a boolean to check if the value has been set.
+func (o *InitiativeDataAttributes) GetTypeOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Type, true
+}
+
+// SetType sets field value
+func (o *InitiativeDataAttributes) SetType(v string) {
+	o.Type = v
+}
+
 // GetStatus returns the Status field value
 func (o *InitiativeDataAttributes) GetStatus() string {
 	if o == nil {
@@ -226,6 +258,70 @@ func (o *InitiativeDataAttributes) GetStatusOk() (*string, bool) {
 // SetStatus sets field value
 func (o *InitiativeDataAttributes) SetStatus(v string) {
 	o.Status = v
+}
+
+// GetFinalCost returns the FinalCost field value if set, zero value otherwise.
+func (o *InitiativeDataAttributes) GetFinalCost() int64 {
+	if o == nil || IsNil(o.FinalCost) {
+		var ret int64
+		return ret
+	}
+	return *o.FinalCost
+}
+
+// GetFinalCostOk returns a tuple with the FinalCost field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *InitiativeDataAttributes) GetFinalCostOk() (*int64, bool) {
+	if o == nil || IsNil(o.FinalCost) {
+		return nil, false
+	}
+	return o.FinalCost, true
+}
+
+// HasFinalCost returns a boolean if a field has been set.
+func (o *InitiativeDataAttributes) HasFinalCost() bool {
+	if o != nil && !IsNil(o.FinalCost) {
+		return true
+	}
+
+	return false
+}
+
+// SetFinalCost gets a reference to the given int64 and assigns it to the FinalCost field.
+func (o *InitiativeDataAttributes) SetFinalCost(v int64) {
+	o.FinalCost = &v
+}
+
+// GetCollectedSum returns the CollectedSum field value if set, zero value otherwise.
+func (o *InitiativeDataAttributes) GetCollectedSum() int64 {
+	if o == nil || IsNil(o.CollectedSum) {
+		var ret int64
+		return ret
+	}
+	return *o.CollectedSum
+}
+
+// GetCollectedSumOk returns a tuple with the CollectedSum field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *InitiativeDataAttributes) GetCollectedSumOk() (*int64, bool) {
+	if o == nil || IsNil(o.CollectedSum) {
+		return nil, false
+	}
+	return o.CollectedSum, true
+}
+
+// HasCollectedSum returns a boolean if a field has been set.
+func (o *InitiativeDataAttributes) HasCollectedSum() bool {
+	if o != nil && !IsNil(o.CollectedSum) {
+		return true
+	}
+
+	return false
+}
+
+// SetCollectedSum gets a reference to the given int64 and assigns it to the CollectedSum field.
+func (o *InitiativeDataAttributes) SetCollectedSum(v int64) {
+	o.CollectedSum = &v
 }
 
 // GetLikes returns the Likes field value
@@ -300,28 +396,68 @@ func (o *InitiativeDataAttributes) SetReports(v int64) {
 	o.Reports = v
 }
 
-// GetCreatedAt returns the CreatedAt field value
-func (o *InitiativeDataAttributes) GetCreatedAt() time.Time {
-	if o == nil {
+// GetStartAt returns the StartAt field value if set, zero value otherwise.
+func (o *InitiativeDataAttributes) GetStartAt() time.Time {
+	if o == nil || IsNil(o.StartAt) {
 		var ret time.Time
 		return ret
 	}
-
-	return o.CreatedAt
+	return *o.StartAt
 }
 
-// GetCreatedAtOk returns a tuple with the CreatedAt field value
+// GetStartAtOk returns a tuple with the StartAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *InitiativeDataAttributes) GetCreatedAtOk() (*time.Time, bool) {
-	if o == nil {
+func (o *InitiativeDataAttributes) GetStartAtOk() (*time.Time, bool) {
+	if o == nil || IsNil(o.StartAt) {
 		return nil, false
 	}
-	return &o.CreatedAt, true
+	return o.StartAt, true
 }
 
-// SetCreatedAt sets field value
-func (o *InitiativeDataAttributes) SetCreatedAt(v time.Time) {
-	o.CreatedAt = v
+// HasStartAt returns a boolean if a field has been set.
+func (o *InitiativeDataAttributes) HasStartAt() bool {
+	if o != nil && !IsNil(o.StartAt) {
+		return true
+	}
+
+	return false
+}
+
+// SetStartAt gets a reference to the given time.Time and assigns it to the StartAt field.
+func (o *InitiativeDataAttributes) SetStartAt(v time.Time) {
+	o.StartAt = &v
+}
+
+// GetEndAt returns the EndAt field value if set, zero value otherwise.
+func (o *InitiativeDataAttributes) GetEndAt() time.Time {
+	if o == nil || IsNil(o.EndAt) {
+		var ret time.Time
+		return ret
+	}
+	return *o.EndAt
+}
+
+// GetEndAtOk returns a tuple with the EndAt field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *InitiativeDataAttributes) GetEndAtOk() (*time.Time, bool) {
+	if o == nil || IsNil(o.EndAt) {
+		return nil, false
+	}
+	return o.EndAt, true
+}
+
+// HasEndAt returns a boolean if a field has been set.
+func (o *InitiativeDataAttributes) HasEndAt() bool {
+	if o != nil && !IsNil(o.EndAt) {
+		return true
+	}
+
+	return false
+}
+
+// SetEndAt gets a reference to the given time.Time and assigns it to the EndAt field.
+func (o *InitiativeDataAttributes) SetEndAt(v time.Time) {
+	o.EndAt = &v
 }
 
 // GetUpdatedAt returns the UpdatedAt field value if set, zero value otherwise.
@@ -405,11 +541,23 @@ func (o InitiativeDataAttributes) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Location) {
 		toSerialize["location"] = o.Location
 	}
+	toSerialize["type"] = o.Type
 	toSerialize["status"] = o.Status
+	if !IsNil(o.FinalCost) {
+		toSerialize["final_cost"] = o.FinalCost
+	}
+	if !IsNil(o.CollectedSum) {
+		toSerialize["collected_sum"] = o.CollectedSum
+	}
 	toSerialize["likes"] = o.Likes
 	toSerialize["reposts"] = o.Reposts
 	toSerialize["reports"] = o.Reports
-	toSerialize["created_at"] = o.CreatedAt
+	if !IsNil(o.StartAt) {
+		toSerialize["start_at"] = o.StartAt
+	}
+	if !IsNil(o.EndAt) {
+		toSerialize["end_at"] = o.EndAt
+	}
 	if !IsNil(o.UpdatedAt) {
 		toSerialize["updated_at"] = o.UpdatedAt
 	}
@@ -428,11 +576,11 @@ func (o *InitiativeDataAttributes) UnmarshalJSON(data []byte) (err error) {
 		"desc",
 		"goal",
 		"verified",
+		"type",
 		"status",
 		"likes",
 		"reposts",
 		"reports",
-		"created_at",
 	}
 
 	allProperties := make(map[string]interface{})

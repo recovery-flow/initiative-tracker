@@ -8,13 +8,17 @@ Name | Type | Description | Notes
 **Desc** | **string** | description of initiative | 
 **Goal** | **string** | goal of initiative | 
 **Location** | Pointer to **string** | location of initiative | [optional] 
-**Owner** | [**Owner**](Owner.md) |  | 
+**Type** | **string** | types of initiative | 
+**Status** | **string** | status of initiative | 
+**FinalCost** | **int64** | final cost of initiative | 
+**Wallets** | [**Object**](Object.md) |  | 
+**OrgMembers** | [**[]Object**](Object.md) |  | 
 
 ## Methods
 
 ### NewInitiativeCreateDataAttributes
 
-`func NewInitiativeCreateDataAttributes(name string, desc string, goal string, owner Owner, ) *InitiativeCreateDataAttributes`
+`func NewInitiativeCreateDataAttributes(name string, desc string, goal string, type_ string, status string, finalCost int64, wallets Object, orgMembers []Object, ) *InitiativeCreateDataAttributes`
 
 NewInitiativeCreateDataAttributes instantiates a new InitiativeCreateDataAttributes object
 This constructor will assign default values to properties that have it defined,
@@ -114,24 +118,104 @@ SetLocation sets Location field to given value.
 
 HasLocation returns a boolean if a field has been set.
 
-### GetOwner
+### GetType
 
-`func (o *InitiativeCreateDataAttributes) GetOwner() Owner`
+`func (o *InitiativeCreateDataAttributes) GetType() string`
 
-GetOwner returns the Owner field if non-nil, zero value otherwise.
+GetType returns the Type field if non-nil, zero value otherwise.
 
-### GetOwnerOk
+### GetTypeOk
 
-`func (o *InitiativeCreateDataAttributes) GetOwnerOk() (*Owner, bool)`
+`func (o *InitiativeCreateDataAttributes) GetTypeOk() (*string, bool)`
 
-GetOwnerOk returns a tuple with the Owner field if it's non-nil, zero value otherwise
+GetTypeOk returns a tuple with the Type field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetOwner
+### SetType
 
-`func (o *InitiativeCreateDataAttributes) SetOwner(v Owner)`
+`func (o *InitiativeCreateDataAttributes) SetType(v string)`
 
-SetOwner sets Owner field to given value.
+SetType sets Type field to given value.
+
+
+### GetStatus
+
+`func (o *InitiativeCreateDataAttributes) GetStatus() string`
+
+GetStatus returns the Status field if non-nil, zero value otherwise.
+
+### GetStatusOk
+
+`func (o *InitiativeCreateDataAttributes) GetStatusOk() (*string, bool)`
+
+GetStatusOk returns a tuple with the Status field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetStatus
+
+`func (o *InitiativeCreateDataAttributes) SetStatus(v string)`
+
+SetStatus sets Status field to given value.
+
+
+### GetFinalCost
+
+`func (o *InitiativeCreateDataAttributes) GetFinalCost() int64`
+
+GetFinalCost returns the FinalCost field if non-nil, zero value otherwise.
+
+### GetFinalCostOk
+
+`func (o *InitiativeCreateDataAttributes) GetFinalCostOk() (*int64, bool)`
+
+GetFinalCostOk returns a tuple with the FinalCost field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetFinalCost
+
+`func (o *InitiativeCreateDataAttributes) SetFinalCost(v int64)`
+
+SetFinalCost sets FinalCost field to given value.
+
+
+### GetWallets
+
+`func (o *InitiativeCreateDataAttributes) GetWallets() Object`
+
+GetWallets returns the Wallets field if non-nil, zero value otherwise.
+
+### GetWalletsOk
+
+`func (o *InitiativeCreateDataAttributes) GetWalletsOk() (*Object, bool)`
+
+GetWalletsOk returns a tuple with the Wallets field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetWallets
+
+`func (o *InitiativeCreateDataAttributes) SetWallets(v Object)`
+
+SetWallets sets Wallets field to given value.
+
+
+### GetOrgMembers
+
+`func (o *InitiativeCreateDataAttributes) GetOrgMembers() []Object`
+
+GetOrgMembers returns the OrgMembers field if non-nil, zero value otherwise.
+
+### GetOrgMembersOk
+
+`func (o *InitiativeCreateDataAttributes) GetOrgMembersOk() (*[]Object, bool)`
+
+GetOrgMembersOk returns a tuple with the OrgMembers field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetOrgMembers
+
+`func (o *InitiativeCreateDataAttributes) SetOrgMembers(v []Object)`
+
+SetOrgMembers sets OrgMembers field to given value.
 
 
 

@@ -29,7 +29,14 @@ type InitiativeCreateDataAttributes struct {
 	Goal string `json:"goal"`
 	// location of initiative
 	Location *string `json:"location,omitempty"`
-	Owner Owner `json:"owner"`
+	// types of initiative
+	Type string `json:"type"`
+	// status of initiative
+	Status string `json:"status"`
+	// final cost of initiative
+	FinalCost int64 `json:"final_cost"`
+	Wallets Object `json:"wallets"`
+	OrgMembers []Object `json:"org_members"`
 }
 
 type _InitiativeCreateDataAttributes InitiativeCreateDataAttributes
@@ -38,12 +45,16 @@ type _InitiativeCreateDataAttributes InitiativeCreateDataAttributes
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewInitiativeCreateDataAttributes(name string, desc string, goal string, owner Owner) *InitiativeCreateDataAttributes {
+func NewInitiativeCreateDataAttributes(name string, desc string, goal string, type_ string, status string, finalCost int64, wallets Object, orgMembers []Object) *InitiativeCreateDataAttributes {
 	this := InitiativeCreateDataAttributes{}
 	this.Name = name
 	this.Desc = desc
 	this.Goal = goal
-	this.Owner = owner
+	this.Type = type_
+	this.Status = status
+	this.FinalCost = finalCost
+	this.Wallets = wallets
+	this.OrgMembers = orgMembers
 	return &this
 }
 
@@ -159,28 +170,124 @@ func (o *InitiativeCreateDataAttributes) SetLocation(v string) {
 	o.Location = &v
 }
 
-// GetOwner returns the Owner field value
-func (o *InitiativeCreateDataAttributes) GetOwner() Owner {
+// GetType returns the Type field value
+func (o *InitiativeCreateDataAttributes) GetType() string {
 	if o == nil {
-		var ret Owner
+		var ret string
 		return ret
 	}
 
-	return o.Owner
+	return o.Type
 }
 
-// GetOwnerOk returns a tuple with the Owner field value
+// GetTypeOk returns a tuple with the Type field value
 // and a boolean to check if the value has been set.
-func (o *InitiativeCreateDataAttributes) GetOwnerOk() (*Owner, bool) {
+func (o *InitiativeCreateDataAttributes) GetTypeOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.Owner, true
+	return &o.Type, true
 }
 
-// SetOwner sets field value
-func (o *InitiativeCreateDataAttributes) SetOwner(v Owner) {
-	o.Owner = v
+// SetType sets field value
+func (o *InitiativeCreateDataAttributes) SetType(v string) {
+	o.Type = v
+}
+
+// GetStatus returns the Status field value
+func (o *InitiativeCreateDataAttributes) GetStatus() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.Status
+}
+
+// GetStatusOk returns a tuple with the Status field value
+// and a boolean to check if the value has been set.
+func (o *InitiativeCreateDataAttributes) GetStatusOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Status, true
+}
+
+// SetStatus sets field value
+func (o *InitiativeCreateDataAttributes) SetStatus(v string) {
+	o.Status = v
+}
+
+// GetFinalCost returns the FinalCost field value
+func (o *InitiativeCreateDataAttributes) GetFinalCost() int64 {
+	if o == nil {
+		var ret int64
+		return ret
+	}
+
+	return o.FinalCost
+}
+
+// GetFinalCostOk returns a tuple with the FinalCost field value
+// and a boolean to check if the value has been set.
+func (o *InitiativeCreateDataAttributes) GetFinalCostOk() (*int64, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.FinalCost, true
+}
+
+// SetFinalCost sets field value
+func (o *InitiativeCreateDataAttributes) SetFinalCost(v int64) {
+	o.FinalCost = v
+}
+
+// GetWallets returns the Wallets field value
+func (o *InitiativeCreateDataAttributes) GetWallets() Object {
+	if o == nil {
+		var ret Object
+		return ret
+	}
+
+	return o.Wallets
+}
+
+// GetWalletsOk returns a tuple with the Wallets field value
+// and a boolean to check if the value has been set.
+func (o *InitiativeCreateDataAttributes) GetWalletsOk() (*Object, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Wallets, true
+}
+
+// SetWallets sets field value
+func (o *InitiativeCreateDataAttributes) SetWallets(v Object) {
+	o.Wallets = v
+}
+
+// GetOrgMembers returns the OrgMembers field value
+func (o *InitiativeCreateDataAttributes) GetOrgMembers() []Object {
+	if o == nil {
+		var ret []Object
+		return ret
+	}
+
+	return o.OrgMembers
+}
+
+// GetOrgMembersOk returns a tuple with the OrgMembers field value
+// and a boolean to check if the value has been set.
+func (o *InitiativeCreateDataAttributes) GetOrgMembersOk() ([]Object, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.OrgMembers, true
+}
+
+// SetOrgMembers sets field value
+func (o *InitiativeCreateDataAttributes) SetOrgMembers(v []Object) {
+	o.OrgMembers = v
 }
 
 func (o InitiativeCreateDataAttributes) MarshalJSON() ([]byte, error) {
@@ -199,7 +306,11 @@ func (o InitiativeCreateDataAttributes) ToMap() (map[string]interface{}, error) 
 	if !IsNil(o.Location) {
 		toSerialize["location"] = o.Location
 	}
-	toSerialize["owner"] = o.Owner
+	toSerialize["type"] = o.Type
+	toSerialize["status"] = o.Status
+	toSerialize["final_cost"] = o.FinalCost
+	toSerialize["wallets"] = o.Wallets
+	toSerialize["org_members"] = o.OrgMembers
 	return toSerialize, nil
 }
 
@@ -211,7 +322,11 @@ func (o *InitiativeCreateDataAttributes) UnmarshalJSON(data []byte) (err error) 
 		"name",
 		"desc",
 		"goal",
-		"owner",
+		"type",
+		"status",
+		"final_cost",
+		"wallets",
+		"org_members",
 	}
 
 	allProperties := make(map[string]interface{})

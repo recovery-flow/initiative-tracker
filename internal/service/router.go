@@ -44,14 +44,15 @@ func Run(ctx context.Context) {
 							})
 						})
 
-						r.Route("/points", func(r chi.Router) {
-							r.Post("/", handlers.PointCreate)
-
-							r.Route("/{point_id}", func(r chi.Router) {
-								r.Patch("/", handlers.PointUpdate)
-								r.Delete("/", handlers.PointDelete)
-							})
-						})
+						//Delayed
+						//r.Route("/points", func(r chi.Router) {
+						//	r.Post("/", handlers.PointCreate)
+						//
+						//	r.Route("/{point_id}", func(r chi.Router) {
+						//		r.Patch("/", handlers.PointUpdate)
+						//		r.Delete("/", handlers.PointDelete)
+						//	})
+						//})
 
 						//TODO add work with tags need new service for tags for correct work
 						r.Route("/tags", func(r chi.Router) {
@@ -80,10 +81,6 @@ func Run(ctx context.Context) {
 							r.Get("/{user_id}", handlers.ParticipantByOrgIdUserId)
 						})
 					})
-				})
-
-				r.Route("/points", func(r chi.Router) {
-					r.Get("/", handlers.GetPoints)
 				})
 			})
 

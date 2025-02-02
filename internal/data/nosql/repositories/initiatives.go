@@ -7,7 +7,6 @@ import (
 	"time"
 
 	"github.com/recovery-flow/initiative-tracker/internal/data/nosql/models"
-	"github.com/sirupsen/logrus"
 	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/bson/primitive"
 	"go.mongodb.org/mongo-driver/mongo/options"
@@ -27,8 +26,10 @@ type Initiatives interface {
 	FilterExact(filters map[string]any) Initiatives
 	FilterSoft(filters map[string]any) Initiatives
 	FilterDateBounds(dateFilters map[string]any, after bool) Initiatives
+	FilterCounts(countFilters map[string]any, greater bool) Initiatives
 
-	Tags() Tags
+	FilterOrgs(filters map[string]any) Initiatives
+	UpdateOrgMember(ctx context.Context, orgID primitive.ObjectID, fields map[string]any) (*models.Initiative, error)
 
 	UpdateOne(ctx context.Context, fields map[string]any) (*models.Initiative, error)
 
@@ -83,28 +84,39 @@ func (i *initiatives) New() Initiatives {
 
 func (i *initiatives) Insert(ctx context.Context, initiative models.Initiative) (*models.Initiative, error) {
 	initiative.ID = primitive.NewObjectID()
+
 	initiative.Name = strings.TrimSpace(initiative.Name)
 	if initiative.Name == "" {
 		return nil, fmt.Errorf("initiatives name cannot be empty")
 	}
+
 	initiative.Desc = strings.TrimSpace(initiative.Desc)
 	if initiative.Desc == "" {
 		return nil, fmt.Errorf("initiatives description cannot be empty")
 	}
+
 	initiative.Goal = strings.TrimSpace(initiative.Goal)
+	if initiative.Goal == "" {
+		return nil, fmt.Errorf("initiatives goal cannot be empty")
+	}
+
 	if initiative.Location != nil {
 		*initiative.Location = strings.TrimSpace(*initiative.Location)
 		if *initiative.Location == "" {
 			return nil, fmt.Errorf("incorect location")
 		}
 	}
-	iniStatus := models.StatusFromString(string(initiative.Status))
+
+	iniStatus := models.GetIniStatus(string(initiative.Status))
 	if iniStatus == nil {
 		return nil, fmt.Errorf("incorect status")
 	}
 	initiative.Status = *iniStatus
 	initiative.ChatID = primitive.NewObjectID()
-	initiative.CreatedAt = primitive.DateTime(time.Now().UnixNano() / int64(time.Millisecond))
+
+	initiative.Likes = 0
+	initiative.Reposts = 0
+	initiative.Reports = 0
 
 	res, err := i.collection.InsertOne(ctx, initiative)
 	if err != nil {
@@ -156,127 +168,6 @@ func (i *initiatives) Get(ctx context.Context) (*models.Initiative, error) {
 	return &ini, nil
 }
 
-func (i *initiatives) FilterExact(filters map[string]any) Initiatives {
-	var validFilters = map[string]bool{
-		"_id":      true,
-		"name":     true,
-		"verified": true,
-		"location": true,
-		"status":   true,
-		"tags":     true,
-		"likes":    true,
-		"reposts":  true,
-		"reports":  true,
-	}
-
-	for field, value := range filters {
-		if !validFilters[field] {
-			continue
-		}
-		if value == nil {
-			continue
-		}
-		i.filters[field] = value
-	}
-	return i
-}
-
-func (i *initiatives) FilterSoft(filters map[string]any) Initiatives {
-	softFields := map[string]bool{
-		"location": true,
-		"name":     true,
-	}
-
-	for field, value := range filters {
-		if !softFields[field] {
-			// Если поле не разрешено для мягкого поиска, пропустим
-			continue
-		}
-		if value == nil {
-			continue
-		}
-
-		strVal, ok := value.(string)
-		if !ok {
-			logrus.Warnf("FilterSoft: field %s is not a string, got %T", field, value)
-			continue
-		}
-		// Делаем фильтр вида {"field": {"$regex": strVal, "$options": "i"}}
-		i.filters[field] = bson.M{
-			"$regex":   strVal,
-			"$options": "i",
-		}
-	}
-
-	return i
-}
-
-func (i *initiatives) FilterDateBounds(dateFilters map[string]any, after bool) Initiatives {
-	validDateFields := map[string]bool{
-		"created_at": true,
-		"updated_at": true,
-	}
-
-	// Для удобства определим оператор
-	var op string
-	if after {
-		// Ищем записи "после или в" этой даты
-		op = "$gte"
-	} else {
-		// Ищем записи "до или в" этой даты
-		op = "$lte"
-	}
-
-	for field, value := range dateFilters {
-		if !validDateFields[field] {
-			// Игнорируем любые поля, кроме "created_at" и "updated_at"
-			continue
-		}
-		if value == nil {
-			continue
-		}
-
-		// Попробуем интерпретировать value как time.Time или строку
-		var t time.Time
-		switch val := value.(type) {
-		case time.Time:
-			t = val
-		case *time.Time:
-			t = *val
-		case string:
-			// Попробуем распарсить строку как RFC3339 (или любой другой формат)
-			parsed, err := time.Parse(time.RFC3339, val)
-			if err != nil {
-				// Если парсинг не удался, можно проигнорировать или залогировать
-				logrus.Warnf("FilterDateBounds: cannot parse date '%s': %v", val, err)
-				continue
-			}
-			t = parsed
-		default:
-			// Если тип неподходящий – просто пропустим
-			logrus.Warnf("FilterDateBounds: field %s is not a recognized date type: %T", field, value)
-			continue
-		}
-
-		// Формируем условие вида: {"created_at": {"$gte": t}} или {"updated_at": {"$lte": t}}
-		i.filters[field] = bson.M{op: t}
-	}
-
-	return i
-}
-
-func (i *initiatives) Tags() Tags {
-	return &tags{
-		client:     i.client,
-		database:   i.database,
-		collection: i.collection,
-		filters:    i.filters,
-		sort:       i.sort,
-		limit:      i.limit,
-		skip:       i.skip,
-	}
-}
-
 func (i *initiatives) UpdateOne(ctx context.Context, fields map[string]any) (*models.Initiative, error) {
 	if len(fields) == 0 {
 		return nil, fmt.Errorf("no fields to update")
@@ -288,19 +179,18 @@ func (i *initiatives) UpdateOne(ctx context.Context, fields map[string]any) (*mo
 	}
 
 	validFields := map[string]bool{
-		"name":         true,
-		"desc":         true,
-		"goal":         true,
-		"verified":     true,
-		"location":     true,
-		"status":       true,
-		"tags":         true,
-		"projects":     true,
-		"participants": true,
-		"likes":        true,
-		"reposts":      true,
-		"reports":      true,
-		"closed_at":    true,
+		"name":       true,
+		"desc":       true,
+		"goal":       true,
+		"verified":   true,
+		"location":   true,
+		"type":       true,
+		"status":     true,
+		"likes":      true,
+		"reposts":    true,
+		"reports":    true,
+		"updated_at": true,
+		"closed_at":  true,
 	}
 
 	updateFields := bson.M{}

@@ -7,14 +7,14 @@ Name | Type | Description | Notes
 **Id** | **string** | initiative id | 
 **Type** | **string** |  | 
 **Attributes** | [**InitiativeDataAttributes**](InitiativeDataAttributes.md) |  | 
-**Links** | [**LinkSelf**](LinkSelf.md) |  | 
+**Links** | [**Object**](Object.md) |  | 
 **Relationships** | [**InitiativeDataRelationships**](InitiativeDataRelationships.md) |  | 
 
 ## Methods
 
 ### NewInitiativeData
 
-`func NewInitiativeData(id string, type_ string, attributes InitiativeDataAttributes, links LinkSelf, relationships InitiativeDataRelationships, ) *InitiativeData`
+`func NewInitiativeData(id string, type_ string, attributes InitiativeDataAttributes, links Object, relationships InitiativeDataRelationships, ) *InitiativeData`
 
 NewInitiativeData instantiates a new InitiativeData object
 This constructor will assign default values to properties that have it defined,
@@ -91,20 +91,20 @@ SetAttributes sets Attributes field to given value.
 
 ### GetLinks
 
-`func (o *InitiativeData) GetLinks() LinkSelf`
+`func (o *InitiativeData) GetLinks() Object`
 
 GetLinks returns the Links field if non-nil, zero value otherwise.
 
 ### GetLinksOk
 
-`func (o *InitiativeData) GetLinksOk() (*LinkSelf, bool)`
+`func (o *InitiativeData) GetLinksOk() (*Object, bool)`
 
 GetLinksOk returns a tuple with the Links field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetLinks
 
-`func (o *InitiativeData) SetLinks(v LinkSelf)`
+`func (o *InitiativeData) SetLinks(v Object)`
 
 SetLinks sets Links field to given value.
 

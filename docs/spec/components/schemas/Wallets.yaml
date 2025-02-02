@@ -1,0 +1,45 @@
+type: object
+required:
+  - bank_account
+  - payment_system
+  - crypto_wallets
+properties:
+  bank_account:
+    type: object
+    properties:
+      monobank:
+        type: string
+        description: "monobank account"
+      privat:
+        type: string
+        description: "privat account"
+  payment_system:
+    type: object
+    properties:
+      paypal:
+        type: string
+        description: "paypal account"
+      apple_pay:
+        type: string
+        description: "apple pay account"
+      google_pay:
+        type: string
+        description: "google pay account"
+  crypto_wallets:
+    type: object
+    properties:
+      USDT:
+        type: string
+        description: "USDT wallet"
+      ETH:
+        type: string
+        description: "ETH wallet"
+      BTC:
+        type: string
+        description: "BTC wallet"
+      TON:
+        type: string
+        description: "TON wallet"
+      SOL:
+        type: string
+        description: "SOL wallet"

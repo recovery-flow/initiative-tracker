@@ -4,13 +4,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Tags** | [**[]InitiativeTagData**](InitiativeTagData.md) |  | 
+**Wallets** | [**Object**](Object.md) |  | 
+**Organization** | [**[]Object**](Object.md) |  | 
 
 ## Methods
 
 ### NewInitiativeIncluded
 
-`func NewInitiativeIncluded(tags []InitiativeTagData, ) *InitiativeIncluded`
+`func NewInitiativeIncluded(wallets Object, organization []Object, ) *InitiativeIncluded`
 
 NewInitiativeIncluded instantiates a new InitiativeIncluded object
 This constructor will assign default values to properties that have it defined,
@@ -25,24 +26,44 @@ NewInitiativeIncludedWithDefaults instantiates a new InitiativeIncluded object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
-### GetTags
+### GetWallets
 
-`func (o *InitiativeIncluded) GetTags() []InitiativeTagData`
+`func (o *InitiativeIncluded) GetWallets() Object`
 
-GetTags returns the Tags field if non-nil, zero value otherwise.
+GetWallets returns the Wallets field if non-nil, zero value otherwise.
 
-### GetTagsOk
+### GetWalletsOk
 
-`func (o *InitiativeIncluded) GetTagsOk() (*[]InitiativeTagData, bool)`
+`func (o *InitiativeIncluded) GetWalletsOk() (*Object, bool)`
 
-GetTagsOk returns a tuple with the Tags field if it's non-nil, zero value otherwise
+GetWalletsOk returns a tuple with the Wallets field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetTags
+### SetWallets
 
-`func (o *InitiativeIncluded) SetTags(v []InitiativeTagData)`
+`func (o *InitiativeIncluded) SetWallets(v Object)`
 
-SetTags sets Tags field to given value.
+SetWallets sets Wallets field to given value.
+
+
+### GetOrganization
+
+`func (o *InitiativeIncluded) GetOrganization() []Object`
+
+GetOrganization returns the Organization field if non-nil, zero value otherwise.
+
+### GetOrganizationOk
+
+`func (o *InitiativeIncluded) GetOrganizationOk() (*[]Object, bool)`
+
+GetOrganizationOk returns a tuple with the Organization field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetOrganization
+
+`func (o *InitiativeIncluded) SetOrganization(v []Object)`
+
+SetOrganization sets Organization field to given value.
 
 
 

@@ -25,7 +25,7 @@ type InitiativeData struct {
 	Id string `json:"id"`
 	Type string `json:"type"`
 	Attributes InitiativeDataAttributes `json:"attributes"`
-	Links LinkSelf `json:"links"`
+	Links Object `json:"links"`
 	Relationships InitiativeDataRelationships `json:"relationships"`
 }
 
@@ -35,7 +35,7 @@ type _InitiativeData InitiativeData
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewInitiativeData(id string, type_ string, attributes InitiativeDataAttributes, links LinkSelf, relationships InitiativeDataRelationships) *InitiativeData {
+func NewInitiativeData(id string, type_ string, attributes InitiativeDataAttributes, links Object, relationships InitiativeDataRelationships) *InitiativeData {
 	this := InitiativeData{}
 	this.Id = id
 	this.Type = type_
@@ -126,9 +126,9 @@ func (o *InitiativeData) SetAttributes(v InitiativeDataAttributes) {
 }
 
 // GetLinks returns the Links field value
-func (o *InitiativeData) GetLinks() LinkSelf {
+func (o *InitiativeData) GetLinks() Object {
 	if o == nil {
-		var ret LinkSelf
+		var ret Object
 		return ret
 	}
 
@@ -137,7 +137,7 @@ func (o *InitiativeData) GetLinks() LinkSelf {
 
 // GetLinksOk returns a tuple with the Links field value
 // and a boolean to check if the value has been set.
-func (o *InitiativeData) GetLinksOk() (*LinkSelf, bool) {
+func (o *InitiativeData) GetLinksOk() (*Object, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -145,7 +145,7 @@ func (o *InitiativeData) GetLinksOk() (*LinkSelf, bool) {
 }
 
 // SetLinks sets field value
-func (o *InitiativeData) SetLinks(v LinkSelf) {
+func (o *InitiativeData) SetLinks(v Object) {
 	o.Links = v
 }
 
