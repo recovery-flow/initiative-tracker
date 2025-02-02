@@ -54,7 +54,7 @@ func ParticipantUpdate(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	initiator, err := server.MongoDB.Participants.New().Filter(map[string]any{
+	initiator, err := server.MongoDB.Participants.New().FilterExact(map[string]any{
 		"initiative_id": iniId,
 		"user_id":       initiatorId,
 	}).Get(r.Context())
@@ -64,7 +64,7 @@ func ParticipantUpdate(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	participant, err := server.MongoDB.Participants.New().Filter(map[string]any{
+	participant, err := server.MongoDB.Participants.New().FilterExact(map[string]any{
 		"user_id":       participantUserId,
 		"initiative_id": iniId,
 	}).Get(r.Context())
@@ -111,7 +111,7 @@ func ParticipantUpdate(w http.ResponseWriter, r *http.Request) {
 		stmt["role"] = newRole
 	}
 
-	res, err := server.MongoDB.Participants.New().Filter(map[string]any{
+	res, err := server.MongoDB.Participants.New().FilterExact(map[string]any{
 		"user_id":       participantUserId,
 		"initiative_id": iniId,
 	}).UpdateOne(r.Context(), stmt)

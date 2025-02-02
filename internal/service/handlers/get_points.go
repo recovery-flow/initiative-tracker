@@ -31,17 +31,17 @@ func GetPoints(w http.ResponseWriter, r *http.Request) {
 
 	filter := bson.M{}
 
-	// Парсинг query параметров
 	queryParams := r.URL.Query()
 
-	validFilters := map[string]string{
+	validExactFilters := map[string]string{
+		"status":        "status",
 		"initiative_id": "initiative_id",
 		"parent_id":     "parent_id",
 		"publicised_by": "publicised_by",
 		"id":            "_id",
 	}
 
-	for param, field := range validFilters {
+	for param, field := range validExactFilters {
 		value := queryParams.Get(param)
 		if value == "" {
 			continue
@@ -107,7 +107,7 @@ func GetPoints(w http.ResponseWriter, r *http.Request) {
 	skip := int64((pageNumber - 1) * pageSize)
 
 	res, err := server.MongoDB.Points.New().
-		Filter(filter).
+		FilterExact(filter).
 		Limit(limit).
 		Skip(skip).
 		Select(r.Context())

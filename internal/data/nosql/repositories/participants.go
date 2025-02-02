@@ -6,6 +6,7 @@ import (
 	"time"
 
 	"github.com/recovery-flow/initiative-tracker/internal/data/nosql/models"
+	"github.com/sirupsen/logrus"
 	"go.mongodb.org/mongo-driver/bson/primitive"
 
 	"go.mongodb.org/mongo-driver/bson"
@@ -21,7 +22,9 @@ type Participants interface {
 	Select(ctx context.Context) ([]models.Participant, error)
 	Get(ctx context.Context) (*models.Participant, error)
 
-	Filter(filters map[string]any) Participants
+	FilterExact(filters map[string]any) Participants
+	FilterSoft(filters map[string]any) Participants
+	FilterDateBounds(dateFilters map[string]any, after bool) Participants
 
 	UpdateOne(ctx context.Context, fields map[string]any) (*models.Participant, error)
 
@@ -125,8 +128,9 @@ func (p *participants) Count(ctx context.Context) (int64, error) {
 	return count, nil
 }
 
-func (p *participants) Filter(filters map[string]any) Participants {
-	var validFilters = map[string]bool{
+func (p *participants) FilterExact(filters map[string]any) Participants {
+	// Поля, разрешённые для точной фильтрации
+	var validFiltersExact = map[string]bool{
 		"_id":           true,
 		"user_id":       true,
 		"initiative_id": true,
@@ -142,14 +146,104 @@ func (p *participants) Filter(filters map[string]any) Participants {
 	}
 
 	for field, value := range filters {
-		if !validFilters[field] {
+		if !validFiltersExact[field] {
 			continue
 		}
 		if value == nil {
 			continue
 		}
+		// Точное соответствие
 		p.filters[field] = value
 	}
+	return p
+}
+
+func (p *participants) FilterSoft(filters map[string]any) Participants {
+	// Поля, которые допускаем для подстрочного поиска
+	softFields := map[string]bool{
+		"first_name":   true,
+		"second_name":  true,
+		"third_name":   true,
+		"display_name": true,
+		"position":     true,
+	}
+
+	for field, value := range filters {
+		if !softFields[field] {
+			// Если поле не разрешено для мягкого поиска, пропустим
+			continue
+		}
+		if value == nil {
+			continue
+		}
+
+		strVal, ok := value.(string)
+		if !ok {
+			logrus.Warnf("FilterSoft: field %s is not a string, got %T", field, value)
+			continue
+		}
+		// Делаем фильтр вида {"field": {"$regex": strVal, "$options": "i"}}
+		p.filters[field] = bson.M{
+			"$regex":   strVal,
+			"$options": "i",
+		}
+	}
+
+	return p
+}
+
+func (p *participants) FilterDateBounds(dateFilters map[string]any, after bool) Participants {
+	// Разрешаем фильтровать только по этим двум полям
+	validDateFields := map[string]bool{
+		"created_at": true,
+		"updated_at": true,
+	}
+
+	// Для удобства определим оператор
+	var op string
+	if after {
+		// Ищем записи "после или в" этой даты
+		op = "$gte"
+	} else {
+		// Ищем записи "до или в" этой даты
+		op = "$lte"
+	}
+
+	for field, value := range dateFilters {
+		if !validDateFields[field] {
+			// Игнорируем любые поля, кроме "created_at" и "updated_at"
+			continue
+		}
+		if value == nil {
+			continue
+		}
+
+		// Попробуем интерпретировать value как time.Time или строку
+		var t time.Time
+		switch val := value.(type) {
+		case time.Time:
+			t = val
+		case *time.Time:
+			t = *val
+		case string:
+			// Попробуем распарсить строку как RFC3339 (или любой другой формат)
+			parsed, err := time.Parse(time.RFC3339, val)
+			if err != nil {
+				// Если парсинг не удался, можно проигнорировать или залогировать
+				logrus.Warnf("FilterDateBounds: cannot parse date '%s': %v", val, err)
+				continue
+			}
+			t = parsed
+		default:
+			// Если тип неподходящий – просто пропустим
+			logrus.Warnf("FilterDateBounds: field %s is not a recognized date type: %T", field, value)
+			continue
+		}
+
+		// Формируем условие вида: {"created_at": {"$gte": t}} или {"updated_at": {"$lte": t}}
+		p.filters[field] = bson.M{op: t}
+	}
+
 	return p
 }
 

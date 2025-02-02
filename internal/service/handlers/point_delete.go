@@ -52,7 +52,7 @@ func PointDelete(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	initiator, err := server.MongoDB.Participants.New().Filter(map[string]any{
+	initiator, err := server.MongoDB.Participants.New().FilterExact(map[string]any{
 		"initiative_id": iniId,
 		"user_id":       userId,
 	}).Get(r.Context())
@@ -73,7 +73,7 @@ func PointDelete(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	curPoint, err := server.MongoDB.Points.New().Filter(map[string]any{
+	curPoint, err := server.MongoDB.Points.New().FilterExact(map[string]any{
 		"_id":           pointId,
 		"initiative_id": iniId,
 	}).Get(r.Context())
@@ -96,7 +96,7 @@ func PointDelete(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	children, err := server.MongoDB.Points.New().Filter(map[string]any{
+	children, err := server.MongoDB.Points.New().FilterExact(map[string]any{
 		"parent_id":     curPoint.ID,
 		"initiative_id": iniId,
 	}).Select(r.Context())
@@ -120,7 +120,7 @@ func PointDelete(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	err = server.MongoDB.Points.New().Filter(map[string]any{
+	err = server.MongoDB.Points.New().FilterExact(map[string]any{
 		"_id":           pointId,
 		"initiative_id": iniId,
 	}).DeleteOne(r.Context())

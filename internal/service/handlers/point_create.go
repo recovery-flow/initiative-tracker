@@ -66,7 +66,7 @@ func PointCreate(w http.ResponseWriter, r *http.Request) {
 			return
 		}
 
-		parent, err := server.MongoDB.Points.New().Filter(map[string]any{
+		parent, err := server.MongoDB.Points.New().FilterExact(map[string]any{
 			"_id": parentID,
 		}).Get(r.Context())
 		if err != nil {
@@ -118,7 +118,7 @@ func PointCreate(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	initiator, err := server.MongoDB.Participants.New().Filter(map[string]any{
+	initiator, err := server.MongoDB.Participants.New().FilterExact(map[string]any{
 		"initiative_id": iniId,
 		"user_id":       userId,
 	}).Get(r.Context())

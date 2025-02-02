@@ -36,7 +36,7 @@ func ParticipantByOrgIdUserId(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	res, err := server.MongoDB.Participants.New().Filter(map[string]any{
+	res, err := server.MongoDB.Participants.New().FilterExact(map[string]any{
 		"initiative_id": iniID,
 		"user_id":       userID,
 	}).Get(r.Context())

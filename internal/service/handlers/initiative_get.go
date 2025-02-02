@@ -35,7 +35,7 @@ func InitiativeGet(w http.ResponseWriter, r *http.Request) {
 	filters := make(map[string]any)
 	filters["_id"] = iniID
 
-	initiative, err := server.MongoDB.Initiative.New().Filter(filters).Get(r.Context())
+	initiative, err := server.MongoDB.Initiative.New().FilterExact(filters).Get(r.Context())
 	if err != nil {
 		log.WithError(err).Error("Failed to get initiative")
 		httpkit.RenderErr(w, problems.InternalError("Failed to get initiative"))

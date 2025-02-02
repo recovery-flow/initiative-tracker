@@ -57,7 +57,7 @@ func ParticipantCreate(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	initiator, err := server.MongoDB.Participants.New().Filter(map[string]any{
+	initiator, err := server.MongoDB.Participants.New().FilterExact(map[string]any{
 		"initiative_id": iniId,
 		"user_id":       initiatorId,
 	}).Get(r.Context())
