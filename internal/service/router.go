@@ -35,51 +35,18 @@ func Run(ctx context.Context) {
 
 					r.Route("/{initiative_id}", func(r chi.Router) {
 						r.Put("/", handlers.InitiativeUpdate)
-
-						r.Route("/participant", func(r chi.Router) {
-							r.Post("/", handlers.ParticipantCreate)
-
-							r.Route("/{user_id}", func(r chi.Router) {
-								r.Patch("/", handlers.ParticipantUpdate)
-							})
-						})
-
-						//Delayed
-						//r.Route("/points", func(r chi.Router) {
-						//	r.Post("/", handlers.PointCreate)
-						//
-						//	r.Route("/{point_id}", func(r chi.Router) {
-						//		r.Patch("/", handlers.PointUpdate)
-						//		r.Delete("/", handlers.PointDelete)
-						//	})
-						//})
-
-						//TODO add work with tags need new service for tags for correct work
-						r.Route("/tags", func(r chi.Router) {
-							r.Get("/", nil)
-							r.Post("/", nil)
-
-							r.Route("/{tag_id}", func(r chi.Router) {
-								r.Patch("/", nil)
-								r.Delete("/", nil)
-							})
-						})
+						r.Patch("/wallets", handlers.InitiativeWalletsUpdate)
+						r.Patch("/organizations", handlers.InitiativeUpdateOrgsMembers)
 					})
 				})
 			})
 
 			r.Route("/public", func(r chi.Router) {
 				r.Route("/initiative", func(r chi.Router) {
-					r.Get("/", nil) //list
+					r.Get("/", nil) // search initiatives by filters
 
 					r.Route("/{initiative_id}", func(r chi.Router) {
 						r.Get("/", handlers.InitiativeGet)
-
-						r.Route("/participant", func(r chi.Router) {
-							r.Get("/", handlers.ParticipantsByOrganization)
-
-							r.Get("/{user_id}", handlers.ParticipantByOrgIdUserId)
-						})
 					})
 				})
 			})
@@ -89,13 +56,7 @@ func Run(ctx context.Context) {
 
 				r.Route("/initiative", func(r chi.Router) {
 					r.Route("/{initiative_id}", func(r chi.Router) {
-						r.Patch("/{value}", nil)
-
-						r.Route("/participant", func(r chi.Router) {
-							r.Route("/{user_id}", func(r chi.Router) {
-								r.Patch("/{value}", nil)
-							})
-						})
+						r.Patch("/{value}", nil) //admin update initiative
 					})
 				})
 			})

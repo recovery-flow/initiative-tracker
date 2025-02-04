@@ -1,0 +1,24 @@
+type: object
+required:
+  - data
+properties:
+  data:
+    required:
+      - type
+      - attributes
+    properties:
+      type:
+        type: string
+        enum: [ org_member_add ]
+      attributes:
+        type: object
+        required:
+          - org_id
+          - status
+        properties:
+          org_id:
+            type: string
+            description: "organization id"
+          status:
+            type: string
+            description: "status of member"
