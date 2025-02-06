@@ -21,12 +21,10 @@ var _ MappedNullable = &InitiativeDataRelationships{}
 
 // InitiativeDataRelationships struct for InitiativeDataRelationships
 type InitiativeDataRelationships struct {
-	Chat Object `json:"chat"`
-	Likes Object `json:"likes"`
-	Reposts Object `json:"reposts"`
-	Reports Object `json:"reports"`
-	Participants Object `json:"participants"`
-	Points Object `json:"points"`
+	Chat LinksDirect `json:"chat"`
+	Likes LinksDirect `json:"likes"`
+	Reposts LinksDirect `json:"reposts"`
+	Reports LinksDirect `json:"reports"`
 }
 
 type _InitiativeDataRelationships InitiativeDataRelationships
@@ -35,14 +33,12 @@ type _InitiativeDataRelationships InitiativeDataRelationships
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewInitiativeDataRelationships(chat Object, likes Object, reposts Object, reports Object, participants Object, points Object) *InitiativeDataRelationships {
+func NewInitiativeDataRelationships(chat LinksDirect, likes LinksDirect, reposts LinksDirect, reports LinksDirect) *InitiativeDataRelationships {
 	this := InitiativeDataRelationships{}
 	this.Chat = chat
 	this.Likes = likes
 	this.Reposts = reposts
 	this.Reports = reports
-	this.Participants = participants
-	this.Points = points
 	return &this
 }
 
@@ -55,9 +51,9 @@ func NewInitiativeDataRelationshipsWithDefaults() *InitiativeDataRelationships {
 }
 
 // GetChat returns the Chat field value
-func (o *InitiativeDataRelationships) GetChat() Object {
+func (o *InitiativeDataRelationships) GetChat() LinksDirect {
 	if o == nil {
-		var ret Object
+		var ret LinksDirect
 		return ret
 	}
 
@@ -66,7 +62,7 @@ func (o *InitiativeDataRelationships) GetChat() Object {
 
 // GetChatOk returns a tuple with the Chat field value
 // and a boolean to check if the value has been set.
-func (o *InitiativeDataRelationships) GetChatOk() (*Object, bool) {
+func (o *InitiativeDataRelationships) GetChatOk() (*LinksDirect, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -74,14 +70,14 @@ func (o *InitiativeDataRelationships) GetChatOk() (*Object, bool) {
 }
 
 // SetChat sets field value
-func (o *InitiativeDataRelationships) SetChat(v Object) {
+func (o *InitiativeDataRelationships) SetChat(v LinksDirect) {
 	o.Chat = v
 }
 
 // GetLikes returns the Likes field value
-func (o *InitiativeDataRelationships) GetLikes() Object {
+func (o *InitiativeDataRelationships) GetLikes() LinksDirect {
 	if o == nil {
-		var ret Object
+		var ret LinksDirect
 		return ret
 	}
 
@@ -90,7 +86,7 @@ func (o *InitiativeDataRelationships) GetLikes() Object {
 
 // GetLikesOk returns a tuple with the Likes field value
 // and a boolean to check if the value has been set.
-func (o *InitiativeDataRelationships) GetLikesOk() (*Object, bool) {
+func (o *InitiativeDataRelationships) GetLikesOk() (*LinksDirect, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -98,14 +94,14 @@ func (o *InitiativeDataRelationships) GetLikesOk() (*Object, bool) {
 }
 
 // SetLikes sets field value
-func (o *InitiativeDataRelationships) SetLikes(v Object) {
+func (o *InitiativeDataRelationships) SetLikes(v LinksDirect) {
 	o.Likes = v
 }
 
 // GetReposts returns the Reposts field value
-func (o *InitiativeDataRelationships) GetReposts() Object {
+func (o *InitiativeDataRelationships) GetReposts() LinksDirect {
 	if o == nil {
-		var ret Object
+		var ret LinksDirect
 		return ret
 	}
 
@@ -114,7 +110,7 @@ func (o *InitiativeDataRelationships) GetReposts() Object {
 
 // GetRepostsOk returns a tuple with the Reposts field value
 // and a boolean to check if the value has been set.
-func (o *InitiativeDataRelationships) GetRepostsOk() (*Object, bool) {
+func (o *InitiativeDataRelationships) GetRepostsOk() (*LinksDirect, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -122,14 +118,14 @@ func (o *InitiativeDataRelationships) GetRepostsOk() (*Object, bool) {
 }
 
 // SetReposts sets field value
-func (o *InitiativeDataRelationships) SetReposts(v Object) {
+func (o *InitiativeDataRelationships) SetReposts(v LinksDirect) {
 	o.Reposts = v
 }
 
 // GetReports returns the Reports field value
-func (o *InitiativeDataRelationships) GetReports() Object {
+func (o *InitiativeDataRelationships) GetReports() LinksDirect {
 	if o == nil {
-		var ret Object
+		var ret LinksDirect
 		return ret
 	}
 
@@ -138,7 +134,7 @@ func (o *InitiativeDataRelationships) GetReports() Object {
 
 // GetReportsOk returns a tuple with the Reports field value
 // and a boolean to check if the value has been set.
-func (o *InitiativeDataRelationships) GetReportsOk() (*Object, bool) {
+func (o *InitiativeDataRelationships) GetReportsOk() (*LinksDirect, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -146,56 +142,8 @@ func (o *InitiativeDataRelationships) GetReportsOk() (*Object, bool) {
 }
 
 // SetReports sets field value
-func (o *InitiativeDataRelationships) SetReports(v Object) {
+func (o *InitiativeDataRelationships) SetReports(v LinksDirect) {
 	o.Reports = v
-}
-
-// GetParticipants returns the Participants field value
-func (o *InitiativeDataRelationships) GetParticipants() Object {
-	if o == nil {
-		var ret Object
-		return ret
-	}
-
-	return o.Participants
-}
-
-// GetParticipantsOk returns a tuple with the Participants field value
-// and a boolean to check if the value has been set.
-func (o *InitiativeDataRelationships) GetParticipantsOk() (*Object, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Participants, true
-}
-
-// SetParticipants sets field value
-func (o *InitiativeDataRelationships) SetParticipants(v Object) {
-	o.Participants = v
-}
-
-// GetPoints returns the Points field value
-func (o *InitiativeDataRelationships) GetPoints() Object {
-	if o == nil {
-		var ret Object
-		return ret
-	}
-
-	return o.Points
-}
-
-// GetPointsOk returns a tuple with the Points field value
-// and a boolean to check if the value has been set.
-func (o *InitiativeDataRelationships) GetPointsOk() (*Object, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Points, true
-}
-
-// SetPoints sets field value
-func (o *InitiativeDataRelationships) SetPoints(v Object) {
-	o.Points = v
 }
 
 func (o InitiativeDataRelationships) MarshalJSON() ([]byte, error) {
@@ -212,8 +160,6 @@ func (o InitiativeDataRelationships) ToMap() (map[string]interface{}, error) {
 	toSerialize["likes"] = o.Likes
 	toSerialize["reposts"] = o.Reposts
 	toSerialize["reports"] = o.Reports
-	toSerialize["participants"] = o.Participants
-	toSerialize["points"] = o.Points
 	return toSerialize, nil
 }
 
@@ -226,8 +172,6 @@ func (o *InitiativeDataRelationships) UnmarshalJSON(data []byte) (err error) {
 		"likes",
 		"reposts",
 		"reports",
-		"participants",
-		"points",
 	}
 
 	allProperties := make(map[string]interface{})

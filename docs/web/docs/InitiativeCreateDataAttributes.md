@@ -11,14 +11,14 @@ Name | Type | Description | Notes
 **Type** | **string** | types of initiative | 
 **Status** | **string** | status of initiative | 
 **FinalCost** | **int64** | final cost of initiative | 
-**Wallets** | [**Object**](Object.md) |  | 
-**OrgMembers** | [**[]Object**](Object.md) |  | 
+**OrgId** | **string** | organization id | 
+**Wallets** | [**Wallets**](Wallets.md) |  | 
 
 ## Methods
 
 ### NewInitiativeCreateDataAttributes
 
-`func NewInitiativeCreateDataAttributes(name string, desc string, goal string, type_ string, status string, finalCost int64, wallets Object, orgMembers []Object, ) *InitiativeCreateDataAttributes`
+`func NewInitiativeCreateDataAttributes(name string, desc string, goal string, type_ string, status string, finalCost int64, orgId string, wallets Wallets, ) *InitiativeCreateDataAttributes`
 
 NewInitiativeCreateDataAttributes instantiates a new InitiativeCreateDataAttributes object
 This constructor will assign default values to properties that have it defined,
@@ -178,44 +178,44 @@ and a boolean to check if the value has been set.
 SetFinalCost sets FinalCost field to given value.
 
 
+### GetOrgId
+
+`func (o *InitiativeCreateDataAttributes) GetOrgId() string`
+
+GetOrgId returns the OrgId field if non-nil, zero value otherwise.
+
+### GetOrgIdOk
+
+`func (o *InitiativeCreateDataAttributes) GetOrgIdOk() (*string, bool)`
+
+GetOrgIdOk returns a tuple with the OrgId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetOrgId
+
+`func (o *InitiativeCreateDataAttributes) SetOrgId(v string)`
+
+SetOrgId sets OrgId field to given value.
+
+
 ### GetWallets
 
-`func (o *InitiativeCreateDataAttributes) GetWallets() Object`
+`func (o *InitiativeCreateDataAttributes) GetWallets() Wallets`
 
 GetWallets returns the Wallets field if non-nil, zero value otherwise.
 
 ### GetWalletsOk
 
-`func (o *InitiativeCreateDataAttributes) GetWalletsOk() (*Object, bool)`
+`func (o *InitiativeCreateDataAttributes) GetWalletsOk() (*Wallets, bool)`
 
 GetWalletsOk returns a tuple with the Wallets field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetWallets
 
-`func (o *InitiativeCreateDataAttributes) SetWallets(v Object)`
+`func (o *InitiativeCreateDataAttributes) SetWallets(v Wallets)`
 
 SetWallets sets Wallets field to given value.
-
-
-### GetOrgMembers
-
-`func (o *InitiativeCreateDataAttributes) GetOrgMembers() []Object`
-
-GetOrgMembers returns the OrgMembers field if non-nil, zero value otherwise.
-
-### GetOrgMembersOk
-
-`func (o *InitiativeCreateDataAttributes) GetOrgMembersOk() (*[]Object, bool)`
-
-GetOrgMembersOk returns a tuple with the OrgMembers field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetOrgMembers
-
-`func (o *InitiativeCreateDataAttributes) SetOrgMembers(v []Object)`
-
-SetOrgMembers sets OrgMembers field to given value.
 
 
 

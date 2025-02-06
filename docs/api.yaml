@@ -1,0 +1,35 @@
+openapi: 3.0.3
+info:
+  title: test
+  description: example
+  version: 0.0.0
+
+paths:
+  /test:
+    post:
+      summary: Test
+      operationId: test
+      responses:
+        '201':
+          description: "Ok"
+
+components:
+  schemas:
+    Initiative:
+      $ref: './spec/components/schemas/Initiative.yaml'
+    InitiativeCreate:
+      $ref: './spec/components/schemas/InitiativeCreate.yaml'
+    InitiativeUpdate:
+      $ref: './spec/components/schemas/InitiativeUpdate.yaml'
+    Wallets:
+      $ref: './spec/components/schemas/Wallets.yaml'
+    WalletsUpdate:
+      $ref: './spec/components/schemas/WalletsUpdate.yaml'
+    AddOrgMember:
+      $ref: './spec/components/schemas/AddOrgMember.yaml'
+    LinkSelf:
+      $ref: './spec/components/schemas/LinkSelf.yaml'
+    LinksDirect:
+      $ref: './spec/components/schemas/LinksDirect.yaml'
+    LinksPagination:
+      $ref: './spec/components/schemas/LinksPagination.yaml'

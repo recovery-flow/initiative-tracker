@@ -12,7 +12,6 @@ import (
 	"github.com/recovery-flow/initiative-tracker/internal/config"
 	"github.com/recovery-flow/initiative-tracker/internal/service/requests"
 	"github.com/recovery-flow/initiative-tracker/internal/service/responses"
-	"github.com/recovery-flow/roles"
 	"github.com/recovery-flow/tokens"
 	"github.com/sirupsen/logrus"
 	"go.mongodb.org/mongo-driver/bson/primitive"
@@ -50,23 +49,6 @@ func InitiativeUpdate(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	filters := make(map[string]any)
-	filters["initiative_id"] = iniId
-	filters["user_id"] = initiatorId
-
-	participant, err := server.MongoDB.Participants.New().FilterExact(filters).Get(r.Context())
-	if err != nil {
-		log.WithError(err).Error("Failed to get initiative")
-		httpkit.RenderErr(w, problems.InternalError())
-		return
-	}
-
-	if roles.CompareRolesTeam(participant.Role, roles.RoleTeamModer) <= 0 {
-		log.Error("User has no rights to update initiative")
-		httpkit.RenderErr(w, problems.Forbidden("User has no rights to update initiative"))
-		return
-	}
-
 	stmt := make(map[string]any)
 	if req.Data.Attributes.Name != nil {
 		stmt["name"] = req.Data.Attributes.Name
@@ -80,8 +62,14 @@ func InitiativeUpdate(w http.ResponseWriter, r *http.Request) {
 	if req.Data.Attributes.Location != nil {
 		stmt["location"] = req.Data.Attributes.Location
 	}
+	if req.Data.Attributes.Type != nil {
+		stmt["type"] = req.Data.Attributes.Type
+	}
 	if req.Data.Attributes.Status != nil {
 		stmt["status"] = req.Data.Attributes.Status
+	}
+	if req.Data.Attributes.FinalCost != nil {
+		stmt["final_cost"] = req.Data.Attributes.FinalCost
 	}
 
 	res, err := server.MongoDB.Initiative.New().FilterExact(map[string]any{
@@ -89,7 +77,7 @@ func InitiativeUpdate(w http.ResponseWriter, r *http.Request) {
 	}).UpdateOne(r.Context(), stmt)
 	if err != nil {
 		log.WithError(err).Error("Failed to update initiative")
-		httpkit.RenderErr(w, problems.InternalError())
+		httpkit.RenderErr(w, problems.InternalError("Failed to update initiative"))
 		return
 	}
 

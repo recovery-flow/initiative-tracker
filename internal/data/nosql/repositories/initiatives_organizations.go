@@ -116,3 +116,34 @@ func (i *initiatives) UpdateOrgMember(
 
 	return &updated, nil
 }
+
+func (i *initiatives) AddOrgMember(ctx context.Context, member models.OrgMember) (*models.Initiative, error) {
+	// Проверяем, что есть обязательный фильтр (например, _id инициативы)
+	if i.filters == nil || i.filters["_id"] == nil {
+		return nil, fmt.Errorf("initiative filter is missing (need at least '_id')")
+	}
+
+	// Формируем запрос на добавление
+	update := bson.M{
+		"$push": bson.M{
+			"organizations": member,
+		},
+	}
+
+	// Выполняем UpdateOne
+	res, err := i.collection.UpdateOne(ctx, i.filters, update)
+	if err != nil {
+		return nil, fmt.Errorf("failed to add org member: %w", err)
+	}
+	if res.MatchedCount == 0 {
+		return nil, fmt.Errorf("no initiative found with the given criteria")
+	}
+
+	// Возвращаем обновлённую инициативу
+	var updated models.Initiative
+	if err := i.collection.FindOne(ctx, i.filters).Decode(&updated); err != nil {
+		return nil, fmt.Errorf("failed to fetch updated initiative: %w", err)
+	}
+
+	return &updated, nil
+}

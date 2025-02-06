@@ -21,8 +21,8 @@ var _ MappedNullable = &InitiativeIncluded{}
 
 // InitiativeIncluded struct for InitiativeIncluded
 type InitiativeIncluded struct {
-	Wallets Object `json:"wallets"`
-	Organization []Object `json:"organization"`
+	Wallets Wallets `json:"wallets"`
+	Organization []AddOrgMember `json:"organization"`
 }
 
 type _InitiativeIncluded InitiativeIncluded
@@ -31,7 +31,7 @@ type _InitiativeIncluded InitiativeIncluded
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewInitiativeIncluded(wallets Object, organization []Object) *InitiativeIncluded {
+func NewInitiativeIncluded(wallets Wallets, organization []AddOrgMember) *InitiativeIncluded {
 	this := InitiativeIncluded{}
 	this.Wallets = wallets
 	this.Organization = organization
@@ -47,9 +47,9 @@ func NewInitiativeIncludedWithDefaults() *InitiativeIncluded {
 }
 
 // GetWallets returns the Wallets field value
-func (o *InitiativeIncluded) GetWallets() Object {
+func (o *InitiativeIncluded) GetWallets() Wallets {
 	if o == nil {
-		var ret Object
+		var ret Wallets
 		return ret
 	}
 
@@ -58,7 +58,7 @@ func (o *InitiativeIncluded) GetWallets() Object {
 
 // GetWalletsOk returns a tuple with the Wallets field value
 // and a boolean to check if the value has been set.
-func (o *InitiativeIncluded) GetWalletsOk() (*Object, bool) {
+func (o *InitiativeIncluded) GetWalletsOk() (*Wallets, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -66,14 +66,14 @@ func (o *InitiativeIncluded) GetWalletsOk() (*Object, bool) {
 }
 
 // SetWallets sets field value
-func (o *InitiativeIncluded) SetWallets(v Object) {
+func (o *InitiativeIncluded) SetWallets(v Wallets) {
 	o.Wallets = v
 }
 
 // GetOrganization returns the Organization field value
-func (o *InitiativeIncluded) GetOrganization() []Object {
+func (o *InitiativeIncluded) GetOrganization() []AddOrgMember {
 	if o == nil {
-		var ret []Object
+		var ret []AddOrgMember
 		return ret
 	}
 
@@ -82,7 +82,7 @@ func (o *InitiativeIncluded) GetOrganization() []Object {
 
 // GetOrganizationOk returns a tuple with the Organization field value
 // and a boolean to check if the value has been set.
-func (o *InitiativeIncluded) GetOrganizationOk() ([]Object, bool) {
+func (o *InitiativeIncluded) GetOrganizationOk() ([]AddOrgMember, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -90,7 +90,7 @@ func (o *InitiativeIncluded) GetOrganizationOk() ([]Object, bool) {
 }
 
 // SetOrganization sets field value
-func (o *InitiativeIncluded) SetOrganization(v []Object) {
+func (o *InitiativeIncluded) SetOrganization(v []AddOrgMember) {
 	o.Organization = v
 }
 

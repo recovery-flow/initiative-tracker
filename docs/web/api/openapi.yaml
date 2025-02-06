@@ -15,31 +15,6 @@ paths:
       summary: Test
 components:
   schemas:
-    LinksDirect:
-      properties:
-        links:
-          $ref: '#/components/schemas/LinksDirect_links'
-        data:
-          $ref: '#/components/schemas/LinksDirect_data'
-      required:
-      - links
-      type: object
-    LinksPagination:
-      properties:
-        previous:
-          description: Link to the previous page
-          type: string
-        self:
-          description: Link to the current page
-          type: string
-        next:
-          description: Link to the next page
-          type: string
-      required:
-      - next
-      - previous
-      - self
-      type: object
     Initiative:
       properties:
         data:
@@ -64,29 +39,61 @@ components:
       - data
       - included
       type: object
-    LinksDirect_links:
+    Wallets:
+      properties:
+        bank_account:
+          $ref: '#/components/schemas/Wallets_bank_account'
+        payment_system:
+          $ref: '#/components/schemas/Wallets_payment_system'
+        crypto_wallets:
+          $ref: '#/components/schemas/Wallets_crypto_wallets'
+      type: object
+    WalletsUpdate:
+      properties:
+        data:
+          $ref: '#/components/schemas/WalletsUpdate_data'
+      required:
+      - data
+      type: object
+    AddOrgMember:
+      properties:
+        data:
+          $ref: '#/components/schemas/AddOrgMember_data'
+      required:
+      - data
+      type: object
+    LinkSelf:
       properties:
         self:
           description: Link to participants
           type: string
-        related:
-          description: Link to participants
-          type: string
       required:
-      - related
       - self
       type: object
-    LinksDirect_data:
+    LinksDirect:
       properties:
-        id:
-          description: resources id
+        links:
+          $ref: '#/components/schemas/LinksDirect_links'
+        data:
+          $ref: '#/components/schemas/LinksDirect_data'
+      required:
+      - links
+      type: object
+    LinksPagination:
+      properties:
+        previous:
+          description: Link to the previous page
           type: string
-        type:
-          description: resources type
+        self:
+          description: Link to the current page
+          type: string
+        next:
+          description: Link to the next page
           type: string
       required:
-      - id
-      - type
+      - next
+      - previous
+      - self
       type: object
     Initiative_data_attributes:
       properties:
@@ -165,22 +172,16 @@ components:
     Initiative_data_relationships:
       properties:
         chat:
-          $ref: ./spec/components/schemas/LinksDirect.yaml
+          $ref: '#/components/schemas/LinksDirect'
         likes:
-          $ref: ./spec/components/schemas/LinksDirect.yaml
+          $ref: '#/components/schemas/LinksDirect'
         reposts:
-          $ref: ./spec/components/schemas/LinksDirect.yaml
+          $ref: '#/components/schemas/LinksDirect'
         reports:
-          $ref: ./spec/components/schemas/LinksDirect.yaml
-        participants:
-          $ref: ./spec/components/schemas/LinksDirect.yaml
-        points:
-          $ref: ./spec/components/schemas/LinksDirect.yaml
+          $ref: '#/components/schemas/LinksDirect'
       required:
       - chat
       - likes
-      - participants
-      - points
       - reports
       - reposts
       type: object
@@ -196,7 +197,7 @@ components:
         attributes:
           $ref: '#/components/schemas/Initiative_data_attributes'
         links:
-          $ref: ./spec/components/schemas/LinkSelf.yaml
+          $ref: '#/components/schemas/LinkSelf'
         relationships:
           $ref: '#/components/schemas/Initiative_data_relationships'
       required:
@@ -205,20 +206,18 @@ components:
       - links
       - relationships
       - type
-      type: object
     Initiative_included:
       properties:
         wallets:
-          $ref: ./spec/components/schemas/Wallets.yaml
+          $ref: '#/components/schemas/Wallets'
         organization:
           items:
-            $ref: ./spec/components/schemas/OrgMember.yaml
+            $ref: '#/components/schemas/AddOrgMember'
           type: array
       required:
       - organization
       - tags
       - wallets
-      type: object
     InitiativeCreate_data_attributes:
       properties:
         name:
@@ -243,18 +242,17 @@ components:
           description: final cost of initiative
           format: int64
           type: integer
+        org_id:
+          description: organization id
+          type: string
         wallets:
-          $ref: ./spec/components/schemas/Wallets.yaml
-        org_members:
-          items:
-            $ref: ./spec/components/schemas/OrgMember.yaml
-          type: array
+          $ref: '#/components/schemas/Wallets'
       required:
       - desc
       - final_cost
       - goal
       - name
-      - org_members
+      - org_id
       - status
       - type
       - wallets
@@ -263,23 +261,151 @@ components:
       properties:
         type:
           enum:
-          - initiative_create
+          - initiative
           type: string
         attributes:
           $ref: '#/components/schemas/InitiativeCreate_data_attributes'
       required:
       - attributes
+      - relationships
       - type
+    InitiativeUpdate_data_attributes:
+      properties:
+        name:
+          description: name of initiative
+          type: string
+        desc:
+          description: description of initiative
+          type: string
+        goal:
+          description: goal of initiative
+          type: string
+        location:
+          description: location of initiative
+          type: string
+        type:
+          description: types of initiative
+          type: string
+        status:
+          description: status of initiative
+          type: string
+        final_cost:
+          description: final cost of initiative
+          format: int64
+          type: integer
+        wallets:
+          $ref: '#/components/schemas/Wallets'
+        org_members:
+          items:
+            $ref: '#/components/schemas/AddOrgMember'
+          type: array
       type: object
     InitiativeUpdate_data:
       properties:
         type:
           enum:
-          - initiative_update
+          - initiative
           type: string
         attributes:
-          $ref: '#/components/schemas/InitiativeCreate_data_attributes'
+          $ref: '#/components/schemas/InitiativeUpdate_data_attributes'
       required:
       - attributes
+      - type
+    Wallets_bank_account:
+      properties:
+        monobank:
+          description: monobank account
+          type: string
+        privat:
+          description: privat account
+          type: string
+      type: object
+    Wallets_payment_system:
+      properties:
+        pay_pal:
+          description: paypal account
+          type: string
+        apple_pay:
+          description: apple pay account
+          type: string
+        google_pay:
+          description: google pay account
+          type: string
+      type: object
+    Wallets_crypto_wallets:
+      properties:
+        USDT:
+          description: USDT wallet
+          type: string
+        ETH:
+          description: ETH wallet
+          type: string
+        BTC:
+          description: BTC wallet
+          type: string
+        TON:
+          description: TON wallet
+          type: string
+        SOL:
+          description: SOL wallet
+          type: string
+      type: object
+    WalletsUpdate_data:
+      properties:
+        type:
+          enum:
+          - wallets_update
+          type: string
+        attributes:
+          $ref: '#/components/schemas/Wallets'
+      required:
+      - attributes
+      - type
+    AddOrgMember_data_attributes:
+      properties:
+        org_id:
+          description: organization id
+          type: string
+        status:
+          description: status of member
+          type: string
+      required:
+      - org_id
+      - status
+      type: object
+    AddOrgMember_data:
+      properties:
+        type:
+          enum:
+          - org_member_add
+          type: string
+        attributes:
+          $ref: '#/components/schemas/AddOrgMember_data_attributes'
+      required:
+      - attributes
+      - type
+    LinksDirect_links:
+      properties:
+        self:
+          description: Link to participants
+          type: string
+        related:
+          description: Link to participants
+          type: string
+      required:
+      - data
+      - related
+      - self
+      type: object
+    LinksDirect_data:
+      properties:
+        id:
+          description: resources id
+          type: string
+        type:
+          description: resources type
+          type: string
+      required:
+      - id
       - type
       type: object

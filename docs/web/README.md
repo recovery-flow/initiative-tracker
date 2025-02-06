@@ -83,6 +83,9 @@ Class | Method | HTTP request | Description
 
 ## Documentation For Models
 
+ - [AddOrgMember](docs/AddOrgMember.md)
+ - [AddOrgMemberData](docs/AddOrgMemberData.md)
+ - [AddOrgMemberDataAttributes](docs/AddOrgMemberDataAttributes.md)
  - [Initiative](docs/Initiative.md)
  - [InitiativeCreate](docs/InitiativeCreate.md)
  - [InitiativeCreateData](docs/InitiativeCreateData.md)
@@ -93,10 +96,18 @@ Class | Method | HTTP request | Description
  - [InitiativeIncluded](docs/InitiativeIncluded.md)
  - [InitiativeUpdate](docs/InitiativeUpdate.md)
  - [InitiativeUpdateData](docs/InitiativeUpdateData.md)
+ - [InitiativeUpdateDataAttributes](docs/InitiativeUpdateDataAttributes.md)
+ - [LinkSelf](docs/LinkSelf.md)
  - [LinksDirect](docs/LinksDirect.md)
  - [LinksDirectData](docs/LinksDirectData.md)
  - [LinksDirectLinks](docs/LinksDirectLinks.md)
  - [LinksPagination](docs/LinksPagination.md)
+ - [Wallets](docs/Wallets.md)
+ - [WalletsBankAccount](docs/WalletsBankAccount.md)
+ - [WalletsCryptoWallets](docs/WalletsCryptoWallets.md)
+ - [WalletsPaymentSystem](docs/WalletsPaymentSystem.md)
+ - [WalletsUpdate](docs/WalletsUpdate.md)
+ - [WalletsUpdateData](docs/WalletsUpdateData.md)
 
 
 ## Documentation For Authorization

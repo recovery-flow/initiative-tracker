@@ -99,8 +99,6 @@ properties:
           - likes
           - reposts
           - reports
-          - participants
-          - points
         properties:
           chat:
             $ref: "./LinksDirect.yaml"
@@ -109,10 +107,6 @@ properties:
           reposts:
             $ref: "./LinksDirect.yaml"
           reports:
-            $ref: "./LinksDirect.yaml"
-          participants:
-            $ref: "./LinksDirect.yaml"
-          points:
             $ref: "./LinksDirect.yaml"
   included:
     required:
@@ -125,7 +119,7 @@ properties:
       organization:
         type: array
         items:
-          $ref: "./OrgMember.yaml"
+          $ref: "./AddOrgMember.yaml"
 
 
 

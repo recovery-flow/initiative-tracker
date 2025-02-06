@@ -1,0 +1,377 @@
+openapi: 3.0.3
+info:
+  title: test
+  description: example
+  version: 0.0.0
+paths:
+  /test:
+    post:
+      summary: Test
+      operationId: test
+      responses:
+        '201':
+          description: Ok
+components:
+  schemas:
+    Initiative:
+      type: object
+      required:
+        - data
+      properties:
+        data:
+          required:
+            - id
+            - type
+            - attributes
+            - relationships
+            - links
+          properties:
+            id:
+              type: string
+              description: initiative id
+            type:
+              type: string
+              enum:
+                - initiative
+            attributes:
+              type: object
+              required:
+                - name
+                - desc
+                - goal
+                - verified
+                - type
+                - status
+                - likes
+                - reposts
+                - reports
+              properties:
+                name:
+                  type: string
+                  description: name of initiative
+                desc:
+                  type: string
+                  description: description of initiative
+                goal:
+                  type: string
+                  description: goal of initiative
+                verified:
+                  type: boolean
+                  description: verified status
+                location:
+                  type: string
+                  description: location of initiative
+                type:
+                  type: string
+                  description: types of initiative
+                status:
+                  type: string
+                  description: status of initiative
+                final_cost:
+                  type: integer
+                  format: int64
+                  description: final cost of initiative
+                collected_sum:
+                  type: integer
+                  format: int64
+                  description: collected sum of initiative
+                likes:
+                  type: integer
+                  format: int64
+                  description: likes of initiative
+                reposts:
+                  type: integer
+                  format: int64
+                  description: reposts of initiative
+                reports:
+                  type: integer
+                  format: int64
+                  description: reports of initiative
+                start_at:
+                  type: string
+                  format: date-time
+                  description: start date of initiative
+                  example: '2021-01-01T00:00:00Z'
+                end_at:
+                  type: string
+                  format: date-time
+                  description: end date of initiative
+                  example: '2021-01-01T00:00:00Z'
+                updated_at:
+                  type: string
+                  format: date-time
+                  description: Initiative updated at
+                  example: '2021-01-01T00:00:00Z'
+                closed_at:
+                  type: string
+                  format: date-time
+                  description: Initiative closed at
+                  example: '2021-01-01T00:00:00Z'
+            links:
+              $ref: '#/components/schemas/LinkSelf'
+            relationships:
+              type: object
+              required:
+                - chat
+                - likes
+                - reposts
+                - reports
+              properties:
+                chat:
+                  $ref: '#/components/schemas/LinksDirect'
+                likes:
+                  $ref: '#/components/schemas/LinksDirect'
+                reposts:
+                  $ref: '#/components/schemas/LinksDirect'
+                reports:
+                  $ref: '#/components/schemas/LinksDirect'
+        included:
+          required:
+            - tags
+            - wallets
+            - organization
+          properties:
+            wallets:
+              $ref: '#/components/schemas/Wallets'
+            organization:
+              type: array
+              items:
+                $ref: '#/components/schemas/AddOrgMember'
+    InitiativeCreate:
+      type: object
+      required:
+        - data
+      properties:
+        data:
+          required:
+            - type
+            - attributes
+            - relationships
+          properties:
+            type:
+              type: string
+              enum:
+                - initiative
+            attributes:
+              type: object
+              required:
+                - name
+                - desc
+                - goal
+                - type
+                - status
+                - final_cost
+                - org_id
+                - wallets
+              properties:
+                name:
+                  type: string
+                  description: name of initiative
+                desc:
+                  type: string
+                  description: description of initiative
+                goal:
+                  type: string
+                  description: goal of initiative
+                location:
+                  type: string
+                  description: location of initiative
+                type:
+                  type: string
+                  description: types of initiative
+                status:
+                  type: string
+                  description: status of initiative
+                final_cost:
+                  type: integer
+                  format: int64
+                  description: final cost of initiative
+                org_id:
+                  type: string
+                  description: organization id
+                wallets:
+                  $ref: '#/components/schemas/Wallets'
+    InitiativeUpdate:
+      type: object
+      required:
+        - data
+        - included
+      properties:
+        data:
+          required:
+            - type
+            - attributes
+          properties:
+            type:
+              type: string
+              enum:
+                - initiative
+            attributes:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: name of initiative
+                desc:
+                  type: string
+                  description: description of initiative
+                goal:
+                  type: string
+                  description: goal of initiative
+                location:
+                  type: string
+                  description: location of initiative
+                type:
+                  type: string
+                  description: types of initiative
+                status:
+                  type: string
+                  description: status of initiative
+                final_cost:
+                  type: integer
+                  format: int64
+                  description: final cost of initiative
+                wallets:
+                  $ref: '#/components/schemas/Wallets'
+                org_members:
+                  type: array
+                  items:
+                    $ref: '#/components/schemas/AddOrgMember'
+    Wallets:
+      type: object
+      properties:
+        bank_account:
+          type: object
+          properties:
+            monobank:
+              type: string
+              description: monobank account
+            privat:
+              type: string
+              description: privat account
+        payment_system:
+          type: object
+          properties:
+            pay_pal:
+              type: string
+              description: paypal account
+            apple_pay:
+              type: string
+              description: apple pay account
+            google_pay:
+              type: string
+              description: google pay account
+        crypto_wallets:
+          type: object
+          properties:
+            USDT:
+              type: string
+              description: USDT wallet
+            ETH:
+              type: string
+              description: ETH wallet
+            BTC:
+              type: string
+              description: BTC wallet
+            TON:
+              type: string
+              description: TON wallet
+            SOL:
+              type: string
+              description: SOL wallet
+    WalletsUpdate:
+      type: object
+      required:
+        - data
+      properties:
+        data:
+          required:
+            - type
+            - attributes
+          properties:
+            type:
+              type: string
+              enum:
+                - wallets_update
+            attributes:
+              $ref: '#/components/schemas/Wallets'
+    AddOrgMember:
+      type: object
+      required:
+        - data
+      properties:
+        data:
+          required:
+            - type
+            - attributes
+          properties:
+            type:
+              type: string
+              enum:
+                - org_member_add
+            attributes:
+              type: object
+              required:
+                - org_id
+                - status
+              properties:
+                org_id:
+                  type: string
+                  description: organization id
+                status:
+                  type: string
+                  description: status of member
+    LinkSelf:
+      type: object
+      required:
+        - self
+      properties:
+        self:
+          type: string
+          description: Link to participants
+    LinksDirect:
+      type: object
+      required:
+        - links
+      properties:
+        links:
+          type: object
+          required:
+            - self
+            - related
+            - data
+          properties:
+            self:
+              type: string
+              description: Link to participants
+            related:
+              type: string
+              description: Link to participants
+        data:
+          type: object
+          required:
+            - id
+            - type
+          properties:
+            id:
+              type: string
+              description: resources id
+            type:
+              type: string
+              description: resources type
+    LinksPagination:
+      type: object
+      required:
+        - previous
+        - self
+        - next
+      properties:
+        previous:
+          type: string
+          description: Link to the previous page
+        self:
+          type: string
+          description: Link to the current page
+        next:
+          type: string
+          description: Link to the next page

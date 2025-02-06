@@ -10,18 +10,9 @@ properties:
     properties:
       type:
         type: string
-        enum: [ initiative_update ]
+        enum: [ initiative ]
       attributes:
         type: object
-        required:
-          - name
-          - desc
-          - goal
-          - type
-          - status
-          - final_cost
-          - wallets
-          - org_members
         properties:
           name:
             type: string
@@ -50,4 +41,4 @@ properties:
           org_members:
             type: array
             items:
-              $ref: "./OrgMember.yaml"
+              $ref: "./AddOrgMember.yaml"

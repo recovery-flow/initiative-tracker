@@ -35,8 +35,9 @@ type InitiativeCreateDataAttributes struct {
 	Status string `json:"status"`
 	// final cost of initiative
 	FinalCost int64 `json:"final_cost"`
-	Wallets Object `json:"wallets"`
-	OrgMembers []Object `json:"org_members"`
+	// organization id
+	OrgId string `json:"org_id"`
+	Wallets Wallets `json:"wallets"`
 }
 
 type _InitiativeCreateDataAttributes InitiativeCreateDataAttributes
@@ -45,7 +46,7 @@ type _InitiativeCreateDataAttributes InitiativeCreateDataAttributes
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewInitiativeCreateDataAttributes(name string, desc string, goal string, type_ string, status string, finalCost int64, wallets Object, orgMembers []Object) *InitiativeCreateDataAttributes {
+func NewInitiativeCreateDataAttributes(name string, desc string, goal string, type_ string, status string, finalCost int64, orgId string, wallets Wallets) *InitiativeCreateDataAttributes {
 	this := InitiativeCreateDataAttributes{}
 	this.Name = name
 	this.Desc = desc
@@ -53,8 +54,8 @@ func NewInitiativeCreateDataAttributes(name string, desc string, goal string, ty
 	this.Type = type_
 	this.Status = status
 	this.FinalCost = finalCost
+	this.OrgId = orgId
 	this.Wallets = wallets
-	this.OrgMembers = orgMembers
 	return &this
 }
 
@@ -242,10 +243,34 @@ func (o *InitiativeCreateDataAttributes) SetFinalCost(v int64) {
 	o.FinalCost = v
 }
 
-// GetWallets returns the Wallets field value
-func (o *InitiativeCreateDataAttributes) GetWallets() Object {
+// GetOrgId returns the OrgId field value
+func (o *InitiativeCreateDataAttributes) GetOrgId() string {
 	if o == nil {
-		var ret Object
+		var ret string
+		return ret
+	}
+
+	return o.OrgId
+}
+
+// GetOrgIdOk returns a tuple with the OrgId field value
+// and a boolean to check if the value has been set.
+func (o *InitiativeCreateDataAttributes) GetOrgIdOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.OrgId, true
+}
+
+// SetOrgId sets field value
+func (o *InitiativeCreateDataAttributes) SetOrgId(v string) {
+	o.OrgId = v
+}
+
+// GetWallets returns the Wallets field value
+func (o *InitiativeCreateDataAttributes) GetWallets() Wallets {
+	if o == nil {
+		var ret Wallets
 		return ret
 	}
 
@@ -254,7 +279,7 @@ func (o *InitiativeCreateDataAttributes) GetWallets() Object {
 
 // GetWalletsOk returns a tuple with the Wallets field value
 // and a boolean to check if the value has been set.
-func (o *InitiativeCreateDataAttributes) GetWalletsOk() (*Object, bool) {
+func (o *InitiativeCreateDataAttributes) GetWalletsOk() (*Wallets, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -262,32 +287,8 @@ func (o *InitiativeCreateDataAttributes) GetWalletsOk() (*Object, bool) {
 }
 
 // SetWallets sets field value
-func (o *InitiativeCreateDataAttributes) SetWallets(v Object) {
+func (o *InitiativeCreateDataAttributes) SetWallets(v Wallets) {
 	o.Wallets = v
-}
-
-// GetOrgMembers returns the OrgMembers field value
-func (o *InitiativeCreateDataAttributes) GetOrgMembers() []Object {
-	if o == nil {
-		var ret []Object
-		return ret
-	}
-
-	return o.OrgMembers
-}
-
-// GetOrgMembersOk returns a tuple with the OrgMembers field value
-// and a boolean to check if the value has been set.
-func (o *InitiativeCreateDataAttributes) GetOrgMembersOk() ([]Object, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.OrgMembers, true
-}
-
-// SetOrgMembers sets field value
-func (o *InitiativeCreateDataAttributes) SetOrgMembers(v []Object) {
-	o.OrgMembers = v
 }
 
 func (o InitiativeCreateDataAttributes) MarshalJSON() ([]byte, error) {
@@ -309,8 +310,8 @@ func (o InitiativeCreateDataAttributes) ToMap() (map[string]interface{}, error) 
 	toSerialize["type"] = o.Type
 	toSerialize["status"] = o.Status
 	toSerialize["final_cost"] = o.FinalCost
+	toSerialize["org_id"] = o.OrgId
 	toSerialize["wallets"] = o.Wallets
-	toSerialize["org_members"] = o.OrgMembers
 	return toSerialize, nil
 }
 
@@ -325,8 +326,8 @@ func (o *InitiativeCreateDataAttributes) UnmarshalJSON(data []byte) (err error) 
 		"type",
 		"status",
 		"final_cost",
+		"org_id",
 		"wallets",
-		"org_members",
 	}
 
 	allProperties := make(map[string]interface{})

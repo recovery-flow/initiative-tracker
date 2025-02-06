@@ -8,7 +8,11 @@ Name | Type | Description | Notes
 **Desc** | Pointer to **string** | description of initiative | [optional] 
 **Goal** | Pointer to **string** | goal of initiative | [optional] 
 **Location** | Pointer to **string** | location of initiative | [optional] 
+**Type** | Pointer to **string** | types of initiative | [optional] 
 **Status** | Pointer to **string** | status of initiative | [optional] 
+**FinalCost** | Pointer to **int64** | final cost of initiative | [optional] 
+**Wallets** | Pointer to [**Wallets**](Wallets.md) |  | [optional] 
+**OrgMembers** | Pointer to [**[]AddOrgMember**](AddOrgMember.md) |  | [optional] 
 
 ## Methods
 
@@ -129,6 +133,31 @@ SetLocation sets Location field to given value.
 
 HasLocation returns a boolean if a field has been set.
 
+### GetType
+
+`func (o *InitiativeUpdateDataAttributes) GetType() string`
+
+GetType returns the Type field if non-nil, zero value otherwise.
+
+### GetTypeOk
+
+`func (o *InitiativeUpdateDataAttributes) GetTypeOk() (*string, bool)`
+
+GetTypeOk returns a tuple with the Type field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetType
+
+`func (o *InitiativeUpdateDataAttributes) SetType(v string)`
+
+SetType sets Type field to given value.
+
+### HasType
+
+`func (o *InitiativeUpdateDataAttributes) HasType() bool`
+
+HasType returns a boolean if a field has been set.
+
 ### GetStatus
 
 `func (o *InitiativeUpdateDataAttributes) GetStatus() string`
@@ -153,6 +182,81 @@ SetStatus sets Status field to given value.
 `func (o *InitiativeUpdateDataAttributes) HasStatus() bool`
 
 HasStatus returns a boolean if a field has been set.
+
+### GetFinalCost
+
+`func (o *InitiativeUpdateDataAttributes) GetFinalCost() int64`
+
+GetFinalCost returns the FinalCost field if non-nil, zero value otherwise.
+
+### GetFinalCostOk
+
+`func (o *InitiativeUpdateDataAttributes) GetFinalCostOk() (*int64, bool)`
+
+GetFinalCostOk returns a tuple with the FinalCost field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetFinalCost
+
+`func (o *InitiativeUpdateDataAttributes) SetFinalCost(v int64)`
+
+SetFinalCost sets FinalCost field to given value.
+
+### HasFinalCost
+
+`func (o *InitiativeUpdateDataAttributes) HasFinalCost() bool`
+
+HasFinalCost returns a boolean if a field has been set.
+
+### GetWallets
+
+`func (o *InitiativeUpdateDataAttributes) GetWallets() Wallets`
+
+GetWallets returns the Wallets field if non-nil, zero value otherwise.
+
+### GetWalletsOk
+
+`func (o *InitiativeUpdateDataAttributes) GetWalletsOk() (*Wallets, bool)`
+
+GetWalletsOk returns a tuple with the Wallets field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetWallets
+
+`func (o *InitiativeUpdateDataAttributes) SetWallets(v Wallets)`
+
+SetWallets sets Wallets field to given value.
+
+### HasWallets
+
+`func (o *InitiativeUpdateDataAttributes) HasWallets() bool`
+
+HasWallets returns a boolean if a field has been set.
+
+### GetOrgMembers
+
+`func (o *InitiativeUpdateDataAttributes) GetOrgMembers() []AddOrgMember`
+
+GetOrgMembers returns the OrgMembers field if non-nil, zero value otherwise.
+
+### GetOrgMembersOk
+
+`func (o *InitiativeUpdateDataAttributes) GetOrgMembersOk() (*[]AddOrgMember, bool)`
+
+GetOrgMembersOk returns a tuple with the OrgMembers field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetOrgMembers
+
+`func (o *InitiativeUpdateDataAttributes) SetOrgMembers(v []AddOrgMember)`
+
+SetOrgMembers sets OrgMembers field to given value.
+
+### HasOrgMembers
+
+`func (o *InitiativeUpdateDataAttributes) HasOrgMembers() bool`
+
+HasOrgMembers returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

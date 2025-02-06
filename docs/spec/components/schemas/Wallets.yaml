@@ -1,8 +1,4 @@
 type: object
-required:
-  - bank_account
-  - payment_system
-  - crypto_wallets
 properties:
   bank_account:
     type: object
@@ -16,7 +12,7 @@ properties:
   payment_system:
     type: object
     properties:
-      paypal:
+      pay_pal:
         type: string
         description: "paypal account"
       apple_pay:

@@ -1,0 +1,14 @@
+type: object
+required:
+  - data
+properties:
+  data:
+    required:
+      - type
+      - attributes
+    properties:
+      type:
+        type: string
+        enum: [wallets_update]
+      attributes:
+        $ref: './Wallets.yaml'

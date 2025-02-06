@@ -11,20 +11,25 @@ func Initiative(ini models.Initiative) resources.Initiative {
 		verIni = true
 	}
 
+	finalCost := int64(ini.FinalCost)
+	collectedSum := int64(ini.CollectedSum)
+
 	res := resources.Initiative{
 		Data: resources.InitiativeData{
 			Id:   ini.ID.Hex(),
 			Type: resources.InitiativeType,
 			Attributes: resources.InitiativeDataAttributes{
-				Name:      ini.Name,
-				Desc:      ini.Desc,
-				Goal:      ini.Goal,
-				Verified:  verIni,
-				Status:    string(ini.Status),
-				Likes:     int64(ini.Likes),
-				Reposts:   int64(ini.Reposts),
-				Reports:   int64(ini.Reports),
-				CreatedAt: ini.CreatedAt.Time().UTC(),
+				Name:         ini.Name,
+				Desc:         ini.Desc,
+				Goal:         ini.Goal,
+				Verified:     verIni,
+				Type:         string(ini.Type),
+				Status:       string(ini.Status),
+				FinalCost:    &finalCost,
+				CollectedSum: &collectedSum,
+				Likes:        int64(ini.Likes),
+				Reposts:      int64(ini.Reposts),
+				Reports:      int64(ini.Reports),
 			},
 			Links: resources.LinkSelf{
 				Self: resources.BaseInitiative + resources.InitiativeEndpoints.Base.Private + ini.ID.Hex(),
@@ -58,18 +63,6 @@ func Initiative(ini models.Initiative) resources.Initiative {
 						Related: resources.BaseReactionsStorage + resources.ReactionsEndpoints.Reports.Public + ini.ID.Hex() + resources.Pagination10EndLink,
 					},
 				},
-				Participants: resources.LinksDirect{
-					Links: resources.LinksDirectLinks{
-						Self:    resources.BaseInitiative + resources.InitiativeEndpoints.Base.Private + ini.ID.Hex() + resources.InitiativeEndpoints.Participants.Private,
-						Related: resources.BaseInitiative + resources.InitiativeEndpoints.Base.Public + ini.ID.Hex() + resources.InitiativeEndpoints.Participants.Public + resources.Pagination10EndLink,
-					},
-				},
-				Points: resources.LinksDirect{
-					Links: resources.LinksDirectLinks{
-						Self:    resources.BaseInitiative + resources.InitiativeEndpoints.Base.Private + ini.ID.Hex() + resources.InitiativeEndpoints.Points.Private,
-						Related: resources.BaseInitiative + resources.InitiativeEndpoints.Base.Public + ini.ID.Hex() + resources.InitiativeEndpoints.Points.Public + resources.Pagination10EndLink,
-					},
-				},
 			},
 		},
 	}
@@ -84,6 +77,13 @@ func Initiative(ini models.Initiative) resources.Initiative {
 		clAt := ini.ClosedAt.Time().UTC()
 		res.Data.Attributes.ClosedAt = &clAt
 	}
-
+	if ini.StartAt != nil {
+		stAt := ini.StartAt.Time().UTC()
+		res.Data.Attributes.StartAt = &stAt
+	}
+	if ini.EndAt != nil {
+		enAt := ini.EndAt.Time().UTC()
+		res.Data.Attributes.EndAt = &enAt
+	}
 	return res
 }

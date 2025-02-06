@@ -75,7 +75,7 @@ const (
 	StatusOrgAssociated StatusOrg = "associated"
 )
 
-func StatusOrgFromString(s string) *StatusOrg {
+func GetStatusOrg(s string) *StatusOrg {
 	status := map[string]StatusOrg{
 		"founder":    StatusOrgFounder,
 		"general":    StatusOrgGeneral,

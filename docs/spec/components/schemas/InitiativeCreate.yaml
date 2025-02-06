@@ -6,10 +6,11 @@ properties:
     required:
       - type
       - attributes
+      - relationships
     properties:
       type:
         type: string
-        enum: [ initiative_create ]
+        enum: [ initiative ]
       attributes:
         type: object
         required:
@@ -19,8 +20,8 @@ properties:
           - type
           - status
           - final_cost
+          - org_id
           - wallets
-          - org_members
         properties:
           name:
             type: string
@@ -44,14 +45,11 @@ properties:
             type: integer
             format: int64
             description: "final cost of initiative"
+          org_id:
+            type: string
+            description: "organization id"
           wallets:
             $ref: "./Wallets.yaml"
-          org_members:
-            type: array
-            items:
-              $ref: "./OrgMember.yaml"
-
-
 
 
 

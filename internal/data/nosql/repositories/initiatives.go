@@ -27,11 +27,12 @@ type Initiatives interface {
 	FilterSoft(filters map[string]any) Initiatives
 	FilterDateBounds(dateFilters map[string]any, after bool) Initiatives
 	FilterCounts(countFilters map[string]any, greater bool) Initiatives
-
 	FilterOrgs(filters map[string]any) Initiatives
-	UpdateOrgMember(ctx context.Context, orgID primitive.ObjectID, fields map[string]any) (*models.Initiative, error)
 
 	UpdateOne(ctx context.Context, fields map[string]any) (*models.Initiative, error)
+	UpdateWallets(ctx context.Context, walletFields map[string]any) (*models.Initiative, error)
+	UpdateOrgMember(ctx context.Context, orgID primitive.ObjectID, fields map[string]any) (*models.Initiative, error)
+	AddOrgMember(ctx context.Context, member models.OrgMember) (*models.Initiative, error)
 
 	SortBy(field string, ascending bool) Initiatives
 	Limit(limit int64) Initiatives
@@ -191,6 +192,19 @@ func (i *initiatives) UpdateOne(ctx context.Context, fields map[string]any) (*mo
 		"reports":    true,
 		"updated_at": true,
 		"closed_at":  true,
+
+		"bank_accounts.monobank": true,
+		"bank_accounts.privat":   true,
+
+		"payment_systems.google_pay": true,
+		"payment_systems.apple_pay":  true,
+		"payment_systems.paypal":     true,
+
+		"crypto_wallets.usdt": true,
+		"crypto_wallets.eth":  true,
+		"crypto_wallets.btc":  true,
+		"crypto_wallets.ton":  true,
+		"crypto_wallets.sol":  true,
 	}
 
 	updateFields := bson.M{}
